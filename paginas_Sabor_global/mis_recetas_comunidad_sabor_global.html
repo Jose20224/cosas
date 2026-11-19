@@ -1,0 +1,458 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f47b25",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#221710",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">restaurant_menu</span>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-extrabold tracking-tight">Sabor Global</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-semibold" href="#">Recetas</a>
+<a class="text-primary transition-colors text-sm font-bold border-b-2 border-primary pb-1" href="#">Comunidad</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-semibold" href="#">Planificador</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-semibold" href="#">Perfil</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="pl-10 pr-4 py-2 bg-primary/5 border-none focus:ring-2 focus:ring-primary rounded-lg text-sm w-64" placeholder="Buscar recetas..." type="text">
+</div>
+<div class="w-10 h-10 rounded-full bg-primary/20 border-2 border-primary/30 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCylMQVH6ofBIZ-KEcCN86bSUEGDRSPB9JSAFpkQ65Q8PiQ-_onjTJS3im0nvGHemO7O0CkdPbyRluOgmMppZdNAjVK0zwoMmutzm2nra_5yu_QzJNZ7dwPu6UY2y-osFWEYAZEWxXaPSepPmIgW1mU2prIqvOgkzyd6k-8cK4UdwR6qt26Xl5atYlSK9psM8VGjl8Au4Bts-tIW1dXZxfEoyi-MOwB7vFur8OMlzJ5VaiNuDr4vRxhf-y-EhW6j-MdAJhr2OJfa9V1">
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Welcome & Action Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+<div>
+<h1 class="text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight">Recetas de la comunidad</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Explora las creaciones culinarias de la comunidad.</p>
+</div>
+<button class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add_circle</span>
+                Compartir mi Receta
+            </button>
+</div>
+<!-- Search & Filter Bar -->
+<div class="flex flex-col gap-4 mb-8">
+<div class="w-full">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-white dark:bg-background-dark/50 border-2 border-primary/5 focus:border-primary/30 focus:ring-0 rounded-2xl text-lg shadow-sm" placeholder="Buscar recetas en la comunidad..." type="text">
+</div>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+<button class="flex items-center gap-2 shrink-0 bg-primary text-white px-4 py-2 rounded-full text-sm font-bold">
+                    Todos
+                </button>
+<button class="flex items-center gap-2 shrink-0 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 rounded-full text-sm font-medium hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-green-500 text-lg">eco</span> Vegano
+                </button>
+<button class="flex items-center gap-2 shrink-0 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 rounded-full text-sm font-medium hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-orange-400 text-lg">fitness_center</span> Keto
+                </button>
+<button class="flex items-center gap-2 shrink-0 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 rounded-full text-sm font-medium hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-blue-400 text-lg">timer</span> Rápido
+                </button>
+<button class="flex items-center gap-2 shrink-0 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 rounded-full text-sm font-medium hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-pink-400 text-lg">cake</span> Postres
+                </button>
+<button class="flex items-center gap-2 shrink-0 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 rounded-full text-sm font-medium hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-yellow-500 text-lg">no_accounts</span> Sin Gluten
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+<!-- Main Content: Recipe Grid -->
+<div class="lg:col-span-3">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Recipe Card 1 -->
+<div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-700">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Colorful healthy Buddha bowl with avocado and quinoa" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0iIGkUfZDAtVWc42EzvPidLTjivBwdAqn4G_3DNJj8gJNJTcFhRUoJ0Wp-lSpBX0xDXt9Nk0tVhfjMELKkf-Au7NNmCMseZkC0wBRcwIaibmWr49Ae1k2BYgM25AIesT4RqWzGj1L9RIFnnTMnVMQkHT5kzjA7vcHSWCZcEeOj_6C2_HRIRtyXja9diJ7mDeRLS1B56mFxskFBueFHd5oWtSZod1FVh7MByib1ozCDeq9SkZmnb_1oQ0qzkRAhQrBliTdR6NpO2Z0">
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-slate-800/90 rounded-full text-slate-400 hover:text-red-500 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 bg-white/90 dark:bg-slate-800/90 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-primary">Vegano</div>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg text-slate-900 dark:text-slate-100 leading-snug mb-2 group-hover:text-primary transition-colors line-clamp-2">Bowl de Quinoa y Aguacate Mediterráneo</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="w-6 h-6 rounded-full overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="User avatar woman smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwT7IUJahaNRdHAfrMp2i5oieU_f9RiWnDnSHNQuNKMWQyGfL1kYgS3754vnTVEdVCIBMfexCGah7IQsroilPxEIBjMcBTbGAq0DwyCeV8nZUb5FHr5ZoyxYn05K-zMTTmfv0TPJJ-d52RmTsST6KPi9r2i1_FnjdwzZRLJw2HBlnWvPEEsMnCD2IvuhDfZwfJkPiQ9c-beAgFhoBBX9n52wC-8mSZagFy1Jg2UkCpCT-sAXyngeC7RVT0nqy0cdYkf1D328xvAD9k">
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Por Elena Rodríguez</span>
+</div>
+<div class="flex items-center gap-1 mb-4 text-yellow-500">
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg">star_half</span>
+<span class="text-slate-400 text-xs font-medium ml-1">(128 reseñas)</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span class="text-xs font-semibold">20 min</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">local_fire_department</span>
+<span class="text-xs font-semibold">340 kcal</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recipe Card 2 -->
+<div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-700">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Fresh vegetable salad bowl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMHcURSjo-WswRJlsH58K0lqbo1ErUzwGbjqt3ZIsmFUhjPoiyR7GElETJR2pi_C2X3ff67JTJQ-T6phZcDHhh1YaxRWz93DWOWK3YR2eqq_dwDXV-n0GLY2-wW7epYRsN8ROuAUAXIJYNgKXSlOKj-8vpew31v0GRqaJRib19MYFM_R5-H8x2Gy_v2M5VmiuTtNCEWrVsenZ8scXwCXuIHUqIV8Iaieci2N2_jqOP7gmHTZwDh6RoUNvS8pcr9DT0XUl3x5bgEypQ">
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-slate-800/90 rounded-full text-red-500 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-xl fill-icon">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 bg-white/90 dark:bg-slate-800/90 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-primary">Keto</div>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg text-slate-900 dark:text-slate-100 leading-snug mb-2 group-hover:text-primary transition-colors line-clamp-2">Ensalada de Salmón y Espinacas</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="w-6 h-6 rounded-full overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="User avatar man smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLkiHRArcSQZodQsyd0XlWd_fLrP3jAsoC60V4pqBCT9bKltJjie9EzPcIdzCMxGEY-IADiXoJeDeOf3KnQHkIupoKkJvqzzyKiAKLl4US60hunAcX3qO96mYcFS-AQkrKCggOC3pbaehyjG7-4si2xmoyC4Xg5cOlzsSI-NAnEtE_d_q0gzNDk9ioAdRFRgT1jfgoOe4DyNweF5lHqhmz_st8q6hjbCjxK5IVDA0ywU-uwzmewnA_ISuTe8RKgNayt_uxA-pipq1U">
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Por Marc Soler</span>
+</div>
+<div class="flex items-center gap-1 mb-4 text-yellow-500">
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="text-slate-400 text-xs font-medium ml-1">(85 reseñas)</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span class="text-xs font-semibold">15 min</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">local_fire_department</span>
+<span class="text-xs font-semibold">410 kcal</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recipe Card 3 -->
+<div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-700">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Tasty chocolate dessert cake" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkmtLocZnm7GYiokWSEwXDSfilg1WMgdlDWW4d7fRbyswxg87c3gLRWbH4Q0ZOogfdgWWfmOGQT3Wrqn-nRhMSkjP8cVWdtZPIlcOMOGqP5ynF4mtfbG0o8uqFKmRVqS-UbKDOvQNK9-bzDq6jlrvSGjE4J5F6O7kACh384YpJ7hKnam2IE50aEckztpMh7TLkxkP9NDYJQ1q8xCCG1xa4LFrwquyHuVpx8WzDZ5MvQDQaBCmUjjIdlh-evcN9absW9Pf8-id3wfJu">
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-slate-800/90 rounded-full text-slate-400 hover:text-red-500 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 bg-white/90 dark:bg-slate-800/90 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-primary">Postres</div>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg text-slate-900 dark:text-slate-100 leading-snug mb-2 group-hover:text-primary transition-colors line-clamp-2">Brownie sin Gluten de Chocolate Intenso</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="w-6 h-6 rounded-full overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="User avatar woman portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBdmIFvw6_P__NvN7NrNQ8pFc7Zkc0sCa2HZngvM-VXp0Ee7q_iSqMj2lCqzymCfOo7uinXIboZF-zvjv_2povNuZQxC3JERtwUhfrhVg53MEM1X5E1PLxXfsp2bSfxutchh5eTfNQEJd4_gWznBfJ3a8B4rQiGfNb-uLWsv7yzPbXc--EYxFhwgO-yp-7rcBEwBNd5wt3DS_hRCY26yDZiUobUkBosH2DQvYnr8dBU8mw1WunC4dthc7Kh_O1eJSirXRjqBWHzYk3">
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Por Sofía Luna</span>
+</div>
+<div class="flex items-center gap-1 mb-4 text-yellow-500">
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg">star</span>
+<span class="text-slate-400 text-xs font-medium ml-1">(210 reseñas)</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span class="text-xs font-semibold">45 min</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">local_fire_department</span>
+<span class="text-xs font-semibold">280 kcal</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recipe Card 4 -->
+<div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-700">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Authentic Italian pasta carbonara" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHpqb8uTtqHSr5yAl-P0lRnA83wVhMdRImSVmV8T7cNfZAuQK9wHW1PhwSx4vDDRZvwnHNuno5gcvCNDG_Vp2ZbslG2Xsc3BmRhIvfRyvJtAdcsXXJ10zOJG7jtDrMjIwFKhAFvOOyBh5q9mS1cGjA1qzKgd-qi8souiENxYOJvc7-g93PjPH3AieV9ENDtxhpfmhMP-AaNh_rpYNjwgAYF9UjjmK_qSVsHTdXHct3GILPJDx_Vczcq3dqACIEXrGVKjMNiuomkmDZ">
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-slate-800/90 rounded-full text-slate-400 hover:text-red-500 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 bg-white/90 dark:bg-slate-800/90 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-primary">Rápido</div>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg text-slate-900 dark:text-slate-100 leading-snug mb-2 group-hover:text-primary transition-colors line-clamp-2">Pasta Carbonara Tradicional</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="w-6 h-6 rounded-full overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="User avatar bearded man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoHnFBYsLUFRATChM7TxdnCki4l5skb1ant9CvpaPN8tueD-A92R9rH6jzJCNP53ui3csDNlGJ2Jx03YLuvibyWi8qVNpSYIj-pGdK0lZVJ1syV2y3q1jn8m0vn7EJhLaT2xbHCWRgaQfTjt-Qi8Pk3DNBInJZfZ7YNPYDmwJonYx6yb5qG_omV1iktacqgfSiMWi8en6DV6S-7GFWtTDnmnD5SI734k4fxUeitvXzO2KCeCanYkMjSTFKOgie1feEaBYTj0WiOjnv">
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Por David Gil</span>
+</div>
+<div class="flex items-center gap-1 mb-4 text-yellow-500">
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg">star</span>
+<span class="text-slate-400 text-xs font-medium ml-1">(345 reseñas)</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span class="text-xs font-semibold">15 min</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">local_fire_department</span>
+<span class="text-xs font-semibold">520 kcal</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recipe Card 5 -->
+<div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-700">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Asian stir fry noodles with vegetables" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNAxrlxiYg4f97p5I3Vcvcs1b1YHhob9HVPIoe-cDMegmiyfJEAQ0uTLFX0JH5tjP-JROreSq3kO86ZRH2RBx41z44Kq7dbDXUzW8JLISrccZxw0AIAwA2tmNcZWUS4dRV4eI-8LJKWo5kwq9sEiusdCzYdKTt1ksdf-JNR5dI4sHCXmapUIHNdHTN328tk1D2NwhgxKoY-Vokqb5IpeJbKuZwkDNWtNsB4MyJ9pSUAEgjQI1YjkD3kQaiLTRKAMlOXPDpvW2LMRYw">
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-slate-800/90 rounded-full text-slate-400 hover:text-red-500 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 bg-white/90 dark:bg-slate-800/90 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-primary">Vegano</div>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg text-slate-900 dark:text-slate-100 leading-snug mb-2 group-hover:text-primary transition-colors line-clamp-2">Wok de Fideos con Tofu Ahumado</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="w-6 h-6 rounded-full overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="User avatar professional woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvNE1qAlQGF1H20RT5RFWzNKBQaYc0aH060TyUjK0KYsD-DmmFAyZ1FWv_Yij2NNx7RegMqMIf_VOOB2cJEMJshUXh7UgPQbGwA7fnx-sCY_BLFvIpuzEfsOaj7qnkXx4jXmH_8mw7PvX4jyquzSkEsN26BCpNCx27lvw_tOrOFaLAhY2jfcDRV9MSYOffPR2eIycVyBTFFwOvL-vzih81x_AIsUn5uL7hae-IPNGrWmXMIOGqg7fm2q9zDN9aF7bKxmFQmO2kUy_Z">
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Por Marta Ruíz</span>
+</div>
+<div class="flex items-center gap-1 mb-4 text-yellow-500">
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg">star_border</span>
+<span class="text-slate-400 text-xs font-medium ml-1">(56 reseñas)</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span class="text-xs font-semibold">25 min</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">local_fire_department</span>
+<span class="text-xs font-semibold">310 kcal</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recipe Card 6 -->
+<div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-slate-700">
+<div class="relative h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Gourmet green salad with nuts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD54OtBAhSSexWyxPjKrctk8sgVSAMOqUik7LdOzaB-sMpGmPoiubQ4rkHVCaJ1ONcSEjWKnlhBVFnXsBx1yYwlCxnW1je88HQx6Q8D9kbLpXPc_SRXUUFx9EJDgMwKYH3JZXTfaGdfeRVr2IbvFXszlHbC9E3LDIIvr7-Vp_H5KjkQGmnl_2Uxe-ypmLyKQbsD-rZQe2zuzC2kBTASMLPoHomI3n8a5y005Um9YBwC9mKVhiPe0Wb9rnsv-wobbm9067_6XpNPNVGi">
+<button class="absolute top-3 right-3 p-2 bg-white/90 dark:bg-slate-800/90 rounded-full text-slate-400 hover:text-red-500 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</button>
+<div class="absolute bottom-3 left-3 bg-white/90 dark:bg-slate-800/90 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider text-primary">Keto</div>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-lg text-slate-900 dark:text-slate-100 leading-snug mb-2 group-hover:text-primary transition-colors line-clamp-2">Poke Bowl de Atún y Sésamo</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="w-6 h-6 rounded-full overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="User avatar smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaFT_3Jh12YWuYEJz-Om-__RzMbPQlHK9RxK_TBo48fElF3GPJBIqVPh9tKM4Wh_xs4nlG0dTZZIxUEMEShwR4HqVDHhpk1NHqsVUx0xnlDXeIPuMvr5zB76BTuW_0HQoKL_KxubOpvILHZKNFCRc7QEv1QTASpX7EQc02L2mKFqtGNr_1GQ3qRjIV8uIJ6YdFijUalzh3a0TIBLf_Xvz-rgeym20EJpnrC6hCG3TZ3ZTOUDMpPzeTqYDLaJaP8JkyIFGfJtwK2g5M">
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Por Alex Torres</span>
+</div>
+<div class="flex items-center gap-1 mb-4 text-yellow-500">
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="material-symbols-outlined text-lg fill-icon">star</span>
+<span class="text-slate-400 text-xs font-medium ml-1">(92 reseñas)</span>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span class="text-xs font-semibold">10 min</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">local_fire_department</span>
+<span class="text-xs font-semibold">380 kcal</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center gap-2">
+<button class="w-10 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-primary text-white font-bold flex items-center justify-center">1</button>
+<button class="w-10 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-bold flex items-center justify-center hover:bg-primary/10 transition-colors">2</button>
+<button class="w-10 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-bold flex items-center justify-center hover:bg-primary/10 transition-colors">3</button>
+<button class="w-10 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Sidebar: My Lists & Saved -->
+<aside class="space-y-8">
+<!-- My Lists Section -->
+<div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-bold text-xl text-slate-900 dark:text-slate-100">Mis Listas</h2>
+<button class="text-primary hover:bg-primary/10 p-1 rounded-full transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 group cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">Favoritos</p>
+<p class="text-[11px] text-slate-400">24 recetas</p>
+</div>
+</li>
+<li class="flex items-center gap-3 group cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">Cenas Rápidas</p>
+<p class="text-[11px] text-slate-400">12 recetas</p>
+</div>
+</li>
+<li class="flex items-center gap-3 group cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-all">
+<span class="material-symbols-outlined">nutrition</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">Saludable</p>
+<p class="text-[11px] text-slate-400">18 recetas</p>
+</div>
+</li>
+<li class="flex items-center gap-3 group cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all">
+<span class="material-symbols-outlined">bakery_dining</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">Postres Findes</p>
+<p class="text-[11px] text-slate-400">8 recetas</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Stats/Community Card -->
+<div class="bg-primary/10 dark:bg-primary/5 rounded-2xl p-6 border-2 border-dashed border-primary/20">
+<div class="flex items-center gap-4 mb-4 text-primary">
+<span class="material-symbols-outlined text-4xl">groups</span>
+<h3 class="font-bold text-lg leading-tight">Actividad de la Comunidad</h3>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 mb-4">¡Tus recetas han sido guardadas <strong>156 veces</strong> esta semana!</p>
+<div class="flex -space-x-2">
+<img class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-800" data-alt="Avatar 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXdVxKuB_7BZyprriB6b_GoAacxgsst1jHGha5DunWM1TbFIvJpWjc9HyrkGW4oOYuh1gOfQlY2V7mbAdCT8DFIhEhi7E5kqVMle7gunaJxfg-ete-0csfMtX9Zr60K4XEqlHzykxqtNPJXN1hJUEbFzeGJFjDCrlpykQRJaYlN6efvIsvYC1JqlHJoorcSno0qWU-ca894CuPtPiaqTLQsjKalrl07n_rTAUt8R56Un1LsroubJlpJg3mz7Ps5LduBibkSzP_0tOx">
+<img class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-800" data-alt="Avatar 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9pK2M6ftsRqinVdRaVlSF0lDKrCiC2BIffQTmU4GhgnXUrE9JhZaQ0SY1mR9DzdGn8lpPuiJgfeW2sY7nY4QgCOufQeZbSce6uFILcWmk4K3nf0cKvLL-4xdX7KZGVFkUjKhKnKNPm6i9UTOMoWPZ__DSup-Mdtf8-Ar625ouexRbT-q0eX5yCEA5SYJKF38becExKJB3dOpbYreXwjY1q2IR6dBAhjeeFjAZr9ca4wAAhmWFRQGdHDuRuays4aWt5I292-ljGpLb">
+<img class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-800" data-alt="Avatar 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAridDaEABAJHG1UKmo1Z8W-Bu1t-mD7TJZQ-JOJ67pVua8tAQBIrgjrLeXPciypVAPPSYpY0AJpXwO0lPq2GmLnpOyGJP361zb7te4-3zVAj91FWlmXJ_Ez0Y16Xy82IAGVopSdPZ3j3zyGeuz5oAeZp9rF1otin0gfwrlggmVPqp-kfQ3OR5mp5rQeb0cT5fBXQwgcMNmh6m6mo3_eZDN9b0IFepEkq1jM17ln_Udq881f9x_w50iNQ398GMjCNRkVa13xRmQH4E5">
+<div class="flex items-center justify-center h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-800 bg-primary text-white text-[10px] font-bold">+12</div>
+</div>
+</div>
+<!-- Featured Chef -->
+<div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden">
+<div class="absolute -top-4 -right-4 w-16 h-16 bg-primary/10 rounded-full blur-xl"></div>
+<h3 class="font-bold text-slate-900 dark:text-slate-100 mb-4">Chef de la Semana</h3>
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-primary">
+<img class="w-full h-full object-cover" data-alt="Profile of a professional chef" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuiv8hM8vg9NoYo-VoMnbq0h3zMw-U5RUn57reE9S00KXYPpAEILH8DIvV4Q3t2cX1skggubdmcClcHDotRqWDjAKB_I18RN1aWOF5rOmGBRx0Mks4u_QcTHgHt0wAWWV-mX0TNl7sulyxBrIj3pD91xwpWt5kX3i3znhTaTTEAlytFtbZZaHTVPNcADhWMJyvbylWsyXwUS_EwFVoQehE696Q0D1L5pw___foD0M7jx56D_x9CTSjc88d4_SbHm-xlugyxaCt9Ji4">
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-slate-100">Ricardo Pérez</p>
+<p class="text-xs text-primary font-semibold">Cocinero Estrella</p>
+</div>
+</div>
+<button class="w-full mt-4 py-2 border border-primary/30 text-primary hover:bg-primary hover:text-white transition-all rounded-lg text-sm font-bold">Ver Perfil</button>
+</div>
+</aside>
+</div>
+</main>
+<footer class="bg-white dark:bg-background-dark border-t border-slate-100 dark:border-slate-800 py-12 mt-16">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-2 text-primary/60">
+<span class="material-symbols-outlined text-2xl">restaurant_menu</span>
+<h2 class="text-slate-400 text-lg font-bold tracking-tight uppercase">Sabor Global</h2>
+</div>
+<div class="flex gap-8">
+<a class="text-slate-400 hover:text-primary transition-colors text-xs font-bold" href="#">SOBRE NOSOTROS</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-xs font-bold" href="#">AYUDA</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-xs font-bold" href="#">PRIVACIDAD</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-xs font-bold" href="#">CONTACTO</a>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-primary transition-colors">language</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-primary transition-colors">share</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-primary transition-colors">mail</span>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-slate-50 dark:border-slate-800/50 text-center">
+<p class="text-slate-400 text-[10px] tracking-widest font-bold uppercase">© 2024 Sabor Global. Diseñado para amantes de la cocina.</p>
+</div>
+</div>
+</footer>
+</body></html>

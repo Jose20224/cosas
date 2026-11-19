@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Comunidad · Sabor Global</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0,1&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          primary: '#f47b25',
+          'background-light': '#f8f7f5',
+          'background-dark': '#221710',
+          ink: '#1f2937'
+        },
+        fontFamily: { display: ['Plus Jakarta Sans', 'sans-serif'] },
+        boxShadow: {
+          soft: '0 12px 35px rgba(31,41,55,.08)',
+          card: '0 8px 28px rgba(31,41,55,.08)'
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body{font-family:'Plus Jakarta Sans',sans-serif}
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 450,'GRAD' 0,'opsz' 24}
+  .filled{font-variation-settings:'FILL' 1}
+  .no-scrollbar::-webkit-scrollbar{display:none}
+  .no-scrollbar{scrollbar-width:none;-ms-overflow-style:none}
+  .recipe-card[hidden]{display:none}
+  .modal-backdrop{background:rgba(15,23,42,.52);backdrop-filter:blur(5px)}
+  dialog::backdrop{background:rgba(15,23,42,.52);backdrop-filter:blur(5px)}
+  .toast-show{transform:translateY(0);opacity:1}
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+
+<header class="sticky top-0 z-50 border-b border-slate-200/80 dark:border-slate-800 bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="h-16 flex items-center justify-between gap-4">
+      <a href="landing_page_sabor_global_redise_o.html" class="flex items-center gap-2 shrink-0" aria-label="Ir al inicio de Sabor Global">
+        <span class="material-symbols-outlined text-primary text-3xl">restaurant_menu</span>
+        <span class="text-lg sm:text-xl font-extrabold tracking-tight">Sabor Global</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold">
+        <a href="explorar_recetas_estilo_global.html" class="text-slate-600 dark:text-slate-300 hover:text-primary transition">Recetas</a>
+        <a href="mis_recetas_comunidad_sabor_global.html" class="text-primary font-extrabold relative after:absolute after:left-0 after:right-0 after:-bottom-5 after:h-0.5 after:bg-primary">Comunidad</a>
+        <a href="../perfil/planificador_de_comidas_sabor_global.html" class="text-slate-600 dark:text-slate-300 hover:text-primary transition">Planificador</a>
+        <a href="../perfil/perfil_de_usuario_sabor_global.html" class="text-slate-600 dark:text-slate-300 hover:text-primary transition">Perfil</a>
+      </nav>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div class="relative hidden md:block">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+          <input id="topSearch" type="search" class="w-52 xl:w-64 pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/70 text-sm focus:border-primary focus:ring-primary" placeholder="Buscar recetas..." aria-label="Buscar recetas">
+        </div>
+        <button id="mobileSearchBtn" class="md:hidden h-10 w-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center" aria-label="Mostrar búsqueda"><span class="material-symbols-outlined">search</span></button>
+        <button id="darkModeBtn" class="h-10 w-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center" aria-label="Cambiar tema"><span id="themeIcon" class="material-symbols-outlined">dark_mode</span></button>
+        <a href="../perfil/perfil_de_usuario_sabor_global.html" class="w-10 h-10 rounded-full bg-primary/15 border-2 border-primary/20 overflow-hidden block" aria-label="Ir al perfil">
+          <img class="w-full h-full object-cover" alt="Avatar de usuario" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCylMQVH6ofBIZ-KEcCN86bSUEGDRSPB9JSAFpkQ65Q8PiQ-_onjTJS3im0nvGHemO7O0CkdPbyRluOgmMppZdNAjVK0zwoMmutzm2nra_5yu_QzJNZ7dwPu6UY2y-osFWEYAZEWxXaPSepPmIgW1mU2prIqvOgkzyd6k-8cK4UdwR6qt26Xl5atYlSK9psM8VGjl8Au4Bts-tIW1dXZxfEoyi-MOwB7vFur8OMlzJ5VaiNuDr4vRxhf-y-EhW6j-MdAJhr2OJfa9V1">
+        </a>
+        <button id="mobileMenuBtn" class="lg:hidden h-10 w-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center" aria-label="Abrir menú" aria-expanded="false"><span id="menuIcon" class="material-symbols-outlined">menu</span></button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden lg:hidden pb-4 pt-1">
+      <div class="grid grid-cols-2 gap-2 text-sm font-semibold">
+        <a class="rounded-xl bg-slate-50 dark:bg-slate-900 p-3 hover:text-primary" href="explorar_recetas_estilo_global.html">Recetas</a>
+        <a class="rounded-xl bg-primary/10 text-primary p-3" href="mis_recetas_comunidad_sabor_global.html">Comunidad</a>
+        <a class="rounded-xl bg-slate-50 dark:bg-slate-900 p-3 hover:text-primary" href="../perfil/planificador_de_comidas_sabor_global.html">Planificador</a>
+        <a class="rounded-xl bg-slate-50 dark:bg-slate-900 p-3 hover:text-primary" href="../perfil/perfil_de_usuario_sabor_global.html">Perfil</a>
+      </div>
+    </div>
+    <div id="mobileSearch" class="hidden md:hidden pb-4">
+      <div class="relative">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+        <input id="mobileSearchInput" type="search" class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900" placeholder="Buscar en la comunidad..." aria-label="Buscar en la comunidad">
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
+  <section class="relative overflow-hidden rounded-3xl border border-primary/15 bg-white dark:bg-slate-900 shadow-soft mb-8">
+    <div class="absolute -right-16 -top-20 w-56 h-56 rounded-full bg-primary/10 blur-2xl"></div>
+    <div class="absolute -left-20 -bottom-28 w-64 h-64 rounded-full bg-orange-100/60 dark:bg-primary/5 blur-3xl"></div>
+    <div class="relative p-6 sm:p-8 lg:p-10 flex flex-col xl:flex-row xl:items-end justify-between gap-6">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-3 py-1.5 text-xs font-extrabold uppercase tracking-wider mb-4">
+          <span class="material-symbols-outlined text-base">groups</span> Comunidad Sabor Global
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">Recetas hechas por personas que aman cocinar.</h1>
+        <p class="mt-3 text-slate-600 dark:text-slate-300 max-w-xl">Descubre ideas de la comunidad, guarda tus favoritas y comparte tus propias creaciones.</p>
+      </div>
+      <button id="shareRecipeBtn" class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-orange-600 text-white px-5 py-3.5 rounded-xl font-bold shadow-lg shadow-primary/20 transition shrink-0">
+        <span class="material-symbols-outlined">add_circle</span> Compartir mi receta
+      </button>
+    </div>
+  </section>
+
+  <section class="mb-8" aria-label="Buscar y filtrar recetas">
+    <div class="flex flex-col xl:flex-row gap-3">
+      <div class="relative flex-1">
+        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+        <input id="communitySearch" type="search" class="w-full pl-12 pr-4 py-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm focus:border-primary focus:ring-primary" placeholder="Busca por receta, ingrediente o creador..." autocomplete="off">
+      </div>
+      <select id="sortSelect" class="xl:w-52 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3.5 font-semibold shadow-sm focus:border-primary focus:ring-primary" aria-label="Ordenar recetas">
+        <option value="popular">Más valoradas</option>
+        <option value="recent">Más recientes</option>
+        <option value="quick">Más rápidas</option>
+      </select>
+    </div>
+    <div class="mt-4 flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" id="categoryFilters">
+      <button data-filter="Todos" class="filter-chip shrink-0 bg-primary text-white px-4 py-2.5 rounded-full text-sm font-bold">Todos</button>
+      <button data-filter="Vegano" class="filter-chip shrink-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full text-sm font-semibold hover:border-primary hover:text-primary transition"><span class="material-symbols-outlined align-middle text-green-500 text-base mr-1">eco</span>Vegano</button>
+      <button data-filter="Keto" class="filter-chip shrink-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full text-sm font-semibold hover:border-primary hover:text-primary transition"><span class="material-symbols-outlined align-middle text-orange-400 text-base mr-1">fitness_center</span>Keto</button>
+      <button data-filter="Rápido" class="filter-chip shrink-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full text-sm font-semibold hover:border-primary hover:text-primary transition"><span class="material-symbols-outlined align-middle text-blue-400 text-base mr-1">timer</span>Rápido</button>
+      <button data-filter="Postres" class="filter-chip shrink-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full text-sm font-semibold hover:border-primary hover:text-primary transition"><span class="material-symbols-outlined align-middle text-pink-400 text-base mr-1">cake</span>Postres</button>
+      <button data-filter="Sin Gluten" class="filter-chip shrink-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 rounded-full text-sm font-semibold hover:border-primary hover:text-primary transition"><span class="material-symbols-outlined align-middle text-yellow-500 text-base mr-1">no_accounts</span>Sin Gluten</button>
+    </div>
+    <div class="mt-4 flex items-center justify-between gap-3">
+      <p id="resultSummary" class="text-sm text-slate-500 dark:text-slate-400">6 recetas encontradas</p>
+      <button id="clearFilters" class="hidden text-sm font-bold text-primary hover:underline">Limpiar filtros</button>
+    </div>
+  </section>
+
+  <div class="grid grid-cols-1 xl:grid-cols-4 gap-8">
+    <section class="xl:col-span-3">
+      <div id="emptyState" class="hidden rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 p-10 text-center mb-6">
+        <span class="material-symbols-outlined text-5xl text-primary/70">search_off</span>
+        <h2 class="mt-3 text-xl font-extrabold">No encontramos recetas</h2>
+        <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Prueba con otro término o cambia el filtro.</p>
+      </div>
+
+      <div id="recipeGrid" class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6">
+        <article class="recipe-card group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-card transition-all" data-category="Vegano" data-search="bowl quinoa aguacate mediterraneo elena rodriguez quinoa aguacate" data-rating="4.5" data-time="20" data-recent="6">
+          <a href="detalle_de_receta_sabor_global_mejorada.html" class="block relative h-52 overflow-hidden">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Bowl de quinoa y aguacate mediterráneo" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0iIGkUfZDAtVWc42EzvPidLTjivBwdAqn4G_3DNJj8gJNJTcFhRUoJ0Wp-lSpBX0xDXt9Nk0tVhfjMELKkf-Au7NNmCMseZkC0wBRcwIaibmWr49Ae1k2BYgM25AIesT4RqWzGj1L9RIFnnTMnVMQkHT5kzjA7vcHSWCZcEeOj_6C2_HRIRtyXja9diJ7mDeRLS1B56mFxskFBueFHd5oWtSZod1FVh7MByib1ozCDeq9SkZmnb_1oQ0qzkRAhQrBliTdR6NpO2Z0">
+            <span class="absolute left-3 bottom-3 bg-white/90 dark:bg-slate-900/90 text-primary px-2.5 py-1 rounded-lg text-[11px] font-extrabold uppercase tracking-wide">Vegano</span>
+          </a>
+          <div class="p-5">
+            <div class="flex items-start justify-between gap-3">
+              <h2 class="font-extrabold text-lg leading-snug group-hover:text-primary transition-colors">Bowl de Quinoa y Aguacate Mediterráneo</h2>
+              <button class="favorite-btn shrink-0 w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-red-500" aria-label="Guardar receta" aria-pressed="false"><span class="material-symbols-outlined">favorite</span></button>
+            </div>
+            <div class="flex items-center gap-2 mt-3 text-sm text-slate-500 dark:text-slate-400">
+              <img class="w-7 h-7 rounded-full object-cover" alt="Elena Rodríguez" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwT7IUJahaNRdHAfrMp2i5oieU_f9RiWnDnSHNQuNKMWQyGfL1kYgS3754vnTVEdVCIBMfexCGah7IQsroilPxEIBjMcBTbGAq0DwyCeV8nZUb5FHr5ZoyxYn05K-zMTTmfv0TPJJ-d52RmTsST6KPi9r2i1_FnjdwzZRLJw2HBlnWvPEEsMnCD2IvuhDfZwfJkPiQ9c-beAgFhoBBX9n52wC-8mSZagFy1Jg2UkCpCT-sAXyngeC7RVT0nqy0cdYkf1D328xvAD9k">
+              Por <span class="font-bold text-slate-700 dark:text-slate-200">Elena Rodríguez</span>
+            </div>
+            <div class="flex items-center gap-1 mt-3 text-amber-400"><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined">star_half</span><span class="text-slate-400 text-xs ml-1">4.5 · 128 reseñas</span></div>
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400"><span><span class="material-symbols-outlined text-base align-middle mr-1">schedule</span>20 min</span><span><span class="material-symbols-outlined text-base align-middle mr-1">local_fire_department</span>340 kcal</span></div>
+          </div>
+        </article>
+
+        <article class="recipe-card group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-card transition-all" data-category="Keto" data-search="ensalada salmon espinacas marc soler keto" data-rating="5" data-time="15" data-recent="4">
+          <a href="detalle_de_receta_sabor_global_mejorada.html" class="block relative h-52 overflow-hidden"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Ensalada de salmón y espinacas" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMHcURSjo-WswRJlsH58K0lqbo1ErUzwGbjqt3ZIsmFUhjPoiyR7GElETJR2pi_C2X3ff67JTJQ-T6phZcDHhh1YaxRWz93DWOWK3YR2eqq_dwDXV-n0GLY2-wW7epYRsN8ROuAUAXIJYNgKXSlOKj-8vpew31v0GRqaJRib19MYFM_R5-H8x2Gy_v2M5VmiuTtNCEWrVsenZ8scXwCXuIHUqIV8Iaieci2N2_jqOP7gmHTZwDh6RoUNvS8pcr9DT0XUl3x5bgEypQ"><span class="absolute left-3 bottom-3 bg-white/90 dark:bg-slate-900/90 text-primary px-2.5 py-1 rounded-lg text-[11px] font-extrabold uppercase tracking-wide">Keto</span></a>
+          <div class="p-5"><div class="flex items-start justify-between gap-3"><h2 class="font-extrabold text-lg leading-snug group-hover:text-primary transition-colors">Ensalada de Salmón y Espinacas</h2><button class="favorite-btn shrink-0 w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 text-red-500" aria-label="Quitar de favoritos" aria-pressed="true"><span class="material-symbols-outlined filled">favorite</span></button></div><div class="flex items-center gap-2 mt-3 text-sm text-slate-500 dark:text-slate-400"><img class="w-7 h-7 rounded-full object-cover" alt="Marc Soler" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLkiHRArcSQZodQsyd0XlWd_fLrP3jAsoC60V4pqBCT9bKltJjie9EzPcIdzCMxGEY-IADiXoJeDeOf3KnQHkIupoKkJvqzzyKiAKLl4US60hunAcX3qO96mYcFS-AQkrKCggOC3pbaehyjG7-4si2xmoyC4Xg5cOlzsSI-NAnEtE_d_q0gzNDk9ioAdRFRgT1jfgoOe4DyNweF5lHqhmz_st8q6hjbCjxK5IVDA0ywU-uwzmewnA_ISuTe8RKgNayt_uxA-pipq1U">Por <span class="font-bold text-slate-700 dark:text-slate-200">Marc Soler</span></div><div class="flex items-center gap-1 mt-3 text-amber-400"><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="text-slate-400 text-xs ml-1">5.0 · 85 reseñas</span></div><div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400"><span><span class="material-symbols-outlined text-base align-middle mr-1">schedule</span>15 min</span><span><span class="material-symbols-outlined text-base align-middle mr-1">local_fire_department</span>410 kcal</span></div></div>
+        </article>
+
+        <article class="recipe-card group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-card transition-all" data-category="Postres" data-search="brownie sin gluten chocolate sofia luna postres" data-rating="4" data-time="45" data-recent="3">
+          <a href="detalle_de_receta_sabor_global_mejorada.html" class="block relative h-52 overflow-hidden"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Brownie sin gluten de chocolate intenso" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkmtLocZnm7GYiokWSEwXDSfilg1WMgdlDWW4d7fRbyswxg87c3gLRWbH4Q0ZOogfdgWWfmOGQT3Wrqn-nRhMSkjP8cVWdtZPIlcOMOGqP5ynF4mtfbG0o8uqFKmRVqS-UbKDOvQNK9-bzDq6jlrvSGjE4J5F6O7kACh384YpJ7hKnam2IE50aEckztpMh7TLkxkP9NDYJQ1q8xCCG1xa4LFrwquyHuVpx8WzDZ5MvQDQaBCmUjjIdlh-evcN9absW9Pf8-id3wfJu"><span class="absolute left-3 bottom-3 bg-white/90 dark:bg-slate-900/90 text-primary px-2.5 py-1 rounded-lg text-[11px] font-extrabold uppercase tracking-wide">Postres</span></a>
+          <div class="p-5"><div class="flex items-start justify-between gap-3"><h2 class="font-extrabold text-lg leading-snug group-hover:text-primary transition-colors">Brownie sin Gluten de Chocolate Intenso</h2><button class="favorite-btn shrink-0 w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400" aria-label="Guardar receta" aria-pressed="false"><span class="material-symbols-outlined">favorite</span></button></div><div class="flex items-center gap-2 mt-3 text-sm text-slate-500 dark:text-slate-400"><img class="w-7 h-7 rounded-full object-cover" alt="Sofía Luna" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBdmIFvw6_P__NvN7NrNQ8pFc7Zkc0sCa2HZngvM-VXp0Ee7q_iSqMj2lCqzymCfOo7uinXIboZF-zvjv_2povNuZQxC3JERtwUhfrhVg53MEM1X5E1PLxXfsp2bSfxutchh5eTfNQEJd4_gWznBfJ3a8B4rQiGfNb-uLWsv7yzPbXc--EYxFhwgO-yp-7rcBEwBNd5wt3DS_hRCY26yDZiUobUkBosH2DQvYnr8dBU8mw1WunC4dthc7Kh_O1eJSirXRjqBWHzYk3"><span>Por <span class="font-bold text-slate-700 dark:text-slate-200">Sofía Luna</span></span></div><div class="flex items-center gap-1 mt-3 text-amber-400"><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined">star</span><span class="text-slate-400 text-xs ml-1">4.0 · 210 reseñas</span></div><div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400"><span><span class="material-symbols-outlined text-base align-middle mr-1">schedule</span>45 min</span><span><span class="material-symbols-outlined text-base align-middle mr-1">local_fire_department</span>280 kcal</span></div></div>
+        </article>
+
+        <article class="recipe-card group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-card transition-all" data-category="Rápido" data-search="pasta carbonara tradicional david gil rapido pasta" data-rating="4" data-time="15" data-recent="2">
+          <a href="detalle_de_receta_sabor_global_mejorada.html" class="block relative h-52 overflow-hidden"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Pasta carbonara tradicional" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHpqb8uTtqHSr5yAl-P0lRnA83wVhMdRImSVmV8T7cNfZAuQK9wHW1PhwSx4vDDRZvwnHNuno5gcvCNDG_Vp2ZbslG2Xsc3BmRhIvfRyvJtAdcsXXJ10zOJG7jtDrMjIwFKhAFvOOyBh5q9mS1cGjA1qzKgd-qi8souiENxYOJvc7-g93PjPH3AieV9ENDtxhpfmhMP-AaNh_rpYNjwgAYF9UjjmK_qSVsHTdXHct3GILPJDx_Vczcq3dqACIEXrGVKjMNiuomkmDZ"><span class="absolute left-3 bottom-3 bg-white/90 dark:bg-slate-900/90 text-primary px-2.5 py-1 rounded-lg text-[11px] font-extrabold uppercase tracking-wide">Rápido</span></a>
+          <div class="p-5"><div class="flex items-start justify-between gap-3"><h2 class="font-extrabold text-lg leading-snug group-hover:text-primary transition-colors">Pasta Carbonara Tradicional</h2><button class="favorite-btn shrink-0 w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400" aria-label="Guardar receta" aria-pressed="false"><span class="material-symbols-outlined">favorite</span></button></div><div class="flex items-center gap-2 mt-3 text-sm text-slate-500 dark:text-slate-400"><img class="w-7 h-7 rounded-full object-cover" alt="David Gil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoHnFBYsLUFRATChM7TxdnCki4l5skb1ant9CvpaPN8tueD-A92R9rH6jzJCNP53ui3csDNlGJ2Jx03YLuvibyWi8qVNpSYIj-pGdK0lZVJ1syV2y3q1jn8m0vn7EJhLaT2xbHCWRgaQfTjt-Qi8Pk3DNBInJZfZ7YNPYDmwJonYx6yb5qG_omV1iktacqgfSiMWi8en6DV6S-7GFWtTDnmnD5SI734k4fxUeitvXzO2KCeCanYkMjSTFKOgie1feEaBYTj0WiOjnv"><span>Por <span class="font-bold text-slate-700 dark:text-slate-200">David Gil</span></span></div><div class="flex items-center gap-1 mt-3 text-amber-400"><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined">star</span><span class="text-slate-400 text-xs ml-1">4.0 · 345 reseñas</span></div><div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400"><span><span class="material-symbols-outlined text-base align-middle mr-1">schedule</span>15 min</span><span><span class="material-symbols-outlined text-base align-middle mr-1">local_fire_department</span>520 kcal</span></div></div>
+        </article>
+
+        <article class="recipe-card group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-card transition-all" data-category="Vegano" data-search="wok fideos tofu ahumado marta ruiz vegano rapido" data-rating="4" data-time="25" data-recent="1">
+          <a href="detalle_de_receta_sabor_global_mejorada.html" class="block relative h-52 overflow-hidden"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Wok de fideos con tofu ahumado" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNAxrlxiYg4f97p5I3Vcvcs1b1YHhob9HVPIoe-cDMegmiyfJEAQ0uTLFX0JH5tjP-JROreSq3kO86ZRH2RBx41z44Kq7dbDXUzW8JLISrccZxw0AIAwA2tmNcZWUS4dRV4eI-8LJKWo5kwq9sEiusdCzYdKTt1ksdf-JNR5dI4sHCXmapUIHNdHTN328tk1D2NwhgxKoY-Vokqb5IpeJbKuZwkDNWtNsB4MyJ9pSUAEgjQI1YjkD3kQaiLTRKAMlOXPDpvW2LMRYw"><span class="absolute left-3 bottom-3 bg-white/90 dark:bg-slate-900/90 text-primary px-2.5 py-1 rounded-lg text-[11px] font-extrabold uppercase tracking-wide">Vegano</span></a>
+          <div class="p-5"><div class="flex items-start justify-between gap-3"><h2 class="font-extrabold text-lg leading-snug group-hover:text-primary transition-colors">Wok de Fideos con Tofu Ahumado</h2><button class="favorite-btn shrink-0 w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400" aria-label="Guardar receta" aria-pressed="false"><span class="material-symbols-outlined">favorite</span></button></div><div class="flex items-center gap-2 mt-3 text-sm text-slate-500 dark:text-slate-400"><img class="w-7 h-7 rounded-full object-cover" alt="Marta Ruíz" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvNE1qAlQGF1H20RT5RFWzNKBQaYc0aH060TyUjK0KYsD-DmmFAyZ1FWv_Yij2NNx7RegMqMIf_VOOB2cJEMJshUXh7UgPQbGwA7fnx-sCY_BLFvIpuzEfsOaj7qnkXx4jXmH_8mw7PvX4jyquzSkEsN26BCpNCx27lvw_tOrOFaLAhY2jfcDRV9MSYOffPR2eIycVyBTFFwOvL-vzih81x_AIsUn5uL7hae-IPNGrWmXMIOGqg7fm2q9zDN9aF7bKxmFQmO2kUy_Z"><span>Por <span class="font-bold text-slate-700 dark:text-slate-200">Marta Ruíz</span></span></div><div class="flex items-center gap-1 mt-3 text-amber-400"><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined">star_border</span><span class="text-slate-400 text-xs ml-1">4.0 · 56 reseñas</span></div><div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400"><span><span class="material-symbols-outlined text-base align-middle mr-1">schedule</span>25 min</span><span><span class="material-symbols-outlined text-base align-middle mr-1">local_fire_department</span>310 kcal</span></div></div>
+        </article>
+
+        <article class="recipe-card group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-card transition-all" data-category="Keto" data-search="poke bowl atun sesamo alex torres keto pescado" data-rating="5" data-time="10" data-recent="5">
+          <a href="detalle_de_receta_sabor_global_mejorada.html" class="block relative h-52 overflow-hidden"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Poke bowl de atún y sésamo" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaFT_3Jh12YWuYEJz-Om-__RzMbPQlHK9RxK_TBo48fElF3GPJBIqVPh9tKM4Wh_xs4nlG0dTZZIxUEMEShwR4HqVDHhpk1NHqsVUx0xnlDXeIPuMvr5zB76BTuW_0HQoKL_KxubOpvILHZKNFCRc7QEv1QTASpX7EQc02L2mKFqtGNr_1GQ3qRjIV8uIJ6YdFijUalzh3a0TIBLf_Xvz-rgeym20EJpnrC6hCG3TZ3ZTOUDMpPzeTqYDLaJaP8JkyIFGfJtwK2g5M"><span class="absolute left-3 bottom-3 bg-white/90 dark:bg-slate-900/90 text-primary px-2.5 py-1 rounded-lg text-[11px] font-extrabold uppercase tracking-wide">Keto</span></a>
+          <div class="p-5"><div class="flex items-start justify-between gap-3"><h2 class="font-extrabold text-lg leading-snug group-hover:text-primary transition-colors">Poke Bowl de Atún y Sésamo</h2><button class="favorite-btn shrink-0 w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400" aria-label="Guardar receta" aria-pressed="false"><span class="material-symbols-outlined">favorite</span></button></div><div class="flex items-center gap-2 mt-3 text-sm text-slate-500 dark:text-slate-400"><img class="w-7 h-7 rounded-full object-cover" alt="Alex Torres" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaFT_3Jh12YWuYEJz-Om-__RzMbPQlHK9RxK_TBo48fElF3GPJBIqVPh9tKM4Wh_xs4nlG0dTZZIxUEMEShwR4HqVDHhpk1NHqsVUx0xnlDXeIPuMvr5zB76BTuW_0HQoKL_KxubOpvILHZKNFCRc7QEv1QTASpX7EQc02L2mKFqtGNr_1GQ3qRjIV8uIJ6YdFijUalzh3a0TIBLf_Xvz-rgeym20EJpnrC6hCG3TZ3ZTOUDMpPzeTqYDLaJaP8JkyIFGfJtwK2g5M"><span>Por <span class="font-bold text-slate-700 dark:text-slate-200">Alex Torres</span></span></div><div class="flex items-center gap-1 mt-3 text-amber-400"><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="material-symbols-outlined filled">star</span><span class="text-slate-400 text-xs ml-1">5.0 · 92 reseñas</span></div><div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400"><span><span class="material-symbols-outlined text-base align-middle mr-1">schedule</span>10 min</span><span><span class="material-symbols-outlined text-base align-middle mr-1">local_fire_department</span>380 kcal</span></div></div>
+        </article>
+      </div>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-5 py-4">
+        <p class="text-sm text-slate-500 dark:text-slate-400">Mostrando <span id="showingCount" class="font-bold text-slate-700 dark:text-slate-200">6</span> de 6 recetas</p>
+        <div class="flex items-center gap-1">
+          <button class="pagination-btn w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400" disabled aria-label="Página anterior"><span class="material-symbols-outlined">chevron_left</span></button>
+          <button class="pagination-page w-10 h-10 rounded-xl bg-primary text-white font-bold" data-page="1">1</button>
+          <button class="pagination-page w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 font-bold hover:border-primary hover:text-primary" data-page="2">2</button>
+          <button class="pagination-page w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 font-bold hover:border-primary hover:text-primary" data-page="3">3</button>
+          <button class="pagination-btn w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:border-primary hover:text-primary" aria-label="Página siguiente"><span class="material-symbols-outlined">chevron_right</span></button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="space-y-5 xl:sticky xl:top-24 h-fit">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm">
+        <div class="flex items-center justify-between mb-5">
+          <div><p class="text-xs font-extrabold uppercase tracking-wider text-primary">Tu colección</p><h2 class="text-xl font-black mt-1">Mis listas</h2></div>
+          <button id="newListBtn" class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition" aria-label="Crear lista"><span class="material-symbols-outlined">add</span></button>
+        </div>
+        <div class="space-y-2">
+          <button class="list-item w-full text-left flex items-center gap-3 p-3 rounded-xl hover:bg-orange-50 dark:hover:bg-slate-800 transition" data-list="Favoritos"><span class="w-10 h-10 rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-600 flex items-center justify-center"><span class="material-symbols-outlined filled">favorite</span></span><span><span class="block text-sm font-extrabold">Favoritos</span><span class="block text-xs text-slate-400">24 recetas</span></span></button>
+          <button class="list-item w-full text-left flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50 dark:hover:bg-slate-800 transition" data-list="Cenas Rápidas"><span class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center"><span class="material-symbols-outlined">rocket_launch</span></span><span><span class="block text-sm font-extrabold">Cenas Rápidas</span><span class="block text-xs text-slate-400">12 recetas</span></span></button>
+          <button class="list-item w-full text-left flex items-center gap-3 p-3 rounded-xl hover:bg-green-50 dark:hover:bg-slate-800 transition" data-list="Saludable"><span class="w-10 h-10 rounded-xl bg-green-100 dark:bg-green-900/30 text-green-600 flex items-center justify-center"><span class="material-symbols-outlined">nutrition</span></span><span><span class="block text-sm font-extrabold">Saludable</span><span class="block text-xs text-slate-400">18 recetas</span></span></button>
+          <button class="list-item w-full text-left flex items-center gap-3 p-3 rounded-xl hover:bg-purple-50 dark:hover:bg-slate-800 transition" data-list="Postres Findes"><span class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/30 text-purple-600 flex items-center justify-center"><span class="material-symbols-outlined">bakery_dining</span></span><span><span class="block text-sm font-extrabold">Postres Findes</span><span class="block text-xs text-slate-400">8 recetas</span></span></button>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-primary/15 bg-primary/10 dark:bg-primary/5 p-5">
+        <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-3xl">trending_up</span><div><p class="font-extrabold">Actividad de la comunidad</p><p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Tus recetas han sido guardadas <strong>156 veces</strong> esta semana.</p></div></div>
+        <div class="flex -space-x-2 mt-5">
+          <img class="h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" alt="Miembro de la comunidad" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXdVxKuB_7BZyprriB6b_GoAacxgsst1jHGha5DunWM1TbFIvJpWjc9HyrkGW4oOYuh1gOfQlY2V7mbAdCT8DFIhEhi7E5kqVMle7gunaJxfg-ete-0csfMtX9Zr60K4XEqlHzykxqtNPJXN1hJUEbFzeGJFjDCrlpykQRJaYlN6efvIsvYC1JqlHJoorcSno0qWU-ca894CuPtPiaqTLQsjKalrl07n_rTAUt8R56Un1LsroubJlpJg3mz7Ps5LduBibkSzP_0tOx">
+          <img class="h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" alt="Miembro de la comunidad" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9pK2M6ftsRqinVdRaVlSF0lDKrCiC2BIffQTmU4GhgnXUrE9JhZaQ0SY1mR9DzdGn8lpPuiJgfeW2sY7nY4QgCOufQeZbSce6uFILcWmk4K3nf0cKvLL-4xdX7KZGVFkUjKhKnKNPm6i9UTOMoWPZ__DSup-Mdtf8-Ar625ouexRbT-q0eX5yCEA5SYJKF38becExKJB3dOpbYreXwjY1q2IR6dBAhjeeFjAZr9ca4wAAhmWFRQGdHDuRuays4aWt5I292-ljGpLb">
+          <img class="h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" alt="Miembro de la comunidad" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAridDaEABAJHG1UKmo1Z8W-Bu1t-mD7TJZQ-JOJ67pVua8tAQBIrgjrLeXPciypVAPPSYpY0AJpXwO0lPq2GmLnpOyGJP361zb7te4-3zVAj91FWlmXJ_Ez0Y16Xy82IAGVopSdPZ3j3zyGeuz5oAeZp9rF1otin0gfwrlggmVPqp-kfQ3OR5mp5rQeb0cT5fBXQwgcMNmh6m6mo3_eZDN9b0IFepEkq1jM17ln_Udq881f9x_w50iNQ398GMjCNRkVa13xRmQH4E5">
+          <span class="h-8 min-w-8 px-2 rounded-full bg-primary text-white ring-2 ring-white dark:ring-slate-900 flex items-center justify-center text-[10px] font-black">+12</span>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm relative overflow-hidden">
+        <div class="absolute -right-8 -top-8 w-24 h-24 rounded-full bg-primary/10 blur-2xl"></div>
+        <p class="text-xs font-extrabold uppercase tracking-wider text-primary">Destacado</p>
+        <h2 class="font-black text-lg mt-1">Chef de la semana</h2>
+        <div class="flex items-center gap-3 mt-4"><div class="w-14 h-14 rounded-full overflow-hidden border-2 border-primary"><img class="w-full h-full object-cover" alt="Ricardo Pérez" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuiv8hM8vg9NoYo-VoMnbq0h3zMw-U5RUn57reE9S00KXYPpAEILH8DIvV4Q3t2cX1skggubdmcClcHDotRqWDjAKB_I18RN1aWOF5rOmGBRx0Mks4u_QcTHgHt0wAWWV-mX0TNl7sulyxBrIj3pD91xwpWt5kX3i3znhTaTTEAlytFtbZZaHTVPNcADhWMJyvbylWsyXwUS_EwFVoQehE696Q0D1L5pw___foD0M7jx56D_x9CTSjc88d4_SbHm-xlugyxaCt9Ji4"></div><div><p class="font-extrabold">Ricardo Pérez</p><p class="text-xs text-primary font-bold">Cocinero Estrella</p></div></div>
+        <button id="chefProfileBtn" class="w-full mt-4 py-2.5 rounded-xl border border-primary/30 text-primary hover:bg-primary hover:text-white transition font-bold text-sm">Ver perfil</button>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark mt-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <a href="landing_page_sabor_global_redise_o.html" class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-2xl">restaurant_menu</span><span class="font-extrabold">Sabor Global</span></a>
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-semibold text-slate-500"><a href="landing_page_sabor_global_redise_o.html" class="hover:text-primary">Inicio</a><a href="explorar_recetas_estilo_global.html" class="hover:text-primary">Recetas</a><a href="../perfil/perfil_de_usuario_sabor_global.html" class="hover:text-primary">Perfil</a><a href="#" class="hover:text-primary">Ayuda</a><a href="#" class="hover:text-primary">Privacidad</a></div>
+    </div>
+    <p class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 text-center text-xs text-slate-400">© 2024 Sabor Global. Diseñado para amantes de la cocina.</p>
+  </div>
+</footer>
+
+<dialog id="shareDialog" class="w-[min(720px,calc(100%-2rem))] rounded-3xl border-0 p-0 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xl">
+  <form method="dialog" class="p-6 sm:p-8">
+    <div class="flex items-start justify-between gap-4"><div><p class="text-xs uppercase tracking-wider font-extrabold text-primary">Comunidad</p><h2 class="text-2xl font-black mt-1">Compartir mi receta</h2><p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Completa estos datos para preparar tu publicación.</p></div><button value="cancel" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center"><span class="material-symbols-outlined">close</span></button></div>
+    <div class="grid sm:grid-cols-2 gap-4 mt-6"><label class="sm:col-span-2 text-sm font-bold">Nombre de la receta<input id="newRecipeName" class="mt-2 w-full rounded-xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800" required placeholder="Ej. Tacos de mango y tofu"></label><label class="text-sm font-bold">Categoría<select class="mt-2 w-full rounded-xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800"><option>Vegano</option><option>Keto</option><option>Rápido</option><option>Postres</option><option>Sin Gluten</option></select></label><label class="text-sm font-bold">Tiempo<input type="number" min="1" class="mt-2 w-full rounded-xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800" placeholder="30"></label><label class="sm:col-span-2 text-sm font-bold">Descripción<textarea class="mt-2 w-full rounded-xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800" rows="3" placeholder="Cuéntale a la comunidad por qué te gusta esta receta..."></textarea></label></div>
+    <div class="mt-6 flex justify-end gap-3"><button value="cancel" class="px-5 py-3 rounded-xl font-bold border border-slate-200 dark:border-slate-700">Cancelar</button><button id="publishRecipeBtn" value="default" class="px-5 py-3 rounded-xl bg-primary text-white font-bold">Continuar</button></div>
+  </form>
+</dialog>
+
+<dialog id="newListDialog" class="w-[min(460px,calc(100%-2rem))] rounded-3xl border-0 p-0 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xl">
+  <form method="dialog" class="p-6 sm:p-7"><div class="flex items-start justify-between gap-4"><div><p class="text-xs uppercase tracking-wider font-extrabold text-primary">Tu colección</p><h2 class="text-2xl font-black mt-1">Crear una lista</h2></div><button value="cancel" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center"><span class="material-symbols-outlined">close</span></button></div><label class="block text-sm font-bold mt-6">Nombre de la lista<input id="listName" class="mt-2 w-full rounded-xl border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800" required placeholder="Ej. Almuerzos fáciles"></label><div class="mt-6 flex justify-end gap-3"><button value="cancel" class="px-5 py-3 rounded-xl font-bold border border-slate-200 dark:border-slate-700">Cancelar</button><button id="createListBtn" value="default" class="px-5 py-3 rounded-xl bg-primary text-white font-bold">Crear lista</button></div></form>
+</dialog>
+
+<div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 translate-y-5 opacity-0 transition-all duration-300 z-[80] pointer-events-none bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-3 rounded-xl shadow-2xl text-sm font-bold"></div>
+
+<script>
+(function(){
+  const root=document.documentElement;
+  const savedTheme=localStorage.getItem('sabor-global-theme');
+  if(savedTheme==='dark') root.classList.add('dark');
+  const themeIcon=document.getElementById('themeIcon');
+  const toast=document.getElementById('toast');
+  const showToast=(message)=>{toast.textContent=message;toast.classList.add('toast-show');clearTimeout(window.__sgToast);window.__sgToast=setTimeout(()=>toast.classList.remove('toast-show'),2400)};
+
+  document.getElementById('darkModeBtn').addEventListener('click',()=>{
+    root.classList.toggle('dark');
+    const dark=root.classList.contains('dark');
+    localStorage.setItem('sabor-global-theme',dark?'dark':'light');
+    themeIcon.textContent=dark?'light_mode':'dark_mode';
+  });
+  themeIcon.textContent=root.classList.contains('dark')?'light_mode':'dark_mode';
+
+  document.getElementById('mobileMenuBtn').addEventListener('click',()=>{
+    const menu=document.getElementById('mobileMenu'); menu.classList.toggle('hidden');
+    const open=!menu.classList.contains('hidden'); document.getElementById('mobileMenuBtn').setAttribute('aria-expanded',open?'true':'false'); document.getElementById('menuIcon').textContent=open?'close':'menu';
+  });
+  document.getElementById('mobileSearchBtn').addEventListener('click',()=>{const box=document.getElementById('mobileSearch');box.classList.toggle('hidden');if(!box.classList.contains('hidden'))document.getElementById('mobileSearchInput').focus();});
+
+  const cards=[...document.querySelectorAll('.recipe-card')]; let activeFilter='Todos';
+  const searchInputs=[document.getElementById('communitySearch'),document.getElementById('topSearch'),document.getElementById('mobileSearchInput')].filter(Boolean);
+  function runFilter(){
+    const q=(document.getElementById('communitySearch').value||'').trim().toLowerCase();
+    const sort=document.getElementById('sortSelect').value;
+    let visible=cards.filter(c=>(activeFilter==='Todos'||c.dataset.category===activeFilter)&&(!q||c.dataset.search.includes(q)));
+    cards.forEach(c=>c.hidden=!visible.includes(c));
+    if(sort==='popular') visible.sort((a,b)=>Number(b.dataset.rating)-Number(a.dataset.rating));
+    if(sort==='quick') visible.sort((a,b)=>Number(a.dataset.time)-Number(b.dataset.time));
+    if(sort==='recent') visible.sort((a,b)=>Number(b.dataset.recent)-Number(a.dataset.recent));
+    const grid=document.getElementById('recipeGrid'); visible.forEach(c=>grid.appendChild(c));
+    const count=visible.length; document.getElementById('resultSummary').textContent=`${count} ${count===1?'receta':'recetas'} encontradas`; document.getElementById('showingCount').textContent=count;
+    document.getElementById('emptyState').classList.toggle('hidden',count!==0);
+    document.getElementById('clearFilters').classList.toggle('hidden',!(q||activeFilter!=='Todos'));
+  }
+  searchInputs.forEach(input=>input.addEventListener('input',e=>{if(input!==document.getElementById('communitySearch'))document.getElementById('communitySearch').value=input.value;runFilter();}));
+  document.getElementById('sortSelect').addEventListener('change',runFilter);
+  document.querySelectorAll('.filter-chip').forEach(btn=>btn.addEventListener('click',()=>{
+    activeFilter=btn.dataset.filter;
+    document.querySelectorAll('.filter-chip').forEach(b=>{b.classList.remove('bg-primary','text-white');if(b===btn)b.classList.add('bg-primary','text-white');else b.classList.add('bg-white');});
+    runFilter();
+  }));
+  document.getElementById('clearFilters').addEventListener('click',()=>{activeFilter='Todos';document.getElementById('communitySearch').value='';document.getElementById('sortSelect').value='popular';document.querySelectorAll('.filter-chip').forEach((b,i)=>{b.classList.toggle('bg-primary',i===0);b.classList.toggle('text-white',i===0)});runFilter();});
+
+  document.querySelectorAll('.favorite-btn').forEach(btn=>btn.addEventListener('click',e=>{
+    e.preventDefault();e.stopPropagation();const active=btn.getAttribute('aria-pressed')==='true';btn.setAttribute('aria-pressed',String(!active));btn.setAttribute('aria-label',active?'Guardar receta':'Quitar de favoritos');btn.innerHTML=`<span class="material-symbols-outlined ${active?'':'filled'}">favorite</span>`;btn.classList.toggle('text-red-500',!active);showToast(active?'Receta quitada de favoritos':'Receta guardada en Favoritos');
+  }));
+
+  const shareDialog=document.getElementById('shareDialog'); document.getElementById('shareRecipeBtn').addEventListener('click',()=>shareDialog.showModal());
+  document.getElementById('publishRecipeBtn').addEventListener('click',e=>{if(!document.getElementById('newRecipeName').value.trim()){e.preventDefault();return;}showToast('Receta lista para continuar con la publicación');});
+  const listDialog=document.getElementById('newListDialog'); document.getElementById('newListBtn').addEventListener('click',()=>listDialog.showModal());
+  document.getElementById('createListBtn').addEventListener('click',e=>{if(!document.getElementById('listName').value.trim()){e.preventDefault();return;}showToast('Lista creada correctamente');});
+  document.querySelectorAll('.list-item').forEach(btn=>btn.addEventListener('click',()=>showToast(`Abriendo lista: ${btn.dataset.list}`)));
+  document.getElementById('chefProfileBtn').addEventListener('click',()=>showToast('Perfil del chef disponible en el flujo de comunidad'));
+  document.querySelectorAll('.pagination-page').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.pagination-page').forEach(b=>b.classList.remove('bg-primary','text-white'));btn.classList.add('bg-primary','text-white');showToast(`Página ${btn.dataset.page} seleccionada (prototipo)`)}));
+  runFilter();
+})();
+</script>
+</body>
+</html>

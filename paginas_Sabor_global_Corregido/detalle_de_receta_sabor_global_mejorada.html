@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bowl de Salmón y Quinoa | Sabor Global</title>
+  <meta name="description" content="Detalle de receta de Sabor Global">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#f47b25",
+            "background-light": "#f8f7f5",
+            "background-dark": "#221710",
+          },
+          fontFamily: {
+            display: ["Plus Jakarta Sans", "sans-serif"]
+          },
+          boxShadow: {
+            soft: "0 18px 50px rgba(15, 23, 42, 0.08)",
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .filled-icon { font-variation-settings: 'FILL' 1; }
+    .check-item input:checked + span {
+      text-decoration: line-through;
+      opacity: .52;
+    }
+    .hero-shadow { box-shadow: 0 28px 70px rgba(15, 23, 42, .16); }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+  <div id="toast" class="fixed left-1/2 top-5 z-[100] hidden -translate-x-1/2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-xl dark:bg-white dark:text-slate-900"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="landing_page_sabor_global_redise_o.html" class="flex shrink-0 items-center gap-3">
+        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+          <span class="material-symbols-outlined">restaurant_menu</span>
+        </span>
+        <div>
+          <p class="text-base font-extrabold tracking-tight sm:text-lg">Sabor Global</p>
+          <p class="hidden text-[11px] font-medium text-slate-500 sm:block">Recetas a tu manera</p>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-7 md:flex" aria-label="Navegación principal">
+        <a href="landing_page_sabor_global_redise_o.html" class="text-sm font-semibold text-slate-500 transition hover:text-primary dark:text-slate-400">Inicio</a>
+        <a href="explorar_recetas_estilo_global.html" class="text-sm font-semibold text-primary">Explorar</a>
+        <a href="mis_recetas_comunidad_sabor_global.html" class="text-sm font-semibold text-slate-500 transition hover:text-primary dark:text-slate-400">Comunidad</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button id="headerShare" type="button" aria-label="Compartir receta" title="Compartir" class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-slate-700 transition hover:bg-primary/10 hover:text-primary dark:bg-slate-900 dark:text-slate-200">
+          <span class="material-symbols-outlined">share</span>
+        </button>
+        <button id="saveRecipe" type="button" aria-label="Guardar receta" title="Guardar" class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-slate-700 transition hover:bg-primary/10 hover:text-primary dark:bg-slate-900 dark:text-slate-200">
+          <span class="material-symbols-outlined">bookmark_border</span>
+        </button>
+        <button id="mobileMenuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú" class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-slate-700 md:hidden dark:bg-slate-900 dark:text-slate-200">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-4 py-3 dark:border-slate-800 dark:bg-slate-950 md:hidden">
+      <div class="mx-auto flex max-w-7xl flex-col gap-1">
+        <a href="landing_page_sabor_global_redise_o.html" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-primary/10 hover:text-primary dark:text-slate-300">Inicio</a>
+        <a href="explorar_recetas_estilo_global.html" class="rounded-lg bg-primary/10 px-3 py-2 text-sm font-semibold text-primary">Explorar recetas</a>
+        <a href="mis_recetas_comunidad_sabor_global.html" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-primary/10 hover:text-primary dark:text-slate-300">Comunidad</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto w-full max-w-7xl px-4 pb-16 pt-6 sm:px-6 lg:px-8 lg:pt-8">
+    <!-- Breadcrumb -->
+    <div class="mb-5 flex flex-wrap items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+      <a href="explorar_recetas_estilo_global.html" class="transition hover:text-primary">Explorar recetas</a>
+      <span class="material-symbols-outlined text-base">chevron_right</span>
+      <span class="font-medium text-slate-700 dark:text-slate-200">Bowl de Salmón y Quinoa</span>
+    </div>
+
+    <!-- Hero -->
+    <section class="overflow-hidden rounded-3xl bg-white shadow-soft dark:bg-slate-900">
+      <div class="relative aspect-[4/3] min-h-[360px] w-full sm:aspect-[16/8] lg:aspect-[16/7]">
+        <img
+          alt="Bowl de Salmón y Quinoa"
+          class="h-full w-full object-cover"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq1MVukJcJ-PWVFuBF3HGB8Bm70x4Mlig5LZgsxab0015QUZ083w5Og6PfS3GS7bqix00VasoR0q_3ZmrjADpCdhO_ghgBGInCqmdKSZ7sOzUjy9gzp9hFpGTSKn4fhzsEUMpOaD_KmBU1rNuRoNVS8jARJdwwV4RVcI4EX-ZOvoygXocTnrTmh8ZkJUNUjFkGCWbTW4Io-RWunlwy07o3cWfwg8hA6ICV6wgYiMrXCeIt40qy0a2U9GVbrqsDLRZRgRd8eMAP4f6G"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-6 sm:p-8 lg:p-10">
+          <div class="mb-3 flex flex-wrap items-center gap-2">
+            <span class="rounded-full bg-primary px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-white">Popular</span>
+            <div class="flex items-center gap-0.5 text-amber-300" aria-label="Valoración 4.8 de 5">
+              <span class="material-symbols-outlined filled-icon text-base">star</span>
+              <span class="material-symbols-outlined filled-icon text-base">star</span>
+              <span class="material-symbols-outlined filled-icon text-base">star</span>
+              <span class="material-symbols-outlined filled-icon text-base">star</span>
+              <span class="material-symbols-outlined filled-icon text-base">star_half</span>
+              <span class="ml-1 text-sm font-bold text-white">4.8</span>
+            </div>
+          </div>
+          <h1 class="max-w-3xl text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">Bowl de Salmón y Quinoa</h1>
+          <p class="mt-2 text-sm text-slate-200 sm:text-base">Por <span class="font-bold text-white">Elena Rodríguez</span></p>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3 border-t border-slate-200 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5 dark:border-slate-800">
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="heroSave" type="button" class="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-white transition hover:brightness-95">
+            <span class="material-symbols-outlined text-lg">bookmark_border</span>
+            Guardar receta
+          </button>
+          <button id="heroShare" type="button" class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-bold text-slate-700 transition hover:border-primary/40 hover:text-primary dark:border-slate-700 dark:text-slate-200">
+            <span class="material-symbols-outlined text-lg">share</span>
+            Compartir
+          </button>
+        </div>
+        <p id="saveStatus" class="text-xs font-semibold text-slate-500 dark:text-slate-400">Todavía no has guardado esta receta.</p>
+      </div>
+    </section>
+
+    <!-- Quick info -->
+    <section class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <article class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+        <div class="flex items-center gap-3">
+          <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary"><span class="material-symbols-outlined">schedule</span></span>
+          <div><p class="text-xs font-extrabold uppercase tracking-[0.16em] text-slate-400">Tiempo</p><p class="mt-1 text-lg font-extrabold">35 min</p></div>
+        </div>
+      </article>
+      <article class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+        <div class="flex items-center gap-3">
+          <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary"><span class="material-symbols-outlined">groups</span></span>
+          <div><p class="text-xs font-extrabold uppercase tracking-[0.16em] text-slate-400">Porciones</p><p class="mt-1 text-lg font-extrabold">2 personas</p></div>
+        </div>
+      </article>
+      <article class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+        <div class="flex items-center gap-3">
+          <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary"><span class="material-symbols-outlined">fitness_center</span></span>
+          <div><p class="text-xs font-extrabold uppercase tracking-[0.16em] text-slate-400">Dificultad</p><p class="mt-1 text-lg font-extrabold">Media</p></div>
+        </div>
+      </article>
+    </section>
+
+    <div class="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
+      <div class="space-y-10">
+        <!-- Ingredients -->
+        <section id="ingredientes">
+          <div class="mb-5 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-2xl text-primary">shopping_basket</span>
+              <h2 class="text-2xl font-extrabold sm:text-3xl">Ingredientes</h2>
+            </div>
+            <span id="ingredientProgress" class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-300">0 / 6 listos</span>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+            <p class="mb-5 text-sm text-slate-500 dark:text-slate-400">Marca los ingredientes que ya tienes disponibles.</p>
+            <div class="grid gap-3 sm:grid-cols-2">
+              <label class="check-item flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 p-4 transition hover:border-primary/40 hover:bg-primary/[0.03] dark:border-slate-800 dark:hover:border-primary/40">
+                <input class="mt-0.5 h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox">
+                <span class="text-sm font-medium leading-6">2 filetes de salmón fresco (200g c/u)</span>
+              </label>
+              <label class="check-item flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 p-4 transition hover:border-primary/40 hover:bg-primary/[0.03] dark:border-slate-800 dark:hover:border-primary/40">
+                <input class="mt-0.5 h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox">
+                <span class="text-sm font-medium leading-6">1 taza de quinoa orgánica</span>
+              </label>
+              <label class="check-item flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 p-4 transition hover:border-primary/40 hover:bg-primary/[0.03] dark:border-slate-800 dark:hover:border-primary/40">
+                <input class="mt-0.5 h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox">
+                <span class="text-sm font-medium leading-6">1 aguacate maduro</span>
+              </label>
+              <label class="check-item flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 p-4 transition hover:border-primary/40 hover:bg-primary/[0.03] dark:border-slate-800 dark:hover:border-primary/40">
+                <input class="mt-0.5 h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox">
+                <span class="text-sm font-medium leading-6">100g de espinacas tiernas</span>
+              </label>
+              <label class="check-item flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 p-4 transition hover:border-primary/40 hover:bg-primary/[0.03] dark:border-slate-800 dark:hover:border-primary/40">
+                <input class="mt-0.5 h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox">
+                <span class="text-sm font-medium leading-6">Semillas de sésamo y soja</span>
+              </label>
+              <label class="check-item flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 p-4 transition hover:border-primary/40 hover:bg-primary/[0.03] dark:border-slate-800 dark:hover:border-primary/40">
+                <input class="mt-0.5 h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox">
+                <span class="text-sm font-medium leading-6">Zumo de medio limón</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- Preparation -->
+        <section id="preparacion">
+          <div class="mb-5 flex items-center gap-2.5">
+            <span class="material-symbols-outlined text-2xl text-primary">cooking</span>
+            <h2 class="text-2xl font-extrabold sm:text-3xl">Preparación</h2>
+          </div>
+          <div class="space-y-4">
+            <article class="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+              <div class="flex gap-4 sm:gap-5">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-base font-extrabold text-white">1</span>
+                <div><h3 class="font-extrabold">Preparar la Quinoa</h3><p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-400">Lava bien la quinoa bajo agua fría. Cocínala en agua hirviendo con una pizca de sal durante 12-15 minutos hasta que esté tierna.</p></div>
+              </div>
+            </article>
+            <article class="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+              <div class="flex gap-4 sm:gap-5">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-base font-extrabold text-white">2</span>
+                <div><h3 class="font-extrabold">Cocinar el Salmón</h3><p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-400">Sazona el salmón. En una sartén con una gota de aceite, séllalo por el lado de la piel hasta que esté crujiente, luego dale la vuelta 2 minutos más.</p></div>
+              </div>
+            </article>
+            <article class="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+              <div class="flex gap-4 sm:gap-5">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-base font-extrabold text-white">3</span>
+                <div><h3 class="font-extrabold">Montaje del Bowl</h3><p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-400">Coloca una base de quinoa, añade las espinacas, el aguacate laminado y el salmón encima. Aliña con limón y sésamo.</p></div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <!-- Nutritional sidebar -->
+      <aside class="lg:sticky lg:top-24">
+        <div class="rounded-2xl border-2 border-primary/20 bg-primary/[0.05] p-6 dark:bg-slate-900">
+          <div class="mb-6 flex items-center gap-3">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary"><span class="material-symbols-outlined">nutrition</span></span>
+            <div><p class="text-xs font-extrabold uppercase tracking-[0.16em] text-primary">Por porción</p><h2 class="text-xl font-extrabold">Información Nutricional</h2></div>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-primary/10 pb-3"><span class="text-sm text-slate-600 dark:text-slate-400">Calorías</span><strong>450 kcal</strong></div>
+            <div class="flex items-center justify-between border-b border-primary/10 pb-3"><span class="text-sm text-slate-600 dark:text-slate-400">Proteínas</span><strong class="text-primary">32g</strong></div>
+            <div class="flex items-center justify-between border-b border-primary/10 pb-3"><span class="text-sm text-slate-600 dark:text-slate-400">Carbohidratos</span><strong>38g</strong></div>
+            <div class="flex items-center justify-between"><span class="text-sm text-slate-600 dark:text-slate-400">Grasas</span><strong>18g</strong></div>
+          </div>
+          <p class="mt-6 rounded-xl bg-white p-4 text-xs leading-5 text-slate-500 dark:bg-slate-800 dark:text-slate-400">* Los valores son aproximados por porción recomendada.</p>
+        </div>
+
+        <div class="mt-4 hidden rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900 lg:block">
+          <p class="text-sm font-bold">¿Ya tienes los ingredientes?</p>
+          <a href="#ingredientes" class="mt-3 inline-flex items-center gap-2 text-sm font-extrabold text-primary hover:underline">Revisar lista <span class="material-symbols-outlined text-base">arrow_downward</span></a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Reviews -->
+    <section id="reseñas" class="mt-14 border-t border-slate-200 pt-12 dark:border-slate-800">
+      <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="text-sm font-bold uppercase tracking-[0.16em] text-primary">Experiencias de la comunidad</p>
+          <h2 class="mt-2 text-2xl font-extrabold sm:text-3xl">Comunidad Sabor Global</h2>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-3xl font-extrabold text-primary">4.8</span>
+          <div>
+            <div class="flex text-amber-400"><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star_half</span></div>
+            <span class="text-xs font-medium text-slate-500">124 reseñas</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-7 rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+        <div class="flex flex-col gap-4">
+          <div>
+            <h3 class="font-extrabold">Deja tu opinión</h3>
+            <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Comparte cómo te fue preparando esta receta.</p>
+          </div>
+          <div id="reviewStars" class="flex gap-1" aria-label="Seleccionar valoración">
+            <button type="button" data-rating="1" class="star-btn text-slate-300 transition hover:text-amber-400"><span class="material-symbols-outlined">star</span></button>
+            <button type="button" data-rating="2" class="star-btn text-slate-300 transition hover:text-amber-400"><span class="material-symbols-outlined">star</span></button>
+            <button type="button" data-rating="3" class="star-btn text-slate-300 transition hover:text-amber-400"><span class="material-symbols-outlined">star</span></button>
+            <button type="button" data-rating="4" class="star-btn text-slate-300 transition hover:text-amber-400"><span class="material-symbols-outlined">star</span></button>
+            <button type="button" data-rating="5" class="star-btn text-slate-300 transition hover:text-amber-400"><span class="material-symbols-outlined">star</span></button>
+          </div>
+          <textarea id="reviewText" rows="4" maxlength="500" class="w-full resize-none rounded-xl border-slate-300 bg-transparent text-sm placeholder:text-slate-400 focus:border-primary focus:ring-primary dark:border-slate-700" placeholder="¿Qué te pareció la receta?"></textarea>
+          <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <span id="ratingHint" class="text-xs text-slate-500">Selecciona una valoración de 1 a 5 estrellas.</span>
+            <button id="publishReview" type="button" class="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-extrabold text-white transition hover:brightness-95">
+              Publicar comentario
+              <span class="material-symbols-outlined text-lg">send</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 space-y-6">
+        <article class="flex gap-4">
+          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10 font-extrabold text-primary">CM</div>
+          <div class="min-w-0 flex-1">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h3 class="font-extrabold">Carla Méndez</h3>
+              <span class="text-xs text-slate-500">Hace 2 días</span>
+            </div>
+            <div class="mt-1 flex text-amber-400 text-sm">
+              <span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span>
+            </div>
+            <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-400">¡Increíble! Nunca había logrado que el salmón quedara tan jugoso por dentro y crujiente por fuera. La quinoa con limón le da el toque perfecto.</p>
+            <button type="button" class="mt-2 text-sm font-extrabold text-primary hover:underline">Responder</button>
+          </div>
+        </article>
+        <article class="flex gap-4">
+          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-slate-200 font-extrabold text-slate-600 dark:bg-slate-800 dark:text-slate-300">MS</div>
+          <div class="min-w-0 flex-1">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h3 class="font-extrabold">Marc Soto</h3>
+              <span class="text-xs text-slate-500">Hace 1 semana</span>
+            </div>
+            <div class="mt-1 flex text-amber-400 text-sm">
+              <span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined filled-icon">star</span><span class="material-symbols-outlined">star</span>
+            </div>
+            <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-400">Muy buena receta. Añadí un poco de edamame para darle más textura y quedó de restaurante. ¡Gracias Elena!</p>
+            <button type="button" class="mt-2 text-sm font-extrabold text-primary hover:underline">Responder</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-8 text-center">
+        <button id="allComments" type="button" class="inline-flex items-center gap-2 rounded-xl border border-primary px-5 py-2.5 text-sm font-extrabold text-primary transition hover:bg-primary/10">Ver todos los comentarios <span class="material-symbols-outlined text-lg">arrow_forward</span></button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white py-10 dark:border-slate-800 dark:bg-slate-950">
+    <div class="mx-auto flex max-w-7xl flex-col gap-5 px-4 text-center sm:px-6 md:flex-row md:items-center md:justify-between md:text-left lg:px-8">
+      <a href="landing_page_sabor_global_redise_o.html" class="mx-auto flex items-center gap-3 md:mx-0">
+        <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary"><span class="material-symbols-outlined">restaurant_menu</span></span>
+        <span class="font-extrabold">Sabor Global</span>
+      </a>
+      <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-semibold text-slate-500">
+        <a href="landing_page_sabor_global_redise_o.html" class="hover:text-primary">Inicio</a>
+        <a href="explorar_recetas_estilo_global.html" class="hover:text-primary">Recetas</a>
+        <a href="mis_recetas_comunidad_sabor_global.html" class="hover:text-primary">Comunidad</a>
+      </nav>
+      <p class="text-xs text-slate-400">© 2024 Sabor Global. Recetas con alma.</p>
+    </div>
+  </footer>
+
+  <script>
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.remove('hidden');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.add('hidden'), 2600);
+    }
+
+    // Mobile menu
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn?.addEventListener('click', () => {
+      const opened = mobileMenu.classList.toggle('hidden') === false;
+      mobileMenuBtn.setAttribute('aria-expanded', String(opened));
+      mobileMenuBtn.querySelector('span').textContent = opened ? 'close' : 'menu';
+    });
+
+    // Save recipe state
+    const saveButtons = [document.getElementById('saveRecipe'), document.getElementById('heroSave')];
+    let saved = false;
+    function updateSaveState() {
+      saveButtons.forEach(button => {
+        if (!button) return;
+        const icon = button.querySelector('.material-symbols-outlined');
+        const isCompact = button.id === 'saveRecipe';
+        if (icon) icon.textContent = saved ? 'bookmark' : 'bookmark_border';
+        button.setAttribute('aria-pressed', String(saved));
+        if (!isCompact) button.childNodes.forEach(node => {
+          if (node.nodeType === Node.TEXT_NODE) node.textContent = saved ? ' Guardada' : ' Guardar receta';
+        });
+      });
+      document.getElementById('saveStatus').textContent = saved ? 'Receta guardada en tu colección.' : 'Todavía no has guardado esta receta.';
+    }
+    saveButtons.forEach(button => button?.addEventListener('click', () => {
+      saved = !saved;
+      updateSaveState();
+      showToast(saved ? 'Receta guardada.' : 'Receta eliminada de guardados.');
+    }));
+
+    // Share with Web Share API or clipboard fallback
+    async function shareRecipe() {
+      const data = { title: 'Bowl de Salmón y Quinoa', text: 'Mira esta receta en Sabor Global.', url: window.location.href };
+      try {
+        if (navigator.share) await navigator.share(data);
+        else if (navigator.clipboard) {
+          await navigator.clipboard.writeText(window.location.href);
+          showToast('Enlace copiado al portapapeles.');
+        } else showToast('Copia la URL de esta página para compartirla.');
+      } catch (_) {}
+    }
+    document.getElementById('headerShare')?.addEventListener('click', shareRecipe);
+    document.getElementById('heroShare')?.addEventListener('click', shareRecipe);
+
+    // Ingredients progress
+    const checks = [...document.querySelectorAll('.check-item input')];
+    const progress = document.getElementById('ingredientProgress');
+    function updateIngredientProgress() {
+      const done = checks.filter(check => check.checked).length;
+      progress.textContent = `${done} / ${checks.length} listos`;
+    }
+    checks.forEach(check => check.addEventListener('change', updateIngredientProgress));
+
+    // Review rating
+    const stars = [...document.querySelectorAll('.star-btn')];
+    const ratingHint = document.getElementById('ratingHint');
+    let rating = 0;
+    stars.forEach(star => star.addEventListener('click', () => {
+      rating = Number(star.dataset.rating);
+      stars.forEach(item => {
+        const value = Number(item.dataset.rating);
+        item.classList.toggle('text-amber-400', value <= rating);
+        item.classList.toggle('text-slate-300', value > rating);
+        item.querySelector('span').classList.toggle('filled-icon', value <= rating);
+      });
+      ratingHint.textContent = `Has seleccionado ${rating} ${rating === 1 ? 'estrella' : 'estrellas'}.`;
+    }));
+
+    document.getElementById('publishReview')?.addEventListener('click', () => {
+      const text = document.getElementById('reviewText').value.trim();
+      if (!rating) return showToast('Selecciona una valoración antes de publicar.');
+      if (!text) return showToast('Escribe un comentario antes de publicar.');
+      showToast('Para publicar tu opinión necesitas iniciar sesión.');
+    });
+
+    document.getElementById('allComments')?.addEventListener('click', () => {
+      showToast('La vista completa de comentarios se integrará con la comunidad.');
+    });
+
+    document.querySelectorAll('[data-rating]').forEach(() => {});
+  </script>
+</body>
+</html>

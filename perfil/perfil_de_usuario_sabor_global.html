@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f47b25",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#221710",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Sabor Global - Configuración de Perfil</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 bg-white dark:bg-background-dark px-6 md:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">Sabor Global</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<button class="text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="bg-primary/10 rounded-full p-1">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary" data-alt="User profile avatar showing a smiling person" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuC_MCHjkx8dJvw4Pewf7Xsj1pL8BVMjMAztcE3VLi3az-BC-8zxdR5UkdjVecTEfTFo2xn8sDyLO3bah6NgzbmG4lD_E5rN4wqmlkr9paAodAJ6NH0VLouTyhJCxeGABdpj-r6viEs7DqzxdycYHlebBThpIvFCsr-s0RVgAyu7pkwfL_GvKR7ZS9ISdT6HXBZvnLKjKL15hLr2iDd9e-bH94Nm2wr4j_vyCBXNqho23b7I7Mn7ubPAuYkG2BM85HkoPBdBTxeABXsA&quot;);"></div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 flex-col md:flex-row max-w-7xl mx-auto w-full px-4 md:px-10 py-8 gap-8">
+<!-- Sidebar Navigation -->
+<aside class="w-full md:w-64 flex flex-col gap-6">
+<div class="flex flex-col gap-1">
+<h1 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Ajustes</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Gestiona tu experiencia culinaria</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-semibold shadow-md shadow-primary/20" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-sm">Mi Perfil</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-primary/10 text-slate-700 dark:text-slate-300 transition-colors" href="#">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span class="text-sm">Mis Recetas</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-primary/10 text-slate-700 dark:text-slate-300 transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-sm">Planificador</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-primary/10 text-slate-700 dark:text-slate-300 transition-colors" href="#">
+<span class="material-symbols-outlined">shield_lock</span>
+<span class="text-sm">Seguridad</span>
+</a>
+<div class="my-4 border-t border-slate-200 dark:border-slate-800"></div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-red-50 text-red-500 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Cerrar Sesión</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col gap-10">
+<!-- Section 1: Perfil y Preferencias -->
+<section class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="mb-6">
+<h2 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">Perfil y Preferencias</h2>
+<p class="text-slate-500 dark:text-slate-400">Personaliza tu información básica y tu enfoque dietético.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="md:col-span-2 flex items-center gap-6 mb-2">
+    <div class="relative group cursor-pointer">
+        <div class="size-24 rounded-full border-2 border-primary/20 bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+            <span class="material-symbols-outlined text-4xl text-slate-400">person</span>
+        </div>
+        <div class="absolute bottom-0 right-0 bg-primary text-white p-1.5 rounded-full shadow-lg border-2 border-white dark:border-slate-900">
+            <span class="material-symbols-outlined text-sm block">photo_camera</span>
+        </div>
+    </div>
+    <div>
+        <h3 class="font-bold text-slate-900 dark:text-slate-100">Foto de perfil</h3>
+        <p class="text-sm text-slate-500 dark:text-slate-400">JPG, GIF o PNG. Máx 2MB.</p>
+    </div>
+</div>
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Nombre completo</span>
+<input class="form-input w-full rounded-xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 focus:border-primary focus:ring-primary h-12" placeholder="Ej. Juan Pérez" type="text" value="Mateo Culinary">
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Correo electrónico</span>
+<input class="form-input w-full rounded-xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 focus:border-primary focus:ring-primary h-12" placeholder="correo@ejemplo.com" type="email" value="mateo@saborglobal.com">
+</label>
+<label class="flex flex-col gap-2 md:col-span-2">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Enfoque Dietético</span>
+<select class="form-select w-full rounded-xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 focus:border-primary focus:ring-primary h-12">
+<option>Mediterránea</option>
+<option>Vegana</option>
+<option>Vegetariana</option>
+<option>Keto (Cetogénica)</option>
+<option>Paleo</option>
+<option>Sin Gluten</option>
+</select>
+</label>
+</div>
+</section>
+<!-- Section 2: Alergias e Intolerancias -->
+<section class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="mb-6">
+<h2 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">Alergias e Intolerancias</h2>
+<p class="text-slate-500 dark:text-slate-400">Selecciona los ingredientes que debemos evitar en tus sugerencias.</p>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="px-4 py-2 rounded-full border-2 border-primary bg-primary/10 text-primary font-medium flex items-center gap-2">
+                            Gluten <span class="material-symbols-outlined text-sm">close</span>
+</button>
+<button class="px-4 py-2 rounded-full border border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary transition-colors text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                            Lactosa <span class="material-symbols-outlined text-sm">add</span>
+</button>
+<button class="px-4 py-2 rounded-full border border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary transition-colors text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                            Frutos Secos <span class="material-symbols-outlined text-sm">add</span>
+</button>
+<button class="px-4 py-2 rounded-full border-2 border-primary bg-primary/10 text-primary font-medium flex items-center gap-2">
+                            Mariscos <span class="material-symbols-outlined text-sm">close</span>
+</button>
+<button class="px-4 py-2 rounded-full border border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary transition-colors text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                            Huevo <span class="material-symbols-outlined text-sm">add</span>
+</button>
+<button class="px-4 py-2 rounded-full border border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary transition-colors text-slate-600 dark:text-slate-400 flex items-center gap-2">
+                            Soja <span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</section>
+<!-- Section 3: Configuración de Visualización -->
+<section class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between gap-4">
+<div>
+<h2 class="text-xl font-bold text-slate-900 dark:text-slate-100">Configuración de Visualización</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Mostrar información nutricional detallada en las recetas (calorías, macros).</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value="">
+<div class="w-14 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</section>
+<!-- Section 4: Gestión de Cuenta -->
+<section class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="mb-6">
+<h2 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">Gestión de Cuenta</h2>
+<p class="text-slate-500 dark:text-slate-400">Seguridad y recuperación de acceso.</p>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between p-4 rounded-xl bg-background-light dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">lock_reset</span>
+<div>
+<p class="font-semibold text-slate-800 dark:text-slate-200">Cambiar Contraseña</p>
+<p class="text-xs text-slate-500">Último cambio hace 3 meses</p>
+</div>
+</div>
+<button class="text-primary font-bold text-sm hover:underline">Actualizar</button>
+</div>
+<div class="flex items-center justify-between p-4 rounded-xl bg-background-light dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">contact_support</span>
+<div>
+<p class="font-semibold text-slate-800 dark:text-slate-200">Métodos de Recuperación</p>
+<p class="text-xs text-slate-500">Teléfono y correo secundario</p>
+</div>
+</div>
+<button class="text-primary font-bold text-sm hover:underline">Configurar</button>
+</div>
+</div>
+</section>
+<!-- Action Buttons -->
+<div class="flex justify-end gap-4 mt-4">
+<button class="px-6 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        Cancelar
+                    </button>
+<button class="px-10 py-3 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all">
+                        Guardar Cambios
+                    </button>
+</div>
+</main>
+</div>
+<!-- Footer Footer -->
+<footer class="mt-auto py-8 border-t border-slate-200 dark:border-slate-800 text-center">
+<p class="text-slate-400 text-sm">© 2024 Sabor Global. Cocina inteligente para un mundo mejor.</p>
+</footer>
+</div>
+
+
+</body></html>

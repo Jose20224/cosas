@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planificador de Comidas · Sabor Global</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{colors:{primary:"#f47b25","background-light":"#f8f7f5","background-dark":"#221710"}}}}
+try{if(localStorage.getItem('sg-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}
+</script>
+<style>
+body{font-family:'Plus Jakarta Sans',sans-serif}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.fi{font-variation-settings:'FILL' 1}
+.over{background:rgba(244,123,37,.15)!important;outline:2px dashed #f47b25;outline-offset:-4px}
+:focus-visible{outline:2px solid #f47b25;outline-offset:2px}
+.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{scrollbar-width:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body class="min-h-screen bg-background-light text-slate-900 antialiased dark:bg-background-dark dark:text-slate-100">
+<div id="toast" class="fixed left-1/2 top-5 z-[100] hidden -translate-x-1/2 rounded-full bg-slate-900 dark:bg-white dark:text-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-xl" role="status"></div>
+
+<header class="sticky top-0 z-50 border-b border-primary/10 bg-white/90 backdrop-blur dark:bg-background-dark/90">
+<div class="mx-auto flex max-w-[1600px] items-center justify-between gap-4 px-4 py-3 md:px-10">
+<a href="landing_page_sabor_global_redise_o.html" class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white"><span class="material-symbols-outlined">restaurant_menu</span></span><span class="text-lg font-extrabold tracking-tight">Sabor Global</span></a>
+<nav class="hidden items-center gap-6 md:flex" aria-label="Principal">
+<a href="landing_page_sabor_global_redise_o.html" class="text-sm font-semibold text-slate-500 hover:text-primary dark:text-slate-400">Inicio</a>
+<a href="explorar_recetas_estilo_global.html" class="text-sm font-semibold text-slate-500 hover:text-primary dark:text-slate-400">Explorar</a>
+<a href="mis_recetas_comunidad_sabor_global.html" class="text-sm font-semibold text-slate-500 hover:text-primary dark:text-slate-400">Comunidad</a>
+</nav>
+<div class="flex items-center gap-1">
+<button id="themeBtn" type="button" aria-label="Cambiar tema" class="rounded-full p-2 text-slate-600 hover:bg-primary/10 dark:text-slate-300"><span class="material-symbols-outlined">dark_mode</span></button>
+<button type="button" aria-label="Notificaciones" class="rounded-full p-2 text-slate-600 hover:bg-primary/10 dark:text-slate-300"><span class="material-symbols-outlined">notifications</span></button>
+<div class="ml-1 flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary bg-primary/10 text-sm font-extrabold text-primary">ER</div>
+</div></div></header>
+<div class="mx-auto flex max-w-[1600px] flex-col gap-6 px-4 py-6 md:flex-row md:gap-8 md:px-10 md:py-8">
+<aside class="md:w-60 md:shrink-0">
+<div class="hidden md:mb-4 md:block"><h1 class="text-lg font-extrabold">Ajustes</h1><p class="text-sm text-slate-500 dark:text-slate-400">Gestiona tu experiencia culinaria</p></div>
+<nav class="no-scrollbar flex gap-2 overflow-x-auto md:flex-col" aria-label="Ajustes">
+<a href="./perfil_de_usuario_sabor_global_mejorada.html" class="flex shrink-0 items-center gap-3 rounded-xl px-4 py-3 text-sm text-slate-700 hover:bg-primary/10 dark:text-slate-300"><span class="material-symbols-outlined">person</span>Mi Perfil</a>
+<a href="./mis_recetas_sabor_global_mejorada.html" class="flex shrink-0 items-center gap-3 rounded-xl px-4 py-3 text-sm text-slate-700 hover:bg-primary/10 dark:text-slate-300"><span class="material-symbols-outlined">restaurant_menu</span>Mis Recetas</a>
+<a href="./planificador_de_comidas_sabor_global_mejorado.html" aria-current="page" class="flex shrink-0 items-center gap-3 rounded-xl bg-primary px-4 py-3 text-sm font-bold text-white shadow-md shadow-primary/20"><span class="material-symbols-outlined">calendar_today</span>Planificador</a>
+<a href="./seguridad_sabor_global_mejorada.html" class="flex shrink-0 items-center gap-3 rounded-xl px-4 py-3 text-sm text-slate-700 hover:bg-primary/10 dark:text-slate-300"><span class="material-symbols-outlined">shield_lock</span>Seguridad</a>
+<a href="#" class="flex shrink-0 items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 md:mt-4 md:border-t md:border-slate-200 md:pt-5 dark:md:border-slate-800"><span class="material-symbols-outlined">logout</span>Cerrar Sesión</a>
+</nav></aside>
+
+<main class="min-w-0 flex-1">
+<div class="flex flex-col justify-between gap-4 md:flex-row md:items-center">
+<div><h2 class="text-3xl font-black tracking-tight">Planificador de Comidas</h2><p class="mt-1 text-slate-500 dark:text-slate-400">Organiza tu semana y descubre nuevas delicias.</p></div>
+<button id="newBtn" type="button" class="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white shadow-lg shadow-primary/20 transition hover:brightness-95"><span class="material-symbols-outlined">add_circle</span>Nueva Receta</button>
+</div>
+<div class="mb-6 mt-6 flex flex-wrap items-center gap-2">
+<button id="prev" type="button" aria-label="Semana anterior" class="rounded-xl border border-slate-200 bg-white dark:bg-slate-800 px-3 py-2 hover:border-primary dark:border-slate-700 dark:bg-slate-800"><span class="material-symbols-outlined">chevron_left</span></button>
+<span id="range" class="min-w-[140px] text-center text-xl font-extrabold" aria-live="polite"></span>
+<button id="next" type="button" aria-label="Semana siguiente" class="rounded-xl border border-slate-200 bg-white dark:bg-slate-800 px-3 py-2 hover:border-primary dark:border-slate-700 dark:bg-slate-800"><span class="material-symbols-outlined">chevron_right</span></button>
+<button id="clear" type="button" class="ml-auto inline-flex items-center gap-1 rounded-xl px-3 py-2 text-sm font-bold text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10"><span class="material-symbols-outlined text-lg">delete_sweep</span>Vaciar semana</button>
+</div>
+
+<div class="flex flex-col gap-6 2xl:flex-row 2xl:items-start">
+<div class="w-full min-w-0 flex-1 overflow-hidden rounded-2xl border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm"><div id="cal" class="grid grid-cols-1 md:grid-cols-[5rem_repeat(7,minmax(0,1fr))]"></div></div>
+
+<div class="grid w-full shrink-0 items-start gap-6 lg:grid-cols-2 2xl:w-80 2xl:grid-cols-1">
+<section class="rounded-2xl border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm">
+<h2 class="mb-4 flex items-center gap-2 text-xl font-bold"><span class="material-symbols-outlined text-primary">bookmark</span>Recetas Guardadas</h2>
+<label class="relative mb-4 block"><span class="sr-only">Buscar receta</span><span class="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[20px] text-slate-500 dark:text-slate-400">search</span>
+<input id="q" type="search" placeholder="Buscar para planificar..." class="w-full rounded-xl border-none bg-slate-50 dark:bg-slate-900/40 py-2 pl-10 pr-4 focus:ring-2 focus:ring-primary/40"></label>
+<p class="mb-3 text-xs text-slate-500 dark:text-slate-400">Arrastra una receta al calendario o pulsa + en un hueco.</p>
+<div id="list" class="flex max-h-[400px] flex-col gap-2 overflow-y-auto pr-1"></div>
+</section>
+<section class="rounded-2xl border border-primary/30 bg-primary/10 p-5 shadow-sm">
+<h2 class="mb-1 flex items-center gap-2 text-xl font-bold text-primary"><span class="material-symbols-outlined">shopping_cart</span>Lista de la Compra</h2>
+<p id="shopNote" class="mb-4 text-sm text-slate-500 dark:text-slate-400"></p>
+<div id="shop" class="mb-5 space-y-2 text-sm"></div>
+<button id="copy" type="button" class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-primary/20 hover:brightness-95"><span class="material-symbols-outlined text-lg">content_copy</span>Copiar resumen</button>
+</section>
+</div>
+</div>
+</main>
+</div>
+
+<div id="picker" class="fixed inset-0 z-[90] hidden items-end justify-center bg-black/40 p-4 sm:items-center" role="dialog" aria-modal="true" aria-labelledby="pTitle">
+<div class="max-h-[80vh] w-full max-w-md overflow-y-auto rounded-2xl bg-white dark:bg-slate-800 p-5 shadow-2xl">
+<div class="mb-3 flex items-center justify-between"><h2 id="pTitle" class="text-lg font-bold"></h2><button id="pClose" type="button" aria-label="Cerrar" class="rounded-full p-1 hover:bg-primary/10"><span class="material-symbols-outlined">close</span></button></div>
+<div id="pList" class="flex flex-col gap-2"></div>
+</div></div>
+
+
+
+<script>
+const IM={"smoothie": "https://lh3.googleusercontent.com/aida-public/AB6AXuCaaX2Ls2YO_OZoQwFY-xAIjpE91lYtQI2YbwUBXlOKrrbXHIVBB5qb8mlyUb0RRYxgW9zhT4wW6cOiouP0HcMWcX6Z8MAj5tpnCdsuv9zsbwlGir5AiMC4FFfI9rkY_eQADun-iyxSLgBo5SgN2pxmKop4pR6VxAK8dD9DM2FkuRgKCAXwT_wwxngFu2L2x7o0g-hQNPWoQogHdP_28UWZEmBLSnT6yKER-ple0ubzKiZZNUf-JEZ1fw", "tostada": "https://lh3.googleusercontent.com/aida-public/AB6AXuBjQUBqrGXxTkMCZO5mcSSalWmB1iOCApmVH18NaZQ6EjraPhVR8pf-mFvUgM049X_WS09VfSm1gD8lu8OLTcaEwwipHUlEnY3DPb8z1xQ2WuUYjYCMP2-WjQi22UKZAsqeZaUpSW6EsjjrlJN-59g29eyvbBYjZpDDBBrbGn8UVLSzqxQ3V8aHey6G3EvicI0EEa34t3GqbU9bumk-IxgQCiywKsji9tAuZsn44gtlkR092k45qXfY4Q", "quinoa": "https://lh3.googleusercontent.com/aida-public/AB6AXuDGXo9Q4smk4a-XAkBYT5P1nePoa-DxWBGK6Ulf46e5DWdc-zT0xm0YSqsND8A85BjaL98462GuuIeBQBg27VQhPFIEgJYmMQFIGgNQnTSFhw9tM0S7V1nzYKtvh-dBJqWiNKwtmF2ZwQTk9erS87ZAIJLpO6VfL7d9_MpkXgcpX7bLIXaF9PcIXOlXsTeSzPcdABZ9HrsAZBe46b7yPGZIZbn7uQt4cDN3Bha4cwm4xy81QdSeANbPRQ", "padthai": "https://lh3.googleusercontent.com/aida-public/AB6AXuA2isyniKGFUf7Tiq1IY_kHglb3VaYAfY8gdEFkoQ2ScpOXd0MA8PHFiEQ19jfrvmGoCLCOK-wqHq-W8q1czakj777rqQOkuxjUTSU2zZtMTmIxxLChLG0THQjYnKHsuD6F9txvdrUeLPhR9iLZB02f5UGHwcDQj2WhscOJ4Q07XfeJGx3TnUtfie1qs27zu6jGoAaSEQdEJ5Cw_67nWzqOMYaEPBUY59SIPhoF4CZNd6EOLp_V0zATbw", "sopa": "https://lh3.googleusercontent.com/aida-public/AB6AXuAKMvPgkja9jPwmavaObe3E_G1tlgQxvMXVZ1dg-UZd3E_YtAQBIwWQynvao1AEzCL9nroZkfYzW0Pkie641BWIM4h7yT0XJylhFrCIwA6imYvl90QGcF458IBfeFJNkfNXWuzr8sNk_CVEN8RUrCDqbddF9GSufrvbatqqm7cYe3Sozi4IYvv6Co3RhL2H8bkNopRlIzXQCSg2QECmqo5sS4V8-w18tqr3xxcangav5D6O5P5AZRHKjw", "pizza": "https://lh3.googleusercontent.com/aida-public/AB6AXuBVkN5OI3ogYxOcn31w_AyxVVPmFVw1gYLX0pwCIz7tX6QhXIP9e3mLEGGs6WeLIJ-C5e1_x5Dx7psqUDqGyudvClM-fWOc-GqXQN26PcqKr0WX_J9gDx5_6jr-QnySDDoL422Qzp4BBNT9jDTKOYYGVAUT882mrnsLHIZICCwdphyt7otiuqkFF-01fpZrfqDwqi5AhAJZqh_sPTMKjKLfMwdVxR-dZdtlRIT_9onTQmne7DaVHrb7Yw", "salmon": "https://lh3.googleusercontent.com/aida-public/AB6AXuAJKIxEYNx0RAUcXgv8VfsUW7oglTrrM5VVe7GtVl5nYz8AIHYjSmwFmfA2sUX5NBcqbCm0b8dSYQEhci5nOwv8knbAbfqC4PsATDIe0LaiC-vUkfkJURmxCivkE8ycbNfkv5e1-PiSkHvNBVJTtvVhs9UdCVRK7IY66QEg_MdN6QpCt2Qxr9OMciFtVbEUGsKLV1WES0aXKVFel44pGZ5pyFeH2O6aMc1KyBf6u4II_MLo6fcfjOYTcw", "tortitas": "https://lh3.googleusercontent.com/aida-public/AB6AXuD-U6zJM6NeFsFM1wX1jF39twyltL1bv-rbLPn4KOsPgfIkSuUU6I3hjIQ1J0mPuhBEVXSgDALbIdUw-9upfq6L3C0sCYBCKT88ehn2rMHnWCjuKUIWujiSd4zV4dat020l_3cWP_XTqHuyomXvnzh2HuUWSGC7dy9u-jtdW7d5hkg5Sl-C_MhIGajWJBOoywZskMu3ExfFX8GlK3iFuDjVFovqgH41oWhYcpVBMFnezhqHC2ol60OOWQ"};
+const MEALS=[["b","Desayuno","bakery_dining","text-amber-500"],["l","Almuerzo","lunch_dining","text-primary"],["d","Cena","restaurant","text-blue-500"]];
+const REC=[
+{id:"smoothie",n:"Smoothie Bowl de Frutos Rojos",m:"b",t:10,s:[4,1,2]},
+{id:"tostada",n:"Tostada de Aguacate",m:"b",t:10,s:[3,1,1]},
+{id:"tortitas",n:"Tortitas Integrales con Arándanos",m:"b",t:20,s:[2,2,3]},
+{id:"quinoa",n:"Ensalada de Quinoa y Boniato",m:"l",t:30,s:[5,0,3]},
+{id:"padthai",n:"Pad Thai Tradicional",m:"l",t:30,s:[3,1,5]},
+{id:"salmon",n:"Salmón a la Parrilla con Espárragos",m:"l",t:35,s:[3,1,2]},
+{id:"sopa",n:"Sopa de Tomate y Queso",m:"d",t:30,s:[4,3,2]},
+{id:"pizza",n:"Pizza Margarita Rústica",m:"d",t:25,s:[2,3,3]}
+].map(r=>({...r,img:IM[r.id]}));
+const byId=Object.fromEntries(REC.map(r=>[r.id,r]));
+const CATS=["Frutas y Verduras","Lácteos y Huevos","Despensa"];
+const DN=["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"],DL=["lunes","martes","miércoles","jueves","viernes","sábado","domingo"],MN=["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+const $=id=>document.getElementById(id);
+let start=Date.UTC(2026,9,12);
+let plan={"2026-10-12|l":"quinoa","2026-10-13|b":"smoothie","2026-10-14|d":"sopa","2026-10-15|l":"padthai","2026-10-17|b":"tostada"};
+try{const s=localStorage.getItem('sg-plan');if(s)plan=JSON.parse(s)}catch(e){}
+const save=()=>{try{localStorage.setItem('sg-plan',JSON.stringify(plan))}catch(e){}};
+const iso=ms=>new Date(ms).toISOString().slice(0,10);
+const days=()=>[...Array(7)].map((_,i)=>start+i*864e5);
+const now=new Date(),today=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+const toast=m=>{const t=$('toast');t.textContent=m;t.classList.remove('hidden');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.add('hidden'),2200)};
+
+function card(r,k){return `<div draggable="true" data-rid="${r.id}" data-from="${k}" class="group relative flex h-full cursor-grab flex-col rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 p-2 shadow-sm hover:shadow-md">
+<img src="${r.img}" alt="" loading="lazy" class="mb-2 h-14 w-full rounded object-cover">
+<span class="line-clamp-2 text-xs font-semibold leading-tight">${r.n}</span><span class="mt-auto pt-1 text-[11px] text-slate-500 dark:text-slate-400">${r.t} min</span>
+<button type="button" data-rm="${k}" aria-label="Quitar ${r.n}" class="absolute -right-2 -top-2 rounded-full bg-white dark:bg-slate-800 p-0.5 text-slate-500 dark:text-slate-400 shadow hover:text-error"><span class="material-symbols-outlined text-[16px]">close</span></button></div>`}
+function renderCal(){
+ const d=days(),a=new Date(d[0]),b=new Date(d[6]);
+ $('range').textContent=a.getUTCMonth()===b.getUTCMonth()?`${a.getUTCDate()} - ${b.getUTCDate()} ${MN[b.getUTCMonth()]}`:`${a.getUTCDate()} ${MN[a.getUTCMonth()]} - ${b.getUTCDate()} ${MN[b.getUTCMonth()]}`;
+ let h='<div class="hidden border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 md:block"></div>'+d.map((ms,i)=>{const on=iso(ms)===today,we=i===6;return `<div class="hidden border-b border-l border-slate-100 dark:border-slate-700 p-3 text-center md:block ${on?'bg-primary/10':'bg-slate-50 dark:bg-slate-800/60'}"><span class="text-xs font-bold ${on?'text-primary':we?'text-orange-600':'text-slate-500 dark:text-slate-400'}">${DN[i].toUpperCase()}</span><div class="text-xl font-bold ${on?'text-primary':we?'text-orange-600':''}">${new Date(ms).getUTCDate()}</div></div>`}).join('');
+ MEALS.forEach(([m,name,ic,c],mi)=>{
+  h+=`<div class="flex items-center justify-center gap-2 border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/40 p-3 md:flex-col ${mi===2?'md:border-b-0':''}"><span class="material-symbols-outlined ${c}">${ic}</span><span class="text-xs font-bold ${c}">${name}</span></div>`;
+  d.forEach((ms,i)=>{const k=iso(ms)+'|'+m,r=byId[plan[k]],last=mi===2;
+   h+=`<div data-slot="${k}" class="min-h-[120px] border-b border-l border-slate-100 dark:border-slate-700 p-2 ${last?'md:border-b-0':''} ${iso(ms)===today?'bg-primary/5':''}">
+<span class="mb-1 block text-[11px] font-bold text-slate-600 dark:text-slate-300 md:hidden">${DN[i]} ${new Date(ms).getUTCDate()}</span>
+${r?card(r,k):`<button type="button" data-add="${k}" aria-label="Añadir ${name} del ${DL[i]}" class="flex h-full min-h-[88px] w-full items-center justify-center rounded-lg text-slate-300 dark:text-slate-600 hover:bg-primary/10 hover:text-primary"><span class="material-symbols-outlined">add</span></button>`}</div>`});
+ });
+ $('cal').innerHTML=h;renderShop();
+}
+function renderShop(){
+ const ks=days().flatMap(ms=>MEALS.map(m=>iso(ms)+'|'+m[0])).filter(k=>byId[plan[k]]);
+ const tot=[0,0,0];ks.forEach(k=>byId[plan[k]].s.forEach((n,i)=>tot[i]+=n));
+ $('shopNote').textContent=ks.length?`Basada en tus ${ks.length} ${ks.length===1?'comida planificada':'comidas planificadas'} esta semana.`:'Añade comidas al calendario para generar tu lista.';
+ $('shop').innerHTML=CATS.map((c,i)=>`<div class="flex justify-between"><span>${c}</span><span class="font-bold text-primary">${tot[i]} art.</span></div>`).join('');
+ $('copy').disabled=!ks.length;$('copy').classList.toggle('opacity-50',!ks.length);
+ $('copy').dataset.txt=`Lista de la compra (${$('range').textContent})\n`+CATS.map((c,i)=>`- ${c}: ${tot[i]} art.`).join('\n');
+}
+function renderList(){
+ const q=$('q').value.trim().toLowerCase(),l=REC.filter(r=>r.n.toLowerCase().includes(q));
+ $('list').innerHTML=l.length?l.map(r=>`<div draggable="true" data-rid="${r.id}" data-from="" class="flex cursor-grab items-center gap-3 rounded-lg border border-transparent p-2 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-primary/10"><img src="${r.img}" alt="" loading="lazy" class="h-14 w-14 shrink-0 rounded-md object-cover"><div class="flex-1"><h3 class="line-clamp-2 text-sm font-semibold">${r.n}</h3><span class="text-[11px] font-bold text-slate-500 dark:text-slate-400">${r.t} min • ${MEALS.find(m=>m[0]===r.m)[1]}</span></div><span class="material-symbols-outlined text-slate-500 dark:text-slate-400">drag_indicator</span></div>`).join(''):'<p class="py-4 text-center text-sm text-slate-500 dark:text-slate-400">Sin resultados</p>';
+}
+const place=(k,rid,from)=>{const old=plan[k];plan[k]=rid;if(from&&from!==k){if(old)plan[from]=old;else delete plan[from]}save();renderCal()};
+let dragData=null;
+document.addEventListener('dragstart',e=>{const c=e.target.closest('[data-rid]');if(c){dragData={rid:c.dataset.rid,from:c.dataset.from};e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',c.dataset.rid)}});
+$('cal').addEventListener('dragover',e=>{const s=e.target.closest('[data-slot]');if(s&&dragData){e.preventDefault();document.querySelectorAll('.over').forEach(x=>x!==s&&x.classList.remove('over'));s.classList.add('over')}});
+$('cal').addEventListener('dragleave',e=>{const s=e.target.closest('[data-slot]');if(s&&!s.contains(e.relatedTarget))s.classList.remove('over')});
+$('cal').addEventListener('drop',e=>{const s=e.target.closest('[data-slot]');if(s&&dragData){e.preventDefault();place(s.dataset.slot,dragData.rid,dragData.from)}dragData=null});
+document.addEventListener('dragend',()=>{dragData=null;document.querySelectorAll('.over').forEach(x=>x.classList.remove('over'))});
+$('cal').addEventListener('click',e=>{
+ const rm=e.target.closest('[data-rm]');if(rm){delete plan[rm.dataset.rm];save();renderCal();return}
+ const ad=e.target.closest('[data-add]');if(ad)openPicker(ad.dataset.add)});
+function openPicker(k){
+ const [dt,m]=k.split('|'),i=days().findIndex(ms=>iso(ms)===dt),meal=MEALS.find(x=>x[0]===m);
+ $('pTitle').textContent=`${meal[1]} del ${DL[i]}`;
+ $('pList').innerHTML=[...REC].sort((a,b)=>(b.m===m)-(a.m===m)).map(r=>`<button type="button" data-pick="${r.id}" class="flex items-center gap-3 rounded-lg p-2 text-left hover:bg-primary/10"><img src="${r.img}" alt="" class="h-12 w-12 rounded-md object-cover"><span class="flex-1 text-sm font-semibold">${r.n}</span><span class="text-[11px] font-bold ${r.m===m?'text-primary':'text-slate-500 dark:text-slate-400'}">${r.t} min</span></button>`).join('');
+ $('picker').dataset.k=k;$('picker').classList.remove('hidden');$('picker').classList.add('flex');$('pList').firstElementChild.focus();
+}
+const closeP=()=>{$('picker').classList.add('hidden');$('picker').classList.remove('flex')};
+$('pList').onclick=e=>{const b=e.target.closest('[data-pick]');if(b){place($('picker').dataset.k,b.dataset.pick,null);closeP()}};
+$('pClose').onclick=closeP;$('picker').onclick=e=>{if(e.target===$('picker'))closeP()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeP()});
+$('prev').onclick=()=>{start-=7*864e5;renderCal()};$('next').onclick=()=>{start+=7*864e5;renderCal()};
+$('clear').onclick=()=>{const d=days().map(iso);let n=0;Object.keys(plan).forEach(k=>{if(d.includes(k.split('|')[0])){delete plan[k];n++}});save();renderCal();toast(n?'Semana vaciada':'La semana ya está vacía')};
+$('q').oninput=renderList;
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('copy').dataset.txt);toast('Resumen copiado')}catch(e){toast('No se pudo copiar')}};
+$('newBtn').onclick=()=>toast('Pronto podrás crear recetas desde aquí');
+$('themeBtn').onclick=()=>{const d=document.documentElement.classList.toggle('dark');try{localStorage.setItem('sg-theme',d?'dark':'light')}catch(e){}$('themeBtn').firstElementChild.textContent=d?'light_mode':'dark_mode'};
+if(document.documentElement.classList.contains('dark'))$('themeBtn').firstElementChild.textContent='light_mode';
+renderList();renderCal();
+</script>
+</body>
+</html>

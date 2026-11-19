@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f47b25",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#221710",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Navigation Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 py-4 md:px-10 lg:px-40 bg-background-light dark:bg-background-dark">
+<div class="flex items-center gap-4 text-slate-900 dark:text-slate-100">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">Sabor Global</h2>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex flex-1 items-center justify-center p-4">
+<div class="layout-content-container flex flex-col max-w-[520px] w-full bg-white dark:bg-slate-900 p-8 rounded-xl shadow-sm border border-primary/5">
+<!-- Success Icon Visual -->
+<div class="flex justify-center mb-8">
+<div class="relative flex items-center justify-center size-24 bg-primary/10 rounded-full">
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'wght' 600;">check_circle</span>
+<!-- Decorative elements -->
+<div class="absolute -top-1 -right-1 size-4 bg-primary/20 rounded-full"></div>
+<div class="absolute bottom-2 -left-3 size-6 bg-primary/10 rounded-full"></div>
+</div>
+</div>
+<!-- Header Content -->
+<div class="text-center space-y-4">
+<h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-3xl font-extrabold leading-tight">
+                            ¡Cuenta Verificada con Éxito!
+                        </h1>
+<p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-relaxed">
+                            Tu correo ha sido confirmado correctamente. Ya puedes empezar a explorar los sabores del mundo y compartir tus propias experiencias culinarias.
+                        </p>
+</div>
+<!-- Visual Hero Section (Modified Component Style) -->
+<div class="mt-8 mb-8 overflow-hidden rounded-lg">
+<div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end min-h-[160px] bg-slate-100 dark:bg-slate-800" data-alt="Vibrant top view of gourmet international dishes" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDklubG7FTsY8VlCQ9cjJSaFrLcIoR-3ms9F3kdwLDDaToq-slpUQ9vFfszOLhx5iCUmxFpcU0gpPdr-w2dRHcQC6ktL_skAxDw0c28zoNCtiwV0TD285iAX7CwOp3HIkfXqu4_SkhsLh9oet2PF79bfbf6Sl3f50KWUAgV7epBhp75g6cPJJ34wLYAXUiKef0r-S0uMyx5liWiwzumx9e2bfxSfn8Y0OXlm4ShZ9dvLPGQ4H8BsPlZLsDwiAzYYbRAzRYdVq1Mb6Od&quot;);">
+<div class="bg-gradient-to-t from-black/60 to-transparent p-4">
+<span class="text-white text-sm font-medium">Bienvenido a la comunidad</span>
+</div>
+</div>
+</div>
+<!-- Primary Action -->
+<div class="flex flex-col gap-3">
+<button class="flex min-w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-6 bg-primary text-white text-lg font-bold transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20">
+<span class="truncate">Completar mi Perfil</span>
+</button>
+<button class="flex min-w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-transparent text-primary text-base font-semibold hover:bg-primary/5">
+<span class="truncate">Ir al Inicio</span>
+</button>
+</div>
+<!-- Footer Help -->
+<div class="mt-10 pt-6 border-t border-primary/10 text-center">
+<p class="text-slate-500 dark:text-slate-400 text-sm">
+                            ¿Necesitas ayuda? <a class="text-primary font-semibold hover:underline" href="#">Contactar soporte</a>
+</p>
+</div>
+</div>
+</main>
+<!-- Bottom decorative section -->
+<footer class="py-6 text-center text-slate-400 dark:text-slate-600 text-xs">
+                © 2024 Sabor Global. Todos los derechos reservados.
+            </footer>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seguridad · Sabor Global</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{colors:{primary:"#f47b25","background-light":"#f8f7f5","background-dark":"#221710"}}}}
+try{if(localStorage.getItem('sg-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}
+</script>
+<style>
+body{font-family:'Plus Jakarta Sans',sans-serif}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.fi{font-variation-settings:'FILL' 1}
+.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{scrollbar-width:none}
+:focus-visible{outline:2px solid #f47b25;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body class="min-h-screen bg-background-light text-slate-900 antialiased dark:bg-background-dark dark:text-slate-100">
+<div id="toast" class="fixed left-1/2 top-5 z-[100] hidden -translate-x-1/2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-xl dark:bg-white dark:text-slate-900" role="status"></div>
+
+<header class="sticky top-0 z-50 border-b border-primary/10 bg-white/90 backdrop-blur dark:bg-background-dark/90">
+<div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-10">
+<a href="landing_page_sabor_global_redise_o.html" class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white"><span class="material-symbols-outlined">restaurant_menu</span></span><span class="text-lg font-extrabold tracking-tight">Sabor Global</span></a>
+<nav class="hidden items-center gap-6 md:flex" aria-label="Principal">
+<a href="landing_page_sabor_global_redise_o.html" class="text-sm font-semibold text-slate-500 hover:text-primary dark:text-slate-400">Inicio</a>
+<a href="explorar_recetas_estilo_global.html" class="text-sm font-semibold text-slate-500 hover:text-primary dark:text-slate-400">Explorar</a>
+<a href="mis_recetas_comunidad_sabor_global.html" class="text-sm font-semibold text-slate-500 hover:text-primary dark:text-slate-400">Comunidad</a>
+</nav>
+<div class="flex items-center gap-1">
+<button id="themeBtn" type="button" aria-label="Cambiar tema" class="rounded-full p-2 text-slate-600 hover:bg-primary/10 dark:text-slate-300"><span class="material-symbols-outlined">dark_mode</span></button>
+<button type="button" aria-label="Notificaciones" class="rounded-full p-2 text-slate-600 hover:bg-primary/10 dark:text-slate-300"><span class="material-symbols-outlined">notifications</span></button>
+<div class="ml-1 flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary bg-primary/10 text-sm font-extrabold text-primary">ER</div>
+</div></div></header>
+
+<div class="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-6 md:flex-row md:gap-8 md:px-10 md:py-8">
+<aside class="md:w-60 md:shrink-0">
+<div class="hidden md:mb-4 md:block"><h1 class="text-lg font-extrabold">Ajustes</h1><p class="text-sm text-slate-500 dark:text-slate-400">Gestiona tu experiencia culinaria</p></div>
+<nav class="no-scrollbar flex gap-2 overflow-x-auto md:flex-col" aria-label="Ajustes">
+<a href="./perfil_de_usuario_sabor_global_mejorada.html" class="flex shrink-0 items-center gap-3 rounded-xl px-4 py-3 text-sm text-slate-700 hover:bg-primary/10 dark:text-slate-300"><span class="material-symbols-outlined">person</span>Mi Perfil</a>
+<a href="./mis_recetas_sabor_global_mejorada.html" class="flex shrink-0 items-center gap-3 rounded-xl px-4 py-3 text-sm text-slate-700 hover:bg-primary/10 dark:text-slate-300"><span class="material-symbols-outlined">restaurant_menu</span>Mis Recetas</a>
+<a href="./planificador_de_comidas_sabor_global_mejorado.html" class="flex shrink-0 items-center gap-3 rounded-xl px-4 py-3 text-sm text-slate-700 hover:bg-primary/10 dark:text-slate-300"><span class="material-symbols-outlined">calendar_today</span>Planificador</a>
+<a href="./seguridad_sabor_global_mejorada.html" aria-current="page" class="flex shrink-0 items-center gap-3 rounded-xl bg-primary px-4 py-3 text-sm font-bold text-white shadow-md shadow-primary/20"><span class="material-symbols-outlined">shield_lock</span>Seguridad</a>
+<a href="#" class="flex shrink-0 items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 md:mt-4 md:border-t md:border-slate-200 md:pt-5 dark:md:border-slate-800"><span class="material-symbols-outlined">logout</span>Cerrar Sesión</a>
+</nav></aside>
+
+<main class="min-w-0 max-w-3xl flex-1">
+<h2 class="text-3xl font-black tracking-tight">Seguridad</h2>
+<p class="mt-1 text-slate-500 dark:text-slate-400">Gestiona tus credenciales y protege tu cuenta de Sabor Global.</p>
+
+<div class="mt-8 space-y-6">
+<!-- Contraseña -->
+<section class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+<h3 class="mb-6 flex items-center gap-2 text-xl font-extrabold"><span class="material-symbols-outlined text-primary">lock</span>Cambiar Contraseña</h3>
+<div id="pwForm" class="max-w-lg space-y-4">
+<div><label for="cur" class="mb-2 block text-sm font-bold">Contraseña actual</label><div class="relative"><input id="cur" type="password" autocomplete="current-password" placeholder="••••••••" class="pw w-full rounded-xl border-2 border-primary/10 bg-slate-50 py-3 pl-4 pr-12 focus:border-primary/40 focus:ring-0 dark:bg-slate-900/40"><button type="button" data-eye="cur" aria-label="Mostrar contraseña" class="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-1.5 text-slate-400 hover:text-primary"><span class="material-symbols-outlined">visibility</span></button></div></div>
+<div><label for="nw" class="mb-2 block text-sm font-bold">Nueva contraseña</label><div class="relative"><input id="nw" type="password" autocomplete="new-password" placeholder="••••••••" class="pw w-full rounded-xl border-2 border-primary/10 bg-slate-50 py-3 pl-4 pr-12 focus:border-primary/40 focus:ring-0 dark:bg-slate-900/40"><button type="button" data-eye="nw" aria-label="Mostrar contraseña" class="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-1.5 text-slate-400 hover:text-primary"><span class="material-symbols-outlined">visibility</span></button></div>
+<div class="mt-3 flex gap-1.5" aria-hidden="true"><span class="bar h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700"></span><span class="bar h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700"></span><span class="bar h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700"></span><span class="bar h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700"></span></div>
+<p id="strength" class="mt-1.5 text-xs font-bold text-slate-500 dark:text-slate-400" aria-live="polite">Escribe una contraseña</p>
+<ul id="reqs" class="mt-2 space-y-1 text-xs"></ul></div>
+<div><label for="cf" class="mb-2 block text-sm font-bold">Confirmar nueva contraseña</label><div class="relative"><input id="cf" type="password" autocomplete="new-password" placeholder="••••••••" class="pw w-full rounded-xl border-2 border-primary/10 bg-slate-50 py-3 pl-4 pr-12 focus:border-primary/40 focus:ring-0 dark:bg-slate-900/40"><button type="button" data-eye="cf" aria-label="Mostrar contraseña" class="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-1.5 text-slate-400 hover:text-primary"><span class="material-symbols-outlined">visibility</span></button></div>
+<p id="match" class="mt-1.5 min-h-[1rem] text-xs font-bold" aria-live="polite"></p></div>
+<button id="pwBtn" type="button" disabled class="rounded-xl bg-primary px-6 py-3 font-bold text-white shadow-lg shadow-primary/20 transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none">Actualizar contraseña</button>
+</div>
+</section>
+
+<!-- 2FA -->
+<section class="flex items-center justify-between gap-6 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+<div>
+<h3 class="mb-2 flex items-center gap-2 text-xl font-extrabold"><span class="material-symbols-outlined text-primary">shield</span>Autenticación de dos factores</h3>
+<p class="max-w-xl text-sm leading-6 text-slate-500 dark:text-slate-400">Añade una capa extra de seguridad pidiendo un código de tu móvil al iniciar sesión.</p>
+<p id="tfaState" class="mt-2 text-xs font-bold text-slate-500 dark:text-slate-400">Desactivada</p>
+</div>
+<button id="tfa" type="button" role="switch" aria-checked="false" aria-label="Autenticación de dos factores" class="relative h-7 w-14 shrink-0 rounded-full bg-slate-300 transition-colors aria-checked:bg-primary dark:bg-slate-600"><span class="absolute left-1 top-0.5 h-6 w-6 rounded-full bg-white shadow transition-transform" id="knob"></span></button>
+</section>
+
+<!-- Sesiones -->
+<section class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+<div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+<h3 class="flex items-center gap-2 text-xl font-extrabold"><span class="material-symbols-outlined text-primary">devices</span>Sesiones activas</h3>
+<button id="outAll" type="button" class="rounded-xl px-3 py-2 text-sm font-bold text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10">Cerrar todas las demás</button>
+</div>
+<div id="sessions" class="space-y-3"></div>
+</section>
+
+<!-- Zona de peligro -->
+<section class="rounded-2xl border border-red-200 bg-red-50 p-6 dark:border-red-500/30 dark:bg-red-500/10">
+<h3 class="mb-2 flex items-center gap-2 text-xl font-extrabold text-red-700 dark:text-red-300"><span class="material-symbols-outlined text-red-500">warning</span>Eliminar cuenta</h3>
+<p class="mb-5 text-sm leading-6 text-slate-600 dark:text-slate-300">Al eliminar tu cuenta se borrarán tus recetas, tu planificador y tus favoritas. Esta acción no se puede deshacer.</p>
+<button id="delBtn" type="button" class="rounded-xl bg-red-600 px-6 py-3 font-bold text-white transition hover:bg-red-700">Eliminar mi cuenta</button>
+</section>
+</div>
+</main>
+</div>
+
+<div id="modal" class="fixed inset-0 z-[90] hidden items-end justify-center bg-black/50 p-4 sm:items-center" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+<div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl dark:bg-slate-800">
+<h3 id="mTitle" class="flex items-center gap-2 text-xl font-extrabold text-red-600"><span class="material-symbols-outlined">warning</span>¿Eliminar tu cuenta?</h3>
+<p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Para confirmar, escribe <strong>ELIMINAR</strong> en el campo de abajo.</p>
+<label class="sr-only" for="delIn">Escribe ELIMINAR</label>
+<input id="delIn" type="text" autocomplete="off" class="mt-4 w-full rounded-xl border-2 border-primary/10 bg-slate-50 py-3 px-4 focus:border-red-400 focus:ring-0 dark:bg-slate-900/40">
+<div class="mt-5 flex justify-end gap-2">
+<button id="delNo" type="button" class="rounded-xl border border-slate-200 px-5 py-2.5 text-sm font-bold hover:border-primary dark:border-slate-600">Cancelar</button>
+<button id="delYes" type="button" disabled class="rounded-xl bg-red-600 px-5 py-2.5 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-50">Eliminar</button>
+</div></div></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const toast=m=>{const t=$('toast');t.textContent=m;t.classList.remove('hidden');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.add('hidden'),2400)};
+
+/* Contraseña */
+const RQ=[["Al menos 8 caracteres",p=>p.length>=8],["Mayúsculas y minúsculas",p=>/[a-z]/.test(p)&&/[A-Z]/.test(p)],["Un número",p=>/\d/.test(p)],["Un símbolo (recomendado)",p=>/[^\w\s]/.test(p),true]];
+const LV=[["Muy débil","bg-red-500"],["Débil","bg-orange-500"],["Aceptable","bg-yellow-500"],["Buena","bg-lime-500"],["Excelente","bg-green-500"]];
+function checkPw(){
+ const p=$('nw').value,ok=RQ.map(r=>r[1](p));
+ $('reqs').innerHTML=RQ.map((r,i)=>`<li class="flex items-center gap-2 ${ok[i]?'text-green-600 dark:text-green-400':'text-slate-500 dark:text-slate-400'}"><span class="material-symbols-outlined text-base ${ok[i]?'fi':''}">${ok[i]?'check_circle':'radio_button_unchecked'}</span>${r[0]}</li>`).join('');
+ const sc=p?ok.filter(Boolean).length+(p.length>=12?1:0):0,lv=Math.min(sc,4)-(sc>0?0:0);
+ document.querySelectorAll('.bar').forEach((b,i)=>{b.className='bar h-1.5 flex-1 rounded-full '+(p&&i<Math.max(1,Math.min(sc,4))?LV[Math.min(sc,4)][1]:'bg-slate-200 dark:bg-slate-700')});
+ $('strength').textContent=p?'Seguridad: '+LV[Math.min(sc,4)][0]:'Escribe una contraseña';
+ const c=$('cf').value,m=$('match');
+ m.textContent=c?(c===p?'Las contraseñas coinciden':'Las contraseñas no coinciden'):'';m.className='mt-1.5 min-h-[1rem] text-xs font-bold '+(c===p?'text-green-600 dark:text-green-400':'text-red-500');
+ $('pwBtn').disabled=!($('cur').value&&ok[0]&&ok[1]&&ok[2]&&c&&c===p&&p!==$('cur').value);
+}
+document.querySelectorAll('.pw').forEach(i=>i.addEventListener('input',checkPw));
+document.querySelectorAll('[data-eye]').forEach(b=>b.onclick=()=>{const i=$(b.dataset.eye),s=i.type==='password';i.type=s?'text':'password';b.firstElementChild.textContent=s?'visibility_off':'visibility';b.setAttribute('aria-label',s?'Ocultar contraseña':'Mostrar contraseña')});
+$('pwBtn').onclick=()=>{['cur','nw','cf'].forEach(id=>$(id).value='');checkPw();toast('Contraseña actualizada')};
+
+/* 2FA */
+$('tfa').onclick=()=>{const on=$('tfa').getAttribute('aria-checked')!=='true';$('tfa').setAttribute('aria-checked',on);$('knob').style.transform=on?'translateX(1.75rem)':'';$('tfaState').textContent=on?'Activada · te pediremos un código al iniciar sesión':'Desactivada';toast(on?'2FA activada':'2FA desactivada')};
+
+/* Sesiones */
+let S=[{id:1,n:"MacBook Pro - Safari",l:"Madrid, España",w:"Activa ahora",ic:"laptop_mac",cur:true},{id:2,n:"iPhone 13 - App Sabor Global",l:"Barcelona, España",w:"Hace 2 horas",ic:"smartphone"}];
+function renderS(){
+ $('sessions').innerHTML=S.map(s=>`<div class="flex items-center justify-between gap-3 rounded-xl border border-slate-100 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900/40"><div class="flex min-w-0 items-center gap-4"><span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${s.cur?'bg-primary/10 text-primary':'bg-slate-200 text-slate-600 dark:bg-slate-700 dark:text-slate-300'}"><span class="material-symbols-outlined">${s.ic}</span></span><div class="min-w-0"><p class="truncate font-bold">${s.n}</p><p class="text-xs text-slate-500 dark:text-slate-400">${s.l} • ${s.w}</p></div></div>${s.cur?'<span class="shrink-0 rounded-full bg-green-100 px-3 py-1 text-xs font-bold text-green-700 dark:bg-green-500/20 dark:text-green-300">Actual</span>':`<button type="button" data-out="${s.id}" class="shrink-0 rounded-lg px-3 py-1.5 text-sm font-bold text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10">Cerrar sesión</button>`}</div>`).join('');
+ $('outAll').classList.toggle('hidden',S.filter(s=>!s.cur).length===0);
+}
+$('sessions').onclick=e=>{const b=e.target.closest('[data-out]');if(b){S=S.filter(s=>s.id!=b.dataset.out);renderS();toast('Sesión cerrada')}};
+$('outAll').onclick=()=>{S=S.filter(s=>s.cur);renderS();toast('Se cerraron las demás sesiones')};
+
+/* Eliminar cuenta */
+const openM=()=>{$('modal').classList.remove('hidden');$('modal').classList.add('flex');$('delIn').value='';$('delYes').disabled=true;$('delIn').focus()};
+const closeM=()=>{$('modal').classList.add('hidden');$('modal').classList.remove('flex')};
+$('delBtn').onclick=openM;$('delNo').onclick=closeM;
+$('modal').onclick=e=>{if(e.target===$('modal'))closeM()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+$('delIn').oninput=()=>$('delYes').disabled=$('delIn').value.trim()!=='ELIMINAR';
+$('delYes').onclick=()=>{closeM();toast('Solicitud de eliminación registrada')};
+
+/* Tema */
+$('themeBtn').onclick=()=>{const d=document.documentElement.classList.toggle('dark');try{localStorage.setItem('sg-theme',d?'dark':'light')}catch(e){}$('themeBtn').firstElementChild.textContent=d?'light_mode':'dark_mode'};
+if(document.documentElement.classList.contains('dark'))$('themeBtn').firstElementChild.textContent='light_mode';
+checkPw();renderS();
+</script>
+</body>
+</html>

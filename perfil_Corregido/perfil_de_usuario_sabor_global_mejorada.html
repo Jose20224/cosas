@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Configuración de perfil y preferencias de Sabor Global">
+  <title>Sabor Global - Perfil y Preferencias</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1&amp;display=swap" rel="stylesheet">
+  
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{colors:{primary:"#f47b25","background-light":"#f8f7f5","background-dark":"#221710"}}}}
+try{if(localStorage.getItem('sg-theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}
+</script>
+<style>
+body{font-family:'Plus Jakarta Sans',sans-serif}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.filled-icon{font-variation-settings:'FILL' 1}
+.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{scrollbar-width:none}
+:focus-visible{outline:2px solid #f47b25;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body class="min-h-screen bg-background-light text-slate-900 dark:bg-background-dark dark:text-slate-100">
+  <div id="toast" class="pointer-events-none fixed right-4 top-20 z-[70] translate-y-[-10px] opacity-0 transition-all duration-300" aria-live="polite">
+    <div class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold shadow-xl dark:border-slate-800 dark:bg-slate-900">
+      <span id="toastIcon" class="material-symbols-outlined text-primary">check_circle</span>
+      <span id="toastText">Cambios guardados.</span>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-50 border-b border-primary/10 bg-white/90 backdrop-blur dark:bg-background-dark/90">
+<div class="mx-auto flex max-w-[1600px] items-center justify-between gap-4 px-4 py-3 md:px-10">
+<a href="landing_page_sabor_global_redise_o.html" class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white"><span class="material-symbols-outlined">restaurant_menu</span></span><span class="text-lg font-extrabold tracking-tight">Sabor Global</span></a>
+<nav class="hidden items-center gap-6 md:flex" aria-label="Principal">
+<a href="landing_page_sabor_global_redise_o.html" class="text-sm font-semibold text-slate-500 hover:text-primary dark:text-slate-400">Inicio</a>
+<a href="explorar_recetas_estilo_global.html" class="text-sm font-semibold text-slate-500 hover:text-primary dark:text-slate-400">Explorar</a>
+<a href="mis_recetas_comunidad_sabor_global.html" class="text-sm font-semibold text-slate-500 hover:text-primary dark:text-slate-400">Comunidad</a>
+</nav>
+<div class="flex items-center gap-1">
+<button id="themeBtn" type="button" aria-label="Cambiar tema" class="rounded-full p-2 text-slate-600 hover:bg-primary/10 dark:text-slate-300"><span class="material-symbols-outlined">dark_mode</span></button>
+<button type="button" aria-label="Notificaciones" class="rounded-full p-2 text-slate-600 hover:bg-primary/10 dark:text-slate-300"><span class="material-symbols-outlined">notifications</span></button>
+<div class="ml-1 flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary bg-primary/10 text-sm font-extrabold text-primary">ER</div>
+</div></div></header>
+
+  <div id="mobilePanel" class="hidden border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950 md:hidden">
+    <nav class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3" aria-label="Navegación de perfil">
+      <a class="rounded-xl bg-primary/10 px-4 py-3 text-sm font-bold text-primary" href="perfil_de_usuario_sabor_global.html">Mi Perfil</a>
+      <a class="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-primary/10 dark:text-slate-200" href="./mis_recetas_sabor_global_mejorada.html">Mis Recetas</a>
+      <a class="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-primary/10 dark:text-slate-200" href="./planificador_de_comidas_sabor_global_mejorado.html">Planificador</a>
+      <a class="rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-primary/10 dark:text-slate-200" href="./seguridad_sabor_global_mejorada.html">Seguridad</a>
+      <button id="mobileLogout" type="button" class="mt-2 rounded-xl px-4 py-3 text-left text-sm font-semibold text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30">Cerrar sesión</button>
+    </nav>
+  </div>
+
+  <div class="mx-auto flex w-full max-w-7xl gap-8 px-4 py-6 md:px-8 md:py-8">
+    <aside class="hidden w-64 shrink-0 md:block">
+      <div class="sticky top-24 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <div class="mb-5 px-2">
+          <h1 class="text-lg font-extrabold">Ajustes</h1>
+          <p class="mt-1 text-sm leading-5 text-slate-500 dark:text-slate-400">Gestiona tu experiencia culinaria.</p>
+        </div>
+        <nav class="space-y-1" aria-label="Ajustes de cuenta">
+          <a class="nav-active flex items-center gap-3 rounded-xl bg-primary px-4 py-3 font-bold text-white" href="./perfil_de_usuario_sabor_global_mejorada.html">
+            <span class="material-symbols-outlined">person</span><span class="text-sm">Mi Perfil</span>
+          </a>
+          <a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-700 transition hover:bg-primary/10 hover:text-primary dark:text-slate-300" href="./mis_recetas_sabor_global_mejorada.html">
+            <span class="material-symbols-outlined">restaurant_menu</span><span class="text-sm">Mis Recetas</span>
+          </a>
+          <a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-700 transition hover:bg-primary/10 hover:text-primary dark:text-slate-300" href="./planificador_de_comidas_sabor_global_mejorado.html">
+            <span class="material-symbols-outlined">calendar_month</span><span class="text-sm">Planificador</span>
+          </a>
+          <a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-700 transition hover:bg-primary/10 hover:text-primary dark:text-slate-300" href="./seguridad_sabor_global_mejorada.html">
+            <span class="material-symbols-outlined">shield_lock</span><span class="text-sm">Seguridad</span>
+          </a>
+          <div class="my-4 border-t border-slate-200 dark:border-slate-800"></div>
+          <button id="logoutBtn" type="button" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-red-500 transition hover:bg-red-50 dark:hover:bg-red-950/30">
+            <span class="material-symbols-outlined">logout</span><span class="text-sm font-semibold">Cerrar sesión</span>
+          </button>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="min-w-0 flex-1">
+      <div class="mb-7 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="mb-2 text-xs font-extrabold uppercase tracking-[0.18em] text-primary">Mi cuenta</p>
+          <h2 class="text-3xl font-extrabold tracking-tight md:text-4xl">Perfil y Preferencias</h2>
+          <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-500 dark:text-slate-400">Personaliza tu información y las preferencias que usarás para recibir sugerencias de recetas.</p>
+        </div>
+        <div class="hidden rounded-full border border-primary/15 bg-primary/5 px-4 py-2 text-xs font-bold text-primary sm:flex sm:items-center sm:gap-2">
+          <span class="material-symbols-outlined text-base">tune</span> Preferencias activas
+        </div>
+      </div>
+
+      <form id="profileForm" class="space-y-6" novalidate>
+        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm md:p-7 dark:border-slate-800 dark:bg-slate-900" aria-labelledby="datos-title">
+          <div class="mb-6">
+            <h3 id="datos-title" class="text-xl font-extrabold">Información personal</h3>
+            <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Actualiza los datos básicos de tu cuenta.</p>
+          </div>
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div class="md:col-span-2 flex flex-col gap-4 rounded-2xl bg-background-light p-4 sm:flex-row sm:items-center sm:justify-between dark:bg-slate-950/60">
+              <div class="flex items-center gap-4">
+                <label for="avatarInput" class="group relative flex size-24 cursor-pointer items-center justify-center overflow-hidden rounded-full border-2 border-primary/20 bg-white text-slate-400 shadow-sm dark:bg-slate-900" aria-label="Cambiar foto de perfil">
+                  <img id="avatarPreview" class="hidden size-full object-cover" alt="Vista previa de foto de perfil">
+                  <span id="avatarPlaceholder" class="material-symbols-outlined text-4xl">person</span>
+                  <span class="absolute inset-x-0 bottom-0 flex items-center justify-center bg-slate-950/60 py-2 text-white opacity-0 transition group-hover:opacity-100"><span class="material-symbols-outlined text-base">photo_camera</span></span>
+                </label>
+                <input id="avatarInput" class="hidden" type="file" accept="image/png,image/jpeg,image/gif">
+                <div>
+                  <h4 class="font-bold">Foto de perfil</h4>
+                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">JPG, GIF o PNG. Máx. 2MB.</p>
+                  <p id="avatarStatus" class="mt-2 hidden text-xs font-semibold text-primary"></p>
+                </div>
+              </div>
+              <div class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
+                <span class="font-bold text-slate-700 dark:text-slate-200">Cuenta:</span> mateo@saborglobal.com
+              </div>
+            </div>
+
+            <label class="flex flex-col gap-2">
+              <span class="text-sm font-semibold">Nombre completo</span>
+              <input id="fullName" name="fullName" class="h-12 w-full rounded-xl border-slate-200 bg-white focus:border-primary focus:ring-primary dark:border-slate-800 dark:bg-slate-950" placeholder="Ej. Juan Pérez" type="text" value="Mateo Culinary" autocomplete="name">
+              <span id="nameError" class="hidden text-xs font-semibold text-red-500">Escribe tu nombre completo.</span>
+            </label>
+
+            <label class="flex flex-col gap-2">
+              <span class="text-sm font-semibold">Correo electrónico</span>
+              <input id="email" name="email" class="h-12 w-full rounded-xl border-slate-200 bg-white focus:border-primary focus:ring-primary dark:border-slate-800 dark:bg-slate-950" placeholder="correo@ejemplo.com" type="email" value="mateo@saborglobal.com" autocomplete="email">
+              <span class="text-xs text-slate-500 dark:text-slate-400">Se utiliza para notificaciones y recuperación de acceso.</span>
+              <span id="emailError" class="hidden text-xs font-semibold text-red-500">Introduce un correo válido.</span>
+            </label>
+
+            <label class="flex flex-col gap-2 md:col-span-2">
+              <span class="text-sm font-semibold">Enfoque Dietético</span>
+              <select id="diet" name="diet" class="h-12 w-full rounded-xl border-slate-200 bg-white focus:border-primary focus:ring-primary dark:border-slate-800 dark:bg-slate-950">
+                <option>Mediterránea</option>
+                <option>Vegana</option>
+                <option>Vegetariana</option>
+                <option>Keto (Cetogénica)</option>
+                <option>Paleo</option>
+                <option>Sin Gluten</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm md:p-7 dark:border-slate-800 dark:bg-slate-900" aria-labelledby="allergy-title">
+          <div class="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h3 id="allergy-title" class="text-xl font-extrabold">Alergias e Intolerancias</h3>
+              <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Selecciona los ingredientes que debemos evitar en tus sugerencias.</p>
+            </div>
+            <span id="allergyCount" class="text-xs font-bold text-primary">2 seleccionadas</span>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button type="button" data-allergy="Gluten" data-selected="true" class="allergy-btn inline-flex items-center gap-2 rounded-full border-2 border-primary bg-primary/10 px-4 py-2 font-semibold text-primary">
+              Gluten <span class="material-symbols-outlined text-sm">close</span>
+            </button>
+            <button type="button" data-allergy="Lactosa" class="allergy-btn inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 font-semibold text-slate-600 transition hover:border-primary hover:text-primary dark:border-slate-700 dark:text-slate-300">
+              Lactosa <span class="material-symbols-outlined text-sm">add</span>
+            </button>
+            <button type="button" data-allergy="Frutos Secos" class="allergy-btn inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 font-semibold text-slate-600 transition hover:border-primary hover:text-primary dark:border-slate-700 dark:text-slate-300">
+              Frutos Secos <span class="material-symbols-outlined text-sm">add</span>
+            </button>
+            <button type="button" data-allergy="Mariscos" data-selected="true" class="allergy-btn inline-flex items-center gap-2 rounded-full border-2 border-primary bg-primary/10 px-4 py-2 font-semibold text-primary">
+              Mariscos <span class="material-symbols-outlined text-sm">close</span>
+            </button>
+            <button type="button" data-allergy="Huevo" class="allergy-btn inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 font-semibold text-slate-600 transition hover:border-primary hover:text-primary dark:border-slate-700 dark:text-slate-300">
+              Huevo <span class="material-symbols-outlined text-sm">add</span>
+            </button>
+            <button type="button" data-allergy="Soja" class="allergy-btn inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 font-semibold text-slate-600 transition hover:border-primary hover:text-primary dark:border-slate-700 dark:text-slate-300">
+              Soja <span class="material-symbols-outlined text-sm">add</span>
+            </button>
+          </div>
+          <div class="mt-5 rounded-xl border border-dashed border-primary/20 bg-primary/5 px-4 py-3 text-xs leading-5 text-slate-600 dark:text-slate-300">
+            Estas selecciones se aplicarán como restricciones al recomendarte y mostrarte recetas.
+          </div>
+        </section>
+
+        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm md:p-7 dark:border-slate-800 dark:bg-slate-900" aria-labelledby="preferences-title">
+          <div class="mb-6">
+            <h3 id="preferences-title" class="text-xl font-extrabold">Preferencias de experiencia</h3>
+            <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Configura cómo quieres recibir y visualizar las sugerencias.</p>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between gap-5 rounded-2xl border border-slate-200 p-4 dark:border-slate-800">
+              <div class="flex items-start gap-3">
+                <div class="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary"><span class="material-symbols-outlined">nutrition</span></div>
+                <div>
+                  <p class="font-bold">Mostrar información nutricional</p>
+                  <p class="mt-1 text-sm leading-5 text-slate-500 dark:text-slate-400">Mostrar calorías y macronutrientes en las recetas cuando estén disponibles.</p>
+                </div>
+              </div>
+              <label class="relative inline-flex shrink-0 cursor-pointer items-center">
+                <input id="nutritionToggle" checked class="peer sr-only" type="checkbox">
+                <span class="h-7 w-14 rounded-full bg-slate-200 transition peer-checked:bg-primary dark:bg-slate-700"></span>
+                <span class="absolute left-1 size-5 rounded-full bg-white shadow transition peer-checked:translate-x-7"></span>
+              </label>
+            </div>
+            <div class="rounded-2xl border border-slate-200 p-4 dark:border-slate-800">
+              <div class="mb-3 flex items-center gap-3">
+                <div class="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary"><span class="material-symbols-outlined">restaurant</span></div>
+                <div>
+                  <p class="font-bold">Preferencias culinarias</p>
+                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Añade gustos para personalizar futuras sugerencias.</p>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2" aria-label="Preferencias culinarias">
+                <button type="button" class="rounded-full border-2 border-primary bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary">Comida casera</button>
+                <button type="button" class="rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-primary hover:text-primary dark:border-slate-700 dark:text-slate-300">Cocina mediterránea</button>
+                <button type="button" class="rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-primary hover:text-primary dark:border-slate-700 dark:text-slate-300">Alta en proteína</button>
+                <button type="button" class="rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-primary hover:text-primary dark:border-slate-700 dark:text-slate-300">Recetas rápidas</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm md:p-7 dark:border-slate-800 dark:bg-slate-900" aria-labelledby="account-title">
+          <div class="mb-6">
+            <h3 id="account-title" class="text-xl font-extrabold">Gestión de Cuenta</h3>
+            <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Seguridad y recuperación de acceso.</p>
+          </div>
+          <div class="grid gap-4 lg:grid-cols-2">
+            <div class="rounded-2xl bg-background-light p-4 dark:bg-slate-950/50">
+              <div class="flex items-start gap-3">
+                <div class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary"><span class="material-symbols-outlined">lock_reset</span></div>
+                <div class="min-w-0 flex-1">
+                  <p class="font-bold">Cambiar Contraseña</p>
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Último cambio hace 3 meses</p>
+                  <a href="seguridad_sabor_global.html" class="mt-3 inline-flex text-sm font-extrabold text-primary hover:underline">Actualizar <span class="material-symbols-outlined ml-1 text-base">arrow_forward</span></a>
+                </div>
+              </div>
+            </div>
+            <div class="rounded-2xl bg-background-light p-4 dark:bg-slate-950/50">
+              <div class="flex items-start gap-3">
+                <div class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary"><span class="material-symbols-outlined">contact_support</span></div>
+                <div class="min-w-0 flex-1">
+                  <p class="font-bold">Métodos de Recuperación</p>
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Teléfono y correo secundario</p>
+                  <button type="button" id="recoveryBtn" class="mt-3 text-sm font-extrabold text-primary hover:underline">Configurar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="sticky bottom-3 z-20 flex flex-col-reverse gap-3 rounded-2xl border border-slate-200 bg-white/95 p-3 shadow-xl backdrop-blur sm:flex-row sm:items-center sm:justify-end dark:border-slate-800 dark:bg-slate-950/95">
+          <button id="cancelBtn" type="button" class="rounded-xl border border-slate-200 px-6 py-3 font-semibold text-slate-600 transition hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-900">Cancelar</button>
+          <button type="submit" class="rounded-xl bg-primary px-8 py-3 font-extrabold text-white shadow-glow transition hover:brightness-95">Guardar Cambios</button>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <footer class="border-t border-slate-200 py-8 dark:border-slate-800">
+    <div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 text-center text-sm text-slate-400 md:px-8">
+      <p class="font-semibold">© 2024 Sabor Global</p>
+      <p>Cocina inteligente para un mundo mejor.</p>
+    </div>
+  </footer>
+
+  <script>
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => Array.from(document.querySelectorAll(selector));
+
+    function showToast(message, icon = 'check_circle') {
+      $('#toastIcon').textContent = icon;
+      $('#toastText').textContent = message;
+      const toast = $('#toast');
+      toast.classList.remove('opacity-0', 'translate-y-[-10px]');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-[-10px]');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 2600);
+    }
+
+    function updateAllergyCount() {
+      const selected = $$('.allergy-btn[data-selected="true"]').length;
+      $('#allergyCount').textContent = selected === 1 ? '1 seleccionada' : `${selected} seleccionadas`;
+    }
+
+    $$('.allergy-btn').forEach((button) => {
+      button.addEventListener('click', () => {
+        const selected = button.dataset.selected === 'true';
+        button.dataset.selected = String(!selected);
+        button.classList.toggle('border-2', !selected);
+        button.classList.toggle('border-primary', !selected);
+        button.classList.toggle('bg-primary/10', !selected);
+        button.classList.toggle('text-primary', !selected);
+        button.classList.toggle('border', selected);
+        button.classList.toggle('border-slate-200', selected);
+        button.classList.toggle('text-slate-600', selected);
+        button.classList.toggle('dark:border-slate-700', selected);
+        button.classList.toggle('dark:text-slate-300', selected);
+        const icon = button.querySelector('.material-symbols-outlined');
+        icon.textContent = !selected ? 'close' : 'add';
+        updateAllergyCount();
+      });
+    });
+
+    $('#avatarInput').addEventListener('change', (event) => {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      if (file.size > 2 * 1024 * 1024) {
+        event.target.value = '';
+        showToast('La imagen supera el límite de 2MB.', 'error');
+        $('#toastIcon').classList.remove('text-primary');
+        $('#toastIcon').classList.add('text-red-500');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => {
+        $('#avatarPreview').src = reader.result;
+        $('#avatarPreview').classList.remove('hidden');
+        $('#avatarPlaceholder').classList.add('hidden');
+        $('#avatarStatus').textContent = 'Nueva foto seleccionada';
+        $('#avatarStatus').classList.remove('hidden');
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function validateForm() {
+      const name = $('#fullName').value.trim();
+      const email = $('#email').value.trim();
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      $('#nameError').classList.toggle('hidden', Boolean(name));
+      $('#emailError').classList.toggle('hidden', emailOk);
+      $('#fullName').classList.toggle('border-red-400', !name);
+      $('#email').classList.toggle('border-red-400', !emailOk);
+      return Boolean(name) && emailOk;
+    }
+
+    $('#profileForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!validateForm()) {
+        showToast('Revisa los campos marcados.', 'error');
+        $('#toastIcon').classList.remove('text-primary');
+        $('#toastIcon').classList.add('text-red-500');
+        return;
+      }
+      $('#toastIcon').classList.remove('text-red-500');
+      $('#toastIcon').classList.add('text-primary');
+      showToast('Cambios guardados correctamente.');
+    });
+
+    $('#cancelBtn').addEventListener('click', () => {
+      $('#profileForm').reset();
+      $('#nameError').classList.add('hidden');
+      $('#emailError').classList.add('hidden');
+      $('#fullName').classList.remove('border-red-400');
+      $('#email').classList.remove('border-red-400');
+      showToast('Cambios cancelados.', 'undo');
+    });
+
+    $('#notifyBtn').addEventListener('click', () => showToast('No tienes notificaciones nuevas.', 'notifications_none'));
+    $('#recoveryBtn').addEventListener('click', () => showToast('Los métodos de recuperación se gestionan desde Seguridad.', 'info'));
+
+    function logoutDemo() {
+      if (confirm('¿Deseas cerrar la sesión?')) {
+        showToast('Sesión cerrada (modo demostración).', 'logout');
+      }
+    }
+    $('#logoutBtn').addEventListener('click', logoutDemo);
+    $('#mobileLogout').addEventListener('click', logoutDemo);
+
+    $('#avatarBtn').addEventListener('click', () => {
+      $('#mobilePanel').classList.toggle('hidden');
+    });
+
+    updateAllergyCount();
+  </script>
+</body>
+</html>

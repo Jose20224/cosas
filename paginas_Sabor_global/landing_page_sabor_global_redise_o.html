@@ -1,0 +1,405 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sabor Global - Pasaporte culinario para el hogar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "warning-orange": "#ea580c",
+                    "tertiary": "#00658f",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#f4ded2",
+                    "surface-bright": "#fff8f6",
+                    "on-primary-fixed-variant": "#763400",
+                    "tertiary-fixed-dim": "#88cefe",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-low": "#fff1eb",
+                    "tertiary-container": "#5ca4d1",
+                    "secondary": "#6b5b52",
+                    "on-surface-variant": "#574237",
+                    "success-green": "#16a34a",
+                    "surface-container": "#ffeae0",
+                    "inverse-on-surface": "#ffede5",
+                    "secondary-fixed-dim": "#d7c2b7",
+                    "surface-container-high": "#fae4d9",
+                    "surface": "#fff8f6",
+                    "surface-dim": "#ebd6cc",
+                    "on-primary-container": "#592500",
+                    "primary-fixed-dim": "#ffb68d",
+                    "slate-100": "#f1f5f9",
+                    "surface-variant": "#f4ded4",
+                    "slate-600": "#475569",
+                    "secondary-container": "#f4ded2",
+                    "on-secondary-fixed-variant": "#52443b",
+                    "on-background": "#241913",
+                    "error-container": "#ffdad6",
+                    "slate-900": "#0f172a",
+                    "on-tertiary-container": "#003852",
+                    "background-dark": "#221710",
+                    "background": "#fff8f6",
+                    "surface-tint": "#9a4600",
+                    "inverse-primary": "#ffb68d",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#716158",
+                    "on-primary-fixed": "#321200",
+                    "primary-container": "#f47b25",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#001e2e",
+                    "primary-fixed": "#ffdbc9",
+                    "primary": "#9a4600",
+                    "inverse-surface": "#3a2e27",
+                    "on-secondary-fixed": "#241912",
+                    "outline-variant": "#dec1b1",
+                    "on-surface": "#241913",
+                    "outline": "#8b7265",
+                    "on-tertiary-fixed-variant": "#004c6d",
+                    "background-light": "#f8f7f5",
+                    "tertiary-fixed": "#c7e7ff",
+                    "surface-container-highest": "#f4ded4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "card-padding": "1.25rem",
+                    "component-gap-md": "1rem",
+                    "component-gap-sm": "0.5rem",
+                    "grid-gutter": "1.5rem",
+                    "section-gap": "4rem",
+                    "container-padding-desktop": "5rem",
+                    "container-padding-mobile": "1.5rem"
+            },
+            "fontFamily": {
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "caption": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "title-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "caption": ["10px", {"lineHeight": "1", "fontWeight": "800"}],
+                    "display-lg": ["60px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-on-background font-body-md antialiased pt-[72px]">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-background-dark/80 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center h-18 px-5rem max-w-7xl mx-auto h-[72px] px-container-padding-mobile md:px-container-padding-desktop">
+<div class="font-headline-md text-headline-md font-extrabold text-primary dark:text-primary-fixed-dim tracking-tight">
+                Sabor Global
+            </div>
+<div class="hidden md:flex gap-8">
+<a class="font-body-md text-body-md text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary cursor-pointer active:scale-95 transition-all" href="#">Inicio</a>
+<a class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors cursor-pointer active:scale-95 transition-all" href="#">Recetas</a>
+<a class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors cursor-pointer active:scale-95 transition-all" href="#">Chefs</a>
+<a class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors cursor-pointer active:scale-95 transition-all" href="#">Clases</a>
+<a class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim hover:text-primary transition-colors cursor-pointer active:scale-95 transition-all" href="#">Blog</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-600">search</span>
+<input class="pl-10 pr-4 py-2 bg-slate-100 rounded-full border-none focus:ring-2 focus:ring-primary w-48 text-body-md font-body-md" placeholder="Buscar recetas..." type="text">
+</div>
+<button class="text-primary dark:text-primary-fixed-dim hover:scale-105 transition-transform duration-200 cursor-pointer active:scale-95 transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-primary dark:text-primary-fixed-dim hover:scale-105 transition-transform duration-200 cursor-pointer active:scale-95 transition-all">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<img alt="Avatar de usuario" class="w-10 h-10 rounded-full object-cover shadow-sm cursor-pointer hover:scale-105 transition-transform duration-200" data-alt="A detailed, high-resolution portrait of a smiling user with a warm, inviting expression, perfect for a culinary platform profile picture. Bright, soft lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlfT6gRrP6a2G6GhxCrEn74cYOlJcueMkKbqd17FxzBa3uOAXSzzieUtY2CaBXQ54yMBjOGdBjN3HCU6lNW3DGTTvrlpClu-OiqbGXCTosxdNbtOso1484UeGFMS2g_7xtkkE9_4mtcOXFT19H5O5nxbcTeVawKPTm_tlSnpIzFWPEYyolBkuZBHcu5wJtBqovFf69tL5TE-z88rTQ3--0RTI-88vuXntASb_7kpDj8K3LA11dIiqRlQ">
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-background">
+<div class="absolute inset-0 z-0">
+<div class="bg-cover bg-center w-full h-full" data-alt="A breathtaking, cinematic flat-lay shot of a modern rustic kitchen table laden with vibrant, fresh ingredients like heirloom tomatoes, vibrant green basil, artisanal crusty bread, and a perfectly cooked pasta dish. High-end food photography style with warm, inviting sunlight streaming across the scene, creating soft, sophisticated shadows. The aesthetic is high-energy yet elegant, perfectly capturing a modern culinary lifestyle." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCr1wCsBskYXG2W8MFrnnl-lC6R8I0eXQ6UqYazaDr8RFQZZ8tNhc84y9zcnDfd1AF5R-1YS1kunPStC_33HwQD09ifEN_wmXzPXFYX8YTD-VML0K4E2t2hu7VcBQ8ajaG7THpzQX_xWrdboLVS8-zroOI86oywui37q0-2fc8hjXFkfbz312CfMgbwDs2rx42dtlNVwl7kLmNIuavVWykpOde_6YKphq5wqLUi1MiwD4bNjtcMALD9Qg')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background-dark/80 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop w-full grid grid-cols-1 md:grid-cols-2 gap-grid-gutter">
+<div class="flex flex-col justify-center text-on-primary">
+<span class="font-label-sm text-label-sm text-primary-fixed-dim uppercase tracking-widest mb-4 inline-block bg-background-dark/50 px-3 py-1 rounded-full backdrop-blur-sm w-fit">Tu Pasaporte Culinario</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-primary mb-6">
+                    Descubre el Mundo en cada <span class="text-warning-orange">Plato</span>
+</h1>
+<p class="font-body-lg text-body-lg text-surface-container-high mb-8 max-w-lg">
+                    Aprende, cocina y comparte recetas auténticas de todo el planeta. Clases en vivo, chefs expertos y una comunidad vibrante.
+                </p>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary font-title-lg text-title-lg py-3 px-8 rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-200">
+                        Empezar a Cocinar
+                    </button>
+<button class="bg-surface/20 backdrop-blur-md text-on-primary border border-surface-container-high font-title-lg text-title-lg py-3 px-8 rounded-full hover:bg-surface/30 transition-all duration-200 flex items-center gap-2">
+<span class="material-symbols-outlined filled">play_circle</span>
+                        Ver Video
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Cocina a tu manera (Bento Grid) -->
+<section class="py-section-gap max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop">
+<div class="mb-12 text-center">
+<h2 class="font-headline-md text-headline-md text-on-background mb-4">Cocina a tu manera</h2>
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl mx-auto">Explora experiencias culinarias adaptadas a tu estilo de vida, nivel de habilidad y antojos del momento.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-grid-gutter auto-rows-[250px]">
+<!-- Bento Item 1 -->
+<div class="md:col-span-2 md:row-span-2 rounded-xl overflow-hidden relative group cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300 bg-surface">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A dynamic, high-angle shot of a chef's hands skillfully tossing a colorful, fresh stir-fry in a large wok over a lively open flame. The scene is lit with warm, dramatic lighting that highlights the vibrant orange and green vegetables against the dark wok, embodying high-energy culinary action." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCWSqO5LalISTzh11evTpjjmi1WNytFZfJtkv4yqKaQIYLw5k247IP3vvhlpjfVssfcYRiEIASe9oOhLWDQENiFA0MD5iGI6WVShGNtO0GFcOCjD1ZwGmmWaSp1WcM465LuAo48IwYS0Kt76Lc_ApgjdCPpa19YxvmimIK9P6-YPZ01CvxJybmBSQvBY0GHhH0a6sESB4A85IrFh5iZizkDfbFUoQE0Q94J9DKwkiaa080mPpRMhkHtJg')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-background-dark/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<span class="font-label-sm text-label-sm text-primary-fixed-dim bg-background-dark/50 px-3 py-1 rounded-full backdrop-blur-sm mb-3 inline-block">Masterclass</span>
+<h3 class="font-headline-md text-headline-md text-on-primary mb-2">Técnicas Avanzadas</h3>
+<p class="font-body-md text-body-md text-surface-container-high line-clamp-2">Perfecciona tus cortes, domina el fuego y eleva tus platillos con clases de chefs de renombre.</p>
+</div>
+</div>
+<!-- Bento Item 2 -->
+<div class="rounded-xl overflow-hidden relative group cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300 bg-surface">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A beautiful, bright overhead shot of a neatly organized meal prep layout featuring multiple glass containers filled with colorful, healthy quinoa bowls, fresh greens, and roasted sweet potatoes. Clean, modern aesthetic with ample negative space and soft natural lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBmFEUlOVDpvNyUomurH4mVHDENLzjHFJdaKJouVEwSoh6toxqJdpBj71lazFKadtV48-Rn90mTRHRiWi4ia4Cukz2si9SKuLIINdGyATs54tJk94R27OpopkHujDhHUFMuswvzoF3QX0Y9lBtgTKAvMFb-kFrzsw6IhYWclW8jYH7BM11A9Ffnwvpx-MwDMZah1k36I7OunM0_gec4ndArYRyqi4vvJcdh0uffnCKOhrpZ3YkGL3b8Wg')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<span class="font-label-sm text-label-sm text-success-green bg-surface-container-highest/90 px-3 py-1 rounded-full backdrop-blur-sm mb-2 inline-block">Saludable</span>
+<h3 class="font-title-lg text-title-lg text-on-primary">Meal Prep Semanal</h3>
+</div>
+</div>
+<!-- Bento Item 3 -->
+<div class="rounded-xl overflow-hidden relative group cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300 bg-surface">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A cozy, inviting close-up of a rustic wooden table featuring a freshly baked artisan sourdough bread loaf next to a small dish of golden olive oil and scattered flour dusting. Warm, ambient lighting emphasizing the crust's texture." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB7O4jHIhbLbtfhYDm7fC0wT6kSQhnLopgSodPUPgd-LOdgOCOMrycRY4RjqSt_qrp_ZVcEir8Rz9m-wf3ym025MX7A6pYL0t4AUrjk-asASO6JkHE4AOvyde2vol9f8-fps_oWvh3ZnGhbr3k5B41lnIGMDnTVKnLu7MdByoaXJrs664PIju8dS436ZykRiwE-MSIlvlJF1wogo9lLQQP7EnSzdcPeeQ0O6vR98sAThYBO-DVbMdyFuQ')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<span class="font-label-sm text-label-sm text-tertiary bg-surface-container-highest/90 px-3 py-1 rounded-full backdrop-blur-sm mb-2 inline-block">Panadería</span>
+<h3 class="font-title-lg text-title-lg text-on-primary">Masa Madre Fácil</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Recetas Destacadas -->
+<section class="py-section-gap bg-surface-bright">
+<div class="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop">
+<div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-background mb-2">Recetas Destacadas</h2>
+<p class="font-body-md text-body-md text-secondary">Las opciones favoritas de nuestra comunidad esta semana.</p>
+</div>
+<!-- Filtros (Chips) -->
+<div class="flex gap-2 overflow-x-auto pb-2 w-full md:w-auto scrollbar-hide">
+<button class="whitespace-nowrap px-4 py-2 rounded-full font-label-sm text-label-sm bg-primary text-on-primary shadow-sm hover:scale-105 transition-transform">Todas</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full font-label-sm text-label-sm bg-slate-200 text-slate-700 hover:bg-slate-300 shadow-sm transition-colors">Italiana</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full font-label-sm text-label-sm bg-slate-200 text-slate-700 hover:bg-slate-300 shadow-sm transition-colors">Asiática</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full font-label-sm text-label-sm bg-slate-200 text-slate-700 hover:bg-slate-300 shadow-sm transition-colors">Vegetariana</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full font-label-sm text-label-sm bg-slate-200 text-slate-700 hover:bg-slate-300 shadow-sm transition-colors">Postres</button>
+</div>
+</div>
+<!-- Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-slate-100">
+<div class="relative w-full aspect-[4/3] overflow-hidden rounded-t-xl">
+<img alt="Ramen Tonkotsu" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A stunning, mouth-watering close-up of a steaming bowl of authentic Japanese Ramen. Rich, creamy tonkotsu broth, perfectly arranged slices of chashu pork, a soft-boiled soy egg, and fresh scallions. Highly detailed food photography, warm lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3UkIT9-VyVG9rwKV_mA_gJx7NBxdh0D2mmvQ2KJH7MjZdhvZEvN6c6uVubTXWBX1v6tgnePLwKKQbAAL5vve7DHYcFZE0b5iGKlA-AnYJAIlj1W70nexqSdjJB27kWNJ4Jc88GuKGItPm4HwMss-TMDj0Qu5VrdajONyGT_EMj_jDIG0Q8TJe12Xmo_kM5QPVpnGCEI0CRj0-jp5NvOfh6It2TVoFRlBzOJEa5-C_DgYAbuCkUa0zFQ">
+<div class="absolute top-3 right-3 bg-surface/80 backdrop-blur-md px-2 py-1 rounded-md flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined filled text-warning-orange text-sm">star</span>
+<span class="font-label-sm text-label-sm text-on-background">4.9</span>
+</div>
+</div>
+<div class="p-card-padding flex flex-col flex-grow">
+<div class="flex gap-2 mb-3">
+<span class="px-2 py-1 bg-tertiary/10 text-tertiary font-label-sm text-[10px] rounded">Asiática</span>
+<span class="px-2 py-1 bg-warning-orange/10 text-warning-orange font-label-sm text-[10px] rounded">Sopa</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-background mb-2">Ramen Tonkotsu Auténtico</h3>
+<p class="font-body-md text-body-md text-secondary line-clamp-2 mb-4 flex-grow">Un caldo rico y cremoso que toma 12 horas en prepararse, con fideos frescos y chashu tierno.</p>
+<div class="pt-4 border-t border-slate-100 flex justify-between items-center text-slate-600">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="font-caption text-caption">12 hrs</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">bar_chart</span>
+<span class="font-caption text-caption">Difícil</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-slate-100">
+<div class="relative w-full aspect-[4/3] overflow-hidden rounded-t-xl">
+<img alt="Pizza Margherita" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A vibrant, fresh overhead shot of a classic Italian Margherita pizza straight from a wood-fired oven. Blistered crust, melting fresh mozzarella, bright red tomato sauce, and vibrant green basil leaves. Cinematic, high-contrast editorial food styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqhvk24zKLkFekcraVy1-5KMrKKV_w3UqlGxPsbFQF2uHHEfx-EE7Ru-Tkw133GFnDDMIl78Q1i19we0DB6ay4DhkR9slGiRmiP3hVRmvSh_PfH4b_kOkUqGheTbPCUeXsSEIh_QD7b-5P0HZquF-A-KSyJjX4sF7BiXoRlt7wz6jLIHIlCyBU8yKqCgQJBt6eX2ucVSqSlkodsAUpeuRMETlQeM4iAQll8N9lLp1BUJ1UOOLrsn0qIQ">
+<div class="absolute top-3 right-3 bg-surface/80 backdrop-blur-md px-2 py-1 rounded-md flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined filled text-warning-orange text-sm">star</span>
+<span class="font-label-sm text-label-sm text-on-background">4.8</span>
+</div>
+</div>
+<div class="p-card-padding flex flex-col flex-grow">
+<div class="flex gap-2 mb-3">
+<span class="px-2 py-1 bg-success-green/10 text-success-green font-label-sm text-[10px] rounded">Italiana</span>
+<span class="px-2 py-1 bg-primary/10 text-primary font-label-sm text-[10px] rounded">Clásica</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-background mb-2">Pizza Margherita Clásica</h3>
+<p class="font-body-md text-body-md text-secondary line-clamp-2 mb-4 flex-grow">Masa fermentada lentamente, tomates San Marzano y albahaca fresca. La perfección italiana.</p>
+<div class="pt-4 border-t border-slate-100 flex justify-between items-center text-slate-600">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="font-caption text-caption">2 hrs</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">bar_chart</span>
+<span class="font-caption text-caption">Media</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-slate-100">
+<div class="relative w-full aspect-[4/3] overflow-hidden rounded-t-xl">
+<img alt="Bowl Vegetariano" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A beautiful, colorful Buddha bowl filled with vibrant roasted vegetables, fresh avocado slices, fluffy quinoa, and a creamy tahini dressing drizzle. Set against a clean, light marble countertop. Bright, airy, health-conscious aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0CYnVnaUJALYzUwx1tnZDauOhzCJfB6SyEfG_t4Pg0y5UJFiscV-q9rvKcH2p3GvAi-ctbEtydelIeVgnRGzpIg_sjxc3UMnQ8VMalGo1-IV3UqWwM4BESm1NqudTICtB93VuSLyLIf0o0BpsFjeBU_X1nAVAyRTZd_O_BB5AxXubZGFXWKbk80nlMH6uc036s5YbtwVo8BbnJy4O8gm99aR6PkvrE4GCzmozVWOGsQr_JClIBF1OdQ">
+<div class="absolute top-3 right-3 bg-surface/80 backdrop-blur-md px-2 py-1 rounded-md flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined filled text-warning-orange text-sm">star</span>
+<span class="font-label-sm text-label-sm text-on-background">4.7</span>
+</div>
+</div>
+<div class="p-card-padding flex flex-col flex-grow">
+<div class="flex gap-2 mb-3">
+<span class="px-2 py-1 bg-success-green/10 text-success-green font-label-sm text-[10px] rounded">Vegetariana</span>
+<span class="px-2 py-1 bg-tertiary/10 text-tertiary font-label-sm text-[10px] rounded">Saludable</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-background mb-2">Bowl de Quinoa y Aguacate</h3>
+<p class="font-body-md text-body-md text-secondary line-clamp-2 mb-4 flex-grow">Nutritivo, colorido y lleno de sabor con un aderezo cremoso de tahini y limón.</p>
+<div class="pt-4 border-t border-slate-100 flex justify-between items-center text-slate-600">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="font-caption text-caption">25 min</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">bar_chart</span>
+<span class="font-caption text-caption">Fácil</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full border border-slate-100 hidden lg:flex">
+<div class="relative w-full aspect-[4/3] overflow-hidden rounded-t-xl">
+<img alt="Fondant de Chocolate" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="An elegant, decadent close-up of a perfectly baked chocolate lava cake sliced open, with rich, dark chocolate fondant oozing out onto a pristine white plate, garnished with fresh raspberries and powdered sugar. High-end dessert photography, dramatic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL8odC4_bfKPDo0KQawm_s-Nrwr_1IOjVD5Oj4sbiJ33dDenlKWxlGttKAyoqW-uOdTrwohACbfsxM4YxhfQzvIOX2qsYUxwRnRKh_-FrDo_O3abJAqJdqR9gA-0XrAYa_RiE5kjL3HqegDxHdMUat0fV-7qKORLcaDFN70POXWg_XqAXmsTb7PSUmKn4ZODCQKmefCKGHQd76en4PR6kSdurd-xjDPOS5GXzQAx_KA5-QnxRcQh8L4g">
+<div class="absolute top-3 right-3 bg-surface/80 backdrop-blur-md px-2 py-1 rounded-md flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined filled text-warning-orange text-sm">star</span>
+<span class="font-label-sm text-label-sm text-on-background">5.0</span>
+</div>
+</div>
+<div class="p-card-padding flex flex-col flex-grow">
+<div class="flex gap-2 mb-3">
+<span class="px-2 py-1 bg-error-container text-on-error-container font-label-sm text-[10px] rounded">Postres</span>
+<span class="px-2 py-1 bg-slate-200 text-slate-700 font-label-sm text-[10px] rounded">Horneado</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-background mb-2">Fondant de Chocolate Oscuro</h3>
+<p class="font-body-md text-body-md text-secondary line-clamp-2 mb-4 flex-grow">El postre perfecto para impresionar, con un corazón líquido y rico de chocolate al 70%.</p>
+<div class="pt-4 border-t border-slate-100 flex justify-between items-center text-slate-600">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="font-caption text-caption">40 min</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">bar_chart</span>
+<span class="font-caption text-caption">Media</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-10 text-center">
+<button class="bg-slate-100 text-slate-900 font-title-lg text-title-lg py-3 px-8 rounded-full border border-slate-200 hover:bg-slate-200 transition-colors shadow-sm">
+                    Ver Todas las Recetas
+                </button>
+</div>
+</div>
+</section>
+<!-- Call to Action -->
+<section class="py-section-gap">
+<div class="max-w-5xl mx-auto px-container-padding-mobile md:px-container-padding-desktop">
+<div class="bg-primary-container rounded-3xl p-10 md:p-16 relative overflow-hidden shadow-xl text-center">
+<!-- Abstract decorative shapes -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-fixed-dim/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-warning-orange/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-5xl text-on-primary-container mb-4">restaurant_menu</span>
+<h2 class="font-display-lg-mobile md:font-headline-md text-display-lg-mobile md:text-headline-md text-on-primary-container mb-6 max-w-2xl mx-auto">Únete a la Revolución Culinaria</h2>
+<p class="font-body-lg text-body-lg text-on-primary-container/80 mb-10 max-w-xl mx-auto">
+                        Crea tu perfil gratuito, guarda tus recetas favoritas, comparte tus creaciones y conéctate con chefs y aficionados de todo el mundo.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-on-primary-container text-primary-container font-title-lg text-title-lg py-4 px-10 rounded-full shadow-lg hover:scale-105 transition-transform duration-200">
+                            Crear Cuenta Gratis
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full mt-section-gap bg-surface-container-low dark:bg-background-dark border-t border-outline-variant dark:border-outline">
+<div class="py-12 px-5rem grid grid-cols-1 md:grid-cols-4 gap-grid-gutter max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop">
+<div class="col-span-1 md:col-span-1">
+<div class="font-title-lg text-title-lg font-bold text-primary mb-4">
+                    Sabor Global
+                </div>
+<p class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim mb-4">
+                    Tu pasaporte culinario para el hogar. Descubre, cocina y comparte.
+                </p>
+<div class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim">
+                    © 2024 Sabor Global. Pasaporte culinario para el hogar.
+                </div>
+</div>
+<div class="col-span-1 flex flex-col gap-3">
+<h4 class="font-title-lg text-title-lg text-on-background mb-2">Explorar</h4>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed-dim transition-colors underline-offset-4 hover:underline" href="#">Recetas</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed-dim transition-colors underline-offset-4 hover:underline" href="#">Chefs</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed-dim transition-colors underline-offset-4 hover:underline" href="#">Clases en Vivo</a>
+</div>
+<div class="col-span-1 flex flex-col gap-3">
+<h4 class="font-title-lg text-title-lg text-on-background mb-2">Compañía</h4>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed-dim transition-colors underline-offset-4 hover:underline" href="#">Sobre Nosotros</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed-dim transition-colors underline-offset-4 hover:underline" href="#">Carreras</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed-dim transition-colors underline-offset-4 hover:underline" href="#">Contacto</a>
+</div>
+<div class="col-span-1 flex flex-col gap-3">
+<h4 class="font-title-lg text-title-lg text-on-background mb-2">Legal</h4>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed-dim transition-colors underline-offset-4 hover:underline" href="#">Privacidad</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-primary-fixed-dim transition-colors underline-offset-4 hover:underline" href="#">Términos</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Verifica tu correo - Sabor Global</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f47b25",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#221710",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Header Section -->
+<header class="flex items-center justify-between border-b border-primary/10 px-6 py-4 lg:px-20 bg-background-light/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">Sabor Global</h2>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-12 px-6">
+<div class="layout-content-container flex flex-col max-w-[560px] flex-1 items-center">
+<!-- Illustration / Hero Container -->
+<div class="w-full @container mb-8">
+<div class="@[480px]:px-4">
+<div class="w-full flex flex-col items-center justify-center overflow-hidden rounded-xl min-h-[280px] bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/10">
+<div class="relative">
+<div class="absolute -inset-4 bg-primary/20 blur-3xl rounded-full"></div>
+<span class="material-symbols-outlined text-[120px] text-primary relative z-10" data-icon="mail">
+                                        mark_email_read
+                                    </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Content Section -->
+<div class="text-center px-4">
+<h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-3xl font-extrabold leading-tight pb-4">
+                            ¡Casi listo!
+                        </h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg font-medium leading-relaxed pb-6">
+                            Hemos enviado un correo de verificación a tu bandeja de entrada. Por favor, sigue las instrucciones para activar tu cuenta y empezar a explorar nuevos sabores.
+                        </p>
+</div>
+<!-- Action Buttons -->
+<div class="w-full max-w-[400px] flex flex-col gap-4 px-4 py-6">
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-6 bg-primary text-white text-lg font-bold transition-all hover:bg-primary/90 active:scale-[0.98] shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined mr-2" data-icon="send">send</span>
+<span class="truncate">Reenviar correo</span>
+</button>
+<div class="flex items-center justify-center gap-2 py-4">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="info">info</span>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-medium">
+                                ¿No lo encuentras? Revisa tu carpeta de <strong>correo no deseado (SPAM)</strong>.
+                            </p>
+</div>
+</div>
+<!-- Footer Help -->
+<div class="mt-auto pt-10 border-t border-primary/10 w-full text-center">
+<p class="text-slate-500 dark:text-slate-400 text-sm">
+                            ¿Necesitas ayuda adicional? <a class="text-primary font-bold hover:underline" href="#">Contactar soporte</a>
+</p>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

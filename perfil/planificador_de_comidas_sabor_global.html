@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sabor Global - Planificador de Comidas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#f4ded4",
+                        "on-secondary-fixed-variant": "#52443b",
+                        "on-primary-fixed": "#321200",
+                        "primary-fixed": "#ffdbc9",
+                        "on-error": "#ffffff",
+                        "surface": "#fff8f6",
+                        "inverse-on-surface": "#ffede5",
+                        "slate-600": "#475569",
+                        "surface-dim": "#ebd6cc",
+                        "secondary-fixed-dim": "#d7c2b7",
+                        "tertiary-fixed": "#c7e7ff",
+                        "surface-variant": "#f4ded4",
+                        "primary-container": "#f47b25",
+                        "on-secondary-fixed": "#241912",
+                        "tertiary": "#00658f",
+                        "warning-orange": "#ea580c",
+                        "on-primary-container": "#592500",
+                        "background-dark": "#221710",
+                        "on-background": "#241913",
+                        "on-secondary-container": "#716158",
+                        "outline-variant": "#dec1b1",
+                        "surface-tint": "#9a4600",
+                        "on-tertiary-fixed-variant": "#004c6d",
+                        "secondary-fixed": "#f4ded2",
+                        "on-tertiary-fixed": "#001e2e",
+                        "tertiary-fixed-dim": "#88cefe",
+                        "secondary-container": "#f4ded2",
+                        "primary-fixed-dim": "#ffb68d",
+                        "on-tertiary": "#ffffff",
+                        "background-light": "#f8f7f5",
+                        "on-surface-variant": "#574237",
+                        "on-surface": "#241913",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#fae4d9",
+                        "secondary": "#6b5b52",
+                        "on-tertiary-container": "#003852",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#3a2e27",
+                        "outline": "#8b7265",
+                        "background": "#fff8f6",
+                        "on-secondary": "#ffffff",
+                        "slate-900": "#0f172a",
+                        "inverse-primary": "#ffb68d",
+                        "on-primary-fixed-variant": "#763400",
+                        "surface-container-low": "#fff1eb",
+                        "surface-container": "#ffeae0",
+                        "tertiary-container": "#5ca4d1",
+                        "on-primary": "#ffffff",
+                        "primary": "#9a4600",
+                        "success-green": "#16a34a",
+                        "error-container": "#ffdad6",
+                        "slate-100": "#f1f5f9",
+                        "surface-bright": "#fff8f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "component-gap-md": "1rem",
+                        "container-padding-mobile": "1.5rem",
+                        "card-padding": "1.25rem",
+                        "section-gap": "4rem",
+                        "grid-gutter": "1.5rem",
+                        "container-padding-desktop": "5rem",
+                        "component-gap-sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "caption": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "title-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", { "lineHeight": "1.2", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-lg": ["60px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "caption": ["10px", { "lineHeight": "1", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "title-lg": ["20px", { "lineHeight": "1.4", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Drag and Drop styles */
+        .draggable-recipe {
+            cursor: grab;
+        }
+        .draggable-recipe:active {
+            cursor: grabbing;
+        }
+        .drop-zone {
+            transition: background-color 0.2s ease;
+        }
+        .drop-zone.drag-over {
+            background-color: theme('colors.primary-container');
+            border: 2px dashed theme('colors.primary');
+        }
+    </style>
+</head>
+<body class="bg-background-light text-on-surface font-body-md antialiased min-h-screen flex">
+<!-- SideNavBar (from JSON) -->
+<nav class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant shadow-sm py-component-gap-md z-40">
+<!-- Header -->
+<div class="px-6 pb-6 border-b border-outline-variant">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden shrink-0">
+<img alt="Chef de Sabor Global" class="w-full h-full object-cover" data-alt="A professional headshot of a smiling chef in a clean white kitchen setting. The chef is wearing a modern, subtle culinary uniform. Warm, soft natural lighting emphasizes a friendly and approachable mood, fitting for a premium culinary platform. Light, bright, optimistic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqa6mvwfSsq5buReLpO4KvO1wgkt5WA_VraRJWDJ5fB4v3wZ20KkC6bcICkgg0Bi84H2U51G9lE7a-3klSNP6L9_wDpZ7CIRCQHq2pbpaF02DUe_LM47HC1Osfk9l_FyDNRcchm4z-fhcavzPG9B5tLMcfFebTJhb-Usak3Z0ypkqlVShaNLQZYkP6IGf4907rWGxPtWpZb3h2WKa9Pmy0z9I39pQm3-wMuBjqio6W-rBQLf0zIvtnrg"/>
+</div>
+<div>
+<h2 class="font-title-lg text-title-lg font-bold text-primary">Mi Cocina</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Chef de Nivel 4</p>
+</div>
+</div>
+<button class="w-full py-2 px-4 bg-primary text-on-primary font-label-sm text-label-sm rounded-full hover:scale-105 transition-transform duration-200 shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Nueva Receta
+            </button>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto py-4 px-2 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-secondary hover:bg-surface-container transition-all duration-200 ease-in-out mx-2" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm font-bold">Inicio</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-secondary hover:bg-surface-container transition-all duration-200 ease-in-out mx-2" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm font-bold">Explorar</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full bg-primary-container text-on-primary-container transition-all duration-200 ease-in-out mx-2" href="#">
+<span class="material-symbols-outlined fill-icon" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="font-label-sm text-label-sm font-bold">Planificador</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-secondary hover:bg-surface-container transition-all duration-200 ease-in-out mx-2" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-sm text-label-sm font-bold">Mis Recetas</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-full text-secondary hover:bg-surface-container transition-all duration-200 ease-in-out mx-2" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm font-bold">Ajustes</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 p-container-padding-mobile md:p-grid-gutter max-w-[1600px] mx-auto w-full">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-section-gap">
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface mb-2">Planificador de Comidas</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Organiza tu semana y descubre nuevas delicias.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface border border-outline-variant rounded-full text-on-surface hover:bg-surface-container-low transition-colors shadow-sm font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="font-title-lg text-title-lg text-on-surface min-w-[120px] text-center">12 - 18 Oct</span>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface border border-outline-variant rounded-full text-on-surface hover:bg-surface-container-low transition-colors shadow-sm font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</header>
+<div class="flex flex-col lg:flex-row gap-grid-gutter items-start">
+<!-- Calendar Grid (Bento style) -->
+<div class="flex-1 w-full bg-surface-container-lowest rounded-xl shadow-sm border border-surface-container-high overflow-hidden">
+<!-- Days Header (Desktop) -->
+<div class="hidden md:grid grid-cols-7 border-b border-surface-container-high bg-surface">
+<div class="p-3 text-center border-r border-surface-container-high"><span class="font-label-sm text-label-sm text-on-surface-variant">LUN</span><div class="font-title-lg text-title-lg text-on-surface">12</div></div>
+<div class="p-3 text-center border-r border-surface-container-high"><span class="font-label-sm text-label-sm text-on-surface-variant">MAR</span><div class="font-title-lg text-title-lg text-on-surface">13</div></div>
+<div class="p-3 text-center border-r border-surface-container-high"><span class="font-label-sm text-label-sm text-on-surface-variant">MIE</span><div class="font-title-lg text-title-lg text-on-surface">14</div></div>
+<div class="p-3 text-center border-r border-surface-container-high bg-primary-container/20"><span class="font-label-sm text-label-sm text-primary">JUE</span><div class="font-title-lg text-title-lg text-primary">15</div></div>
+<div class="p-3 text-center border-r border-surface-container-high"><span class="font-label-sm text-label-sm text-on-surface-variant">VIE</span><div class="font-title-lg text-title-lg text-on-surface">16</div></div>
+<div class="p-3 text-center border-r border-surface-container-high"><span class="font-label-sm text-label-sm text-on-surface-variant">SAB</span><div class="font-title-lg text-title-lg text-on-surface">17</div></div>
+<div class="p-3 text-center"><span class="font-label-sm text-label-sm text-warning-orange">DOM</span><div class="font-title-lg text-title-lg text-warning-orange">18</div></div>
+</div>
+<!-- Meal Rows -->
+<div class="flex flex-col">
+<!-- Desayuno Row -->
+<div class="flex flex-col md:flex-row border-b border-surface-container-high">
+<div class="md:w-20 shrink-0 bg-surface-container-low p-3 flex md:flex-col items-center justify-center gap-2 border-b md:border-b-0 md:border-r border-surface-container-high">
+<span class="material-symbols-outlined text-tertiary">bakery_dining</span>
+<span class="font-label-sm text-label-sm text-tertiary transform md:-rotate-90 md:tracking-widest hidden md:block mt-4">Desayuno</span>
+<span class="font-label-sm text-label-sm text-tertiary md:hidden">Desayuno</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-7 flex-1">
+<!-- Mon -->
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high drop-zone min-h-[120px] relative group" ondragleave="this.classList.remove('drag-over')" ondragover="event.preventDefault(); this.classList.add('drag-over')" ondrop="event.preventDefault(); this.classList.remove('drag-over')">
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-outline-variant">add</span>
+</div>
+</div>
+<!-- Tue -->
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high drop-zone min-h-[120px]">
+<!-- Dropped Recipe Item -->
+<div class="bg-surface rounded-lg p-2 shadow-sm border border-outline-variant h-full flex flex-col draggable-recipe hover:shadow-md transition-shadow relative">
+<div class="w-full h-12 bg-surface-container-high rounded mb-2 overflow-hidden">
+<img alt="Smoothie Bowl" class="w-full h-full object-cover" data-alt="A top-down view of a vibrant, healthy smoothie bowl topped with fresh berries, chia seeds, and sliced almonds. The bowl rests on a light wooden table with a soft, warm morning light casting gentle shadows. Bright, fresh, and appetizing lifestyle photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaaX2Ls2YO_OZoQwFY-xAIjpE91lYtQI2YbwUBXlOKrrbXHIVBB5qb8mlyUb0RRYxgW9zhT4wW6cOiouP0HcMWcX6Z8MAj5tpnCdsuv9zsbwlGir5AiMC4FFfI9rkY_eQADun-iyxSLgBo5SgN2pxmKop4pR6VxAK8dD9DM2FkuRgKCAXwT_wwxngFu2L2x7o0g-hQNPWoQogHdP_28UWZEmBLSnT6yKER-ple0ubzKiZZNUf-JEZ1fw"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface line-clamp-2 leading-tight">Smoothie Bowl de Frutos Rojos</span>
+<button class="absolute -top-2 -right-2 bg-surface rounded-full shadow p-0.5 text-on-surface-variant hover:text-error opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-symbols-outlined text-[16px]">close</span></button>
+</div>
+</div>
+<!-- Wed -->
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high drop-zone min-h-[120px]"></div>
+<!-- Thu -->
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high bg-primary-container/5 drop-zone min-h-[120px]"></div>
+<!-- Fri -->
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high drop-zone min-h-[120px]"></div>
+<!-- Sat -->
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high drop-zone min-h-[120px]">
+<div class="bg-surface rounded-lg p-2 shadow-sm border border-outline-variant h-full flex flex-col draggable-recipe">
+<div class="w-full h-12 bg-surface-container-high rounded mb-2 overflow-hidden">
+<img alt="Avocado Toast" class="w-full h-full object-cover" data-alt="A close-up of thick, fluffy avocado toast on artisanal sourdough bread, garnished with microgreens and a dash of red pepper flakes. Served on a white ceramic plate in a bright, modern kitchen setting. Warm, inviting, lifestyle food photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjQUBqrGXxTkMCZO5mcSSalWmB1iOCApmVH18NaZQ6EjraPhVR8pf-mFvUgM049X_WS09VfSm1gD8lu8OLTcaEwwipHUlEnY3DPb8z1xQ2WuUYjYCMP2-WjQi22UKZAsqeZaUpSW6EsjjrlJN-59g29eyvbBYjZpDDBBrbGn8UVLSzqxQ3V8aHey6G3EvicI0EEa34t3GqbU9bumk-IxgQCiywKsji9tAuZsn44gtlkR092k45qXfY4Q"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface line-clamp-2 leading-tight">Tostada de Aguacate</span>
+</div>
+</div>
+<!-- Sun -->
+<div class="p-2 drop-zone min-h-[120px]"></div>
+</div>
+</div>
+<!-- Almuerzo Row -->
+<div class="flex flex-col md:flex-row border-b border-surface-container-high">
+<div class="md:w-20 shrink-0 bg-surface-container-low p-3 flex md:flex-col items-center justify-center gap-2 border-b md:border-b-0 md:border-r border-surface-container-high">
+<span class="material-symbols-outlined text-primary">lunch_dining</span>
+<span class="font-label-sm text-label-sm text-primary transform md:-rotate-90 md:tracking-widest hidden md:block mt-4">Almuerzo</span>
+<span class="font-label-sm text-label-sm text-primary md:hidden">Almuerzo</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-7 flex-1">
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high drop-zone min-h-[140px]">
+<div class="bg-surface rounded-lg p-2 shadow-sm border border-outline-variant h-full flex flex-col draggable-recipe">
+<div class="w-full h-16 bg-surface-container-high rounded mb-2 overflow-hidden">
+<img alt="Quinoa Salad" class="w-full h-full object-cover" data-alt="A vibrant, fresh quinoa salad bowl featuring roasted sweet potatoes, black beans, corn, and a lime cilantro dressing. Presented in a rustic terracotta bowl on a clean marble countertop. High key lighting, editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGXo9Q4smk4a-XAkBYT5P1nePoa-DxWBGK6Ulf46e5DWdc-zT0xm0YSqsND8A85BjaL98462GuuIeBQBg27VQhPFIEgJYmMQFIGgNQnTSFhw9tM0S7V1nzYKtvh-dBJqWiNKwtmF2ZwQTk9erS87ZAIJLpO6VfL7d9_MpkXgcpX7bLIXaF9PcIXOlXsTeSzPcdABZ9HrsAZBe46b7yPGZIZbn7uQt4cDN3Bha4cwm4xy81QdSeANbPRQ"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface line-clamp-2 leading-tight">Ensalada de Quinoa y Boniato</span>
+</div>
+</div>
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high drop-zone min-h-[140px]"></div>
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high drop-zone min-h-[140px]"></div>
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high bg-primary-container/5 drop-zone min-h-[140px]">
+<div class="bg-surface rounded-lg p-2 shadow-sm border border-outline-variant h-full flex flex-col draggable-recipe">
+<div class="w-full h-16 bg-surface-container-high rounded mb-2 overflow-hidden">
+<img alt="Pad Thai" class="w-full h-full object-cover" data-alt="A beautifully plated serving of Pad Thai noodles with shrimp, crushed peanuts, and a lime wedge. The dish is placed on a modern matte black plate, set against a light grey background with warm side lighting emphasizing the textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2isyniKGFUf7Tiq1IY_kHglb3VaYAfY8gdEFkoQ2ScpOXd0MA8PHFiEQ19jfrvmGoCLCOK-wqHq-W8q1czakj777rqQOkuxjUTSU2zZtMTmIxxLChLG0THQjYnKHsuD6F9txvdrUeLPhR9iLZB02f5UGHwcDQj2WhscOJ4Q07XfeJGx3TnUtfie1qs27zu6jGoAaSEQdEJ5Cw_67nWzqOMYaEPBUY59SIPhoF4CZNd6EOLp_V0zATbw"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface line-clamp-2 leading-tight">Pad Thai Tradicional</span>
+</div>
+</div>
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high drop-zone min-h-[140px]"></div>
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high drop-zone min-h-[140px]"></div>
+<div class="p-2 drop-zone min-h-[140px]"></div>
+</div>
+</div>
+<!-- Cena Row -->
+<div class="flex flex-col md:flex-row">
+<div class="md:w-20 shrink-0 bg-surface-container-low p-3 flex md:flex-col items-center justify-center gap-2 border-b md:border-b-0 md:border-r border-surface-container-high">
+<span class="material-symbols-outlined text-slate-600">restaurant</span>
+<span class="font-label-sm text-label-sm text-slate-600 transform md:-rotate-90 md:tracking-widest hidden md:block mt-4">Cena</span>
+<span class="font-label-sm text-label-sm text-slate-600 md:hidden">Cena</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-7 flex-1">
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high drop-zone min-h-[140px]"></div>
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high drop-zone min-h-[140px]"></div>
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high drop-zone min-h-[140px]">
+<div class="bg-surface rounded-lg p-2 shadow-sm border border-outline-variant h-full flex flex-col draggable-recipe">
+<div class="w-full h-16 bg-surface-container-high rounded mb-2 overflow-hidden">
+<img alt="Tomato Soup" class="w-full h-full object-cover" data-alt="A comforting bowl of creamy tomato soup served with a gooey, golden-brown grilled cheese sandwich sliced in half. The setting is cozy, with a soft, warm evening light, placed on a rustic wooden board." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKMvPgkja9jPwmavaObe3E_G1tlgQxvMXVZ1dg-UZd3E_YtAQBIwWQynvao1AEzCL9nroZkfYzW0Pkie641BWIM4h7yT0XJylhFrCIwA6imYvl90QGcF458IBfeFJNkfNXWuzr8sNk_CVEN8RUrCDqbddF9GSufrvbatqqm7cYe3Sozi4IYvv6Co3RhL2H8bkNopRlIzXQCSg2QECmqo5sS4V8-w18tqr3xxcangav5D6O5P5AZRHKjw"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface line-clamp-2 leading-tight">Sopa de Tomate y Queso</span>
+</div>
+</div>
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high bg-primary-container/5 drop-zone min-h-[140px]"></div>
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high drop-zone min-h-[140px]"></div>
+<div class="p-2 border-b md:border-b-0 md:border-r border-surface-container-high drop-zone min-h-[140px]"></div>
+<div class="p-2 drop-zone min-h-[140px]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar: Saved Recipes & Shopping List -->
+<div class="w-full lg:w-80 shrink-0 flex flex-col gap-grid-gutter">
+<!-- Recipe Drag Source -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-surface-container-high p-4">
+<h3 class="font-title-lg text-title-lg text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">bookmark</span>
+                        Recetas Guardadas
+                    </h3>
+<div class="mb-4 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full font-body-md text-body-md focus:ring-2 focus:ring-primary/50 text-on-surface placeholder:text-on-surface-variant/70" placeholder="Buscar para planificar..." type="text"/>
+</div>
+<div class="flex flex-col gap-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+<!-- Recipe Item (Draggable) -->
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-low transition-colors draggable-recipe border border-transparent hover:border-outline-variant" draggable="true">
+<div class="w-14 h-14 rounded-md bg-surface-container-high overflow-hidden shrink-0">
+<img alt="Pizza" class="w-full h-full object-cover" data-alt="A beautifully composed shot of a classic Margherita pizza fresh from a wood-fired oven, featuring blistered crust, fresh mozzarella, and vibrant basil leaves. Warm, appetizing lighting with a slightly rustic, premium culinary feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVkN5OI3ogYxOcn31w_AyxVVPmFVw1gYLX0pwCIz7tX6QhXIP9e3mLEGGs6WeLIJ-C5e1_x5Dx7psqUDqGyudvClM-fWOc-GqXQN26PcqKr0WX_J9gDx5_6jr-QnySDDoL422Qzp4BBNT9jDTKOYYGVAUT882mrnsLHIZICCwdphyt7otiuqkFF-01fpZrfqDwqi5AhAJZqh_sPTMKjKLfMwdVxR-dZdtlRIT_9onTQmne7DaVHrb7Yw"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-sm text-label-sm text-on-surface line-clamp-2">Pizza Margarita Rústica</h4>
+<span class="font-caption text-caption text-on-surface-variant">25 min • Cena</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-grab active:cursor-grabbing">drag_indicator</span>
+</div>
+<!-- Recipe Item (Draggable) -->
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-low transition-colors draggable-recipe border border-transparent hover:border-outline-variant" draggable="true">
+<div class="w-14 h-14 rounded-md bg-surface-container-high overflow-hidden shrink-0">
+<img alt="Salmon" class="w-full h-full object-cover" data-alt="A modern presentation of grilled salmon fillet garnished with dill and lemon wedges, resting on a bed of asparagus. Shot from slightly above with clean, crisp lighting typical of high-end food magazines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJKIxEYNx0RAUcXgv8VfsUW7oglTrrM5VVe7GtVl5nYz8AIHYjSmwFmfA2sUX5NBcqbCm0b8dSYQEhci5nOwv8knbAbfqC4PsATDIe0LaiC-vUkfkJURmxCivkE8ycbNfkv5e1-PiSkHvNBVJTtvVhs9UdCVRK7IY66QEg_MdN6QpCt2Qxr9OMciFtVbEUGsKLV1WES0aXKVFel44pGZ5pyFeH2O6aMc1KyBf6u4II_MLo6fcfjOYTcw"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-sm text-label-sm text-on-surface line-clamp-2">Salmón a la Parrilla con Espárragos</h4>
+<span class="font-caption text-caption text-on-surface-variant">35 min • Almuerzo</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-grab active:cursor-grabbing">drag_indicator</span>
+</div>
+<!-- Recipe Item (Draggable) -->
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-surface-container-low transition-colors draggable-recipe border border-transparent hover:border-outline-variant" draggable="true">
+<div class="w-14 h-14 rounded-md bg-surface-container-high overflow-hidden shrink-0">
+<img alt="Pancakes" class="w-full h-full object-cover" data-alt="A stack of fluffy whole wheat pancakes dripping with maple syrup and topped with fresh blueberries. Served on a white ceramic plate in a brightly lit, modern kitchen environment. Warm, inviting breakfast scene." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-U6zJM6NeFsFM1wX1jF39twyltL1bv-rbLPn4KOsPgfIkSuUU6I3hjIQ1J0mPuhBEVXSgDALbIdUw-9upfq6L3C0sCYBCKT88ehn2rMHnWCjuKUIWujiSd4zV4dat020l_3cWP_XTqHuyomXvnzh2HuUWSGC7dy9u-jtdW7d5hkg5Sl-C_MhIGajWJBOoywZskMu3ExfFX8GlK3iFuDjVFovqgH41oWhYcpVBMFnezhqHC2ol60OOWQ"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-sm text-label-sm text-on-surface line-clamp-2">Tortitas Integrales con Arándanos</h4>
+<span class="font-caption text-caption text-on-surface-variant">20 min • Desayuno</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-grab active:cursor-grabbing">drag_indicator</span>
+</div>
+</div>
+</div>
+<!-- Shopping List Summary -->
+<div class="bg-primary/5 rounded-xl shadow-sm border border-primary/20 p-5 relative overflow-hidden">
+<!-- Decorative background element -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl"></div>
+<h3 class="font-title-lg text-title-lg text-primary mb-2 flex items-center gap-2 relative z-10">
+<span class="material-symbols-outlined">shopping_cart</span>
+                        Lista de la Compra
+                    </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 relative z-10 text-sm">Basada en tus 4 comidas planificadas.</p>
+<div class="space-y-2 mb-6 relative z-10">
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface">Frutas y Verduras</span>
+<span class="font-bold text-primary">12 art.</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface">Lácteos y Huevos</span>
+<span class="font-bold text-primary">5 art.</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-surface">Despensa</span>
+<span class="font-bold text-primary">8 art.</span>
+</div>
+</div>
+<button class="w-full py-2.5 px-4 bg-primary text-on-primary font-label-sm text-label-sm rounded-full hover:scale-105 transition-transform duration-200 shadow-md flex items-center justify-center gap-2 relative z-10">
+                        Ver Lista Completa
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) - Semantic Fallback -->
+<nav class="md:hidden fixed bottom-0 w-full bg-surface/90 backdrop-blur-md border-t border-outline-variant shadow-lg z-50 px-4 py-2 flex justify-between items-center pb-safe">
+<a class="flex flex-col items-center p-2 text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold mt-1">Inicio</span>
+</a>
+<a class="flex flex-col items-center p-2 text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px] font-bold mt-1">Explorar</span>
+</a>
+<a class="flex flex-col items-center p-2 text-primary" href="#">
+<span class="material-symbols-outlined fill-icon bg-primary-container text-on-primary-container rounded-full p-1 -mt-4 border-4 border-background">calendar_month</span>
+<span class="text-[10px] font-bold mt-1">Plan</span>
+</a>
+<a class="flex flex-col items-center p-2 text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-[10px] font-bold mt-1">Recetas</span>
+</a>
+</nav>
+<style>
+        /* Custom Scrollbar for sidebar list */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant');
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline');
+        }
+        
+        /* Ensure bottom padding on mobile for fixed nav */
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 80px;
+            }
+        }
+    </style>
+</body></html>

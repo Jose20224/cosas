@@ -1,0 +1,301 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f47b25",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#221710",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .filled-icon { font-variation-settings: 'FILL' 1; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 md:px-20 py-4 sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<div class="text-primary">
+<span class="material-symbols-outlined text-3xl">restaurant_menu</span>
+</div>
+<h1 class="text-xl font-extrabold tracking-tight">Sabor Global</h1>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-xl">share</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-xl">bookmark</span>
+</button>
+</div>
+</header>
+<main class="max-w-4xl mx-auto w-full px-4 py-8">
+<!-- Hero Section -->
+<div class="@container mb-8">
+<div class="relative w-full aspect-video md:aspect-[21/9] rounded-xl overflow-hidden shadow-xl">
+<img alt="Bowl de Salmón y Quinoa" class="w-full h-full object-cover" data-alt="Healthy salmon and quinoa bowl with fresh vegetables" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq1MVukJcJ-PWVFuBF3HGB8Bm70x4Mlig5LZgsxab0015QUZ083w5Og6PfS3GS7bqix00VasoR0q_3ZmrjADpCdhO_ghgBGInCqmdKSZ7sOzUjy9gzp9hFpGTSKn4fhzsEUMpOaD_KmBU1rNuRoNVS8jARJdwwV4RVcI4EX-ZOvoygXocTnrTmh8ZkJUNUjFkGCWbTW4Io-RWunlwy07o3cWfwg8hA6ICV6wgYiMrXCeIt40qy0a2U9GVbrqsDLRZRgRd8eMAP4f6G">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6 md:p-10">
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded">POPULAR</span>
+<div class="flex text-yellow-400">
+<span class="material-symbols-outlined text-sm filled-icon">star</span>
+<span class="material-symbols-outlined text-sm filled-icon">star</span>
+<span class="material-symbols-outlined text-sm filled-icon">star</span>
+<span class="material-symbols-outlined text-sm filled-icon">star</span>
+<span class="material-symbols-outlined text-sm filled-icon">star_half</span>
+</div>
+</div>
+<h2 class="text-white text-3xl md:text-5xl font-extrabold mb-2">Bowl de Salmón y Quinoa</h2>
+<p class="text-slate-200 text-lg">Por <span class="font-semibold text-white">Elena Rodríguez</span></p>
+</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm transition-transform hover:scale-[1.02]">
+<div class="p-3 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div>
+<p class="text-slate-500 text-sm uppercase font-bold tracking-wider">Tiempo</p>
+<p class="text-xl font-bold">35 min</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm transition-transform hover:scale-[1.02]">
+<div class="p-3 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<div>
+<p class="text-slate-500 text-sm uppercase font-bold tracking-wider">Porciones</p>
+<p class="text-xl font-bold">2 personas</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm transition-transform hover:scale-[1.02]">
+<div class="p-3 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">fitness_center</span>
+</div>
+<div>
+<p class="text-slate-500 text-sm uppercase font-bold tracking-wider">Dificultad</p>
+<p class="text-xl font-bold">Media</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+<div class="lg:col-span-2 space-y-10">
+<!-- Ingredients Section -->
+<section>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">shopping_basket</span>
+<h3 class="text-2xl font-bold">Ingredientes</h3>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 space-y-4">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox">
+<span class="text-lg group-hover:text-primary transition-colors">2 filetes de salmón fresco (200g c/u)</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox">
+<span class="text-lg group-hover:text-primary transition-colors">1 taza de quinoa orgánica</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox">
+<span class="text-lg group-hover:text-primary transition-colors">1 aguacate maduro</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox">
+<span class="text-lg group-hover:text-primary transition-colors">100g de espinacas tiernas</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox">
+<span class="text-lg group-hover:text-primary transition-colors">Semillas de sésamo y soja</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary" type="checkbox">
+<span class="text-lg group-hover:text-primary transition-colors">Zumo de medio limón</span>
+</label>
+</div>
+</section>
+<!-- Steps Section -->
+<section>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">cooking</span>
+<h3 class="text-2xl font-bold">Preparación</h3>
+</div>
+<div class="space-y-8">
+<div class="flex gap-6">
+<div class="flex-none">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-bold text-lg">1</span>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-2">Preparar la Quinoa</h4>
+<p class="text-slate-600 dark:text-slate-400">Lava bien la quinoa bajo agua fría. Cocínala en agua hirviendo con una pizca de sal durante 12-15 minutos hasta que esté tierna.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-none">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-bold text-lg">2</span>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-2">Cocinar el Salmón</h4>
+<p class="text-slate-600 dark:text-slate-400">Sazona el salmón. En una sartén con una gota de aceite, séllalo por el lado de la piel hasta que esté crujiente, luego dale la vuelta 2 minutos más.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-none">
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-bold text-lg">3</span>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-2">Montaje del Bowl</h4>
+<p class="text-slate-600 dark:text-slate-400">Coloca una base de quinoa, añade las espinacas, el aguacate laminado y el salmón encima. Aliña con limón y sésamo.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Sidebar: Nutritional Info -->
+<aside class="space-y-6">
+<div class="bg-primary/5 dark:bg-slate-900 border-2 border-primary/20 rounded-2xl p-6 sticky top-24">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">nutrition</span>
+<h3 class="text-xl font-bold">Información Nutricional</h3>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center pb-3 border-b border-primary/10">
+<span class="text-slate-600 dark:text-slate-400">Calorías</span>
+<span class="font-bold text-lg">450 kcal</span>
+</div>
+<div class="flex justify-between items-center pb-3 border-b border-primary/10">
+<span class="text-slate-600 dark:text-slate-400">Proteínas</span>
+<span class="font-bold text-lg text-primary">32g</span>
+</div>
+<div class="flex justify-between items-center pb-3 border-b border-primary/10">
+<span class="text-slate-600 dark:text-slate-400">Carbohidratos</span>
+<span class="font-bold text-lg">38g</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-600 dark:text-slate-400">Grasas</span>
+<span class="font-bold text-lg">18g</span>
+</div>
+</div>
+<div class="mt-6 p-4 bg-white dark:bg-slate-800 rounded-xl text-xs text-slate-500 italic">
+                            * Los valores son aproximados por porción recomendada.
+                        </div>
+</div>
+</aside>
+</div>
+<!-- Community Comments Section -->
+<section class="mt-20 pt-10 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-bold">Comunidad Sabor Global</h3>
+<div class="flex items-center gap-2">
+<span class="text-2xl font-bold text-primary">4.8</span>
+<div class="flex text-yellow-400">
+<span class="material-symbols-outlined filled-icon">star</span>
+</div>
+<span class="text-slate-500">(124 reseñas)</span>
+</div>
+</div>
+<!-- New Review Form -->
+<div class="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 mb-10">
+<h4 class="font-bold mb-4">Deja tu opinión</h4>
+<div class="flex gap-1 mb-4 text-slate-300">
+<span class="material-symbols-outlined cursor-pointer hover:text-yellow-400">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-yellow-400">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-yellow-400">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-yellow-400">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-yellow-400">star</span>
+</div>
+<textarea class="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-transparent focus:border-primary focus:ring-primary mb-4" placeholder="¿Qué te pareció la receta?" rows="3"></textarea>
+<button class="bg-primary hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-lg transition-colors">Publicar Comentario</button>
+</div>
+<!-- Comments List -->
+<div class="space-y-8">
+<div class="flex gap-4">
+<div class="flex-none h-12 w-12 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="Female user profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFcShrpltpkVPJhkwzooiY3XACLk-0ZvQco2pmfZPq0ow00jW0jMzq23GpL1SrKUAPcgqG6u5hb75i8CFM_N-swTKVSF70xDDEuc2pUQlpEn7l1FWdRG8SQWF14odgHnIoJuzrd1xSN61yaQzp20U2o3pKVJ8W7ieNaYLxCg1QP8lvRikI2xY_hmseaTmTBr4fUZyCS9cp8MlmPKbnbwT_0gK7NeT5bBxB85vpvs1u96OWskatbFd9jHMC3zJhbRzYIcFB_InpTf72">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<h5 class="font-bold">Carla Méndez</h5>
+<span class="text-xs text-slate-500">Hace 2 días</span>
+</div>
+<div class="flex text-yellow-400 text-sm mb-2">
+<span class="material-symbols-outlined text-xs filled-icon">star</span>
+<span class="material-symbols-outlined text-xs filled-icon">star</span>
+<span class="material-symbols-outlined text-xs filled-icon">star</span>
+<span class="material-symbols-outlined text-xs filled-icon">star</span>
+<span class="material-symbols-outlined text-xs filled-icon">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400">¡Increíble! Nunca había logrado que el salmón quedara tan jugoso por dentro y crujiente por fuera. La quinoa con limón le da el toque perfecto.</p>
+<button class="text-primary text-sm font-bold mt-2 hover:underline">Responder</button>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex-none h-12 w-12 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="Male user profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJLKxPja9HGL0_MJeWOm1YiGOeEs_mypxNs_qlmunDuh9wNMnx3BNGIjxS8DAcmXZC11XnonttIxDU2XZyrbzUOhABkQyYxQh9Qwr1KfiD-SzMRzOvrphfE99GPe1vu8Sggk_WEwVIJftkfocpXg_epcWxsAYADGprG87g6iLiqj2A2Aw5Zlq9uL-S9Z35Mcv3bUGyhDIS3TemNazufb4fNPsCDcH3-fbALYTBuCJHIjva9ohMLsSAzwE5T471xQfZ94jWOtFXfBZZ">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<h5 class="font-bold">Marc Soto</h5>
+<span class="text-xs text-slate-500">Hace 1 semana</span>
+</div>
+<div class="flex text-yellow-400 text-sm mb-2">
+<span class="material-symbols-outlined text-xs filled-icon">star</span>
+<span class="material-symbols-outlined text-xs filled-icon">star</span>
+<span class="material-symbols-outlined text-xs filled-icon">star</span>
+<span class="material-symbols-outlined text-xs filled-icon">star</span>
+<span class="material-symbols-outlined text-xs">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400">Muy buena receta. Añadí un poco de edamame para darle más textura y quedó de restaurante. ¡Gracias Elena!</p>
+<button class="text-primary text-sm font-bold mt-2 hover:underline">Responder</button>
+</div>
+</div>
+</div>
+<div class="mt-10 text-center">
+<button class="text-primary font-bold hover:bg-primary/10 px-6 py-2 rounded-lg border border-primary transition-colors">
+                        Ver todos los comentarios
+                    </button>
+</div>
+</section>
+</main>
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-10 mt-20">
+<div class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">restaurant_menu</span>
+<span class="font-extrabold text-lg">Sabor Global</span>
+</div>
+<div class="flex gap-8 text-sm font-bold text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Inicio</a>
+<a class="hover:text-primary transition-colors" href="#">Recetas</a>
+<a class="hover:text-primary transition-colors" href="#">Cursos</a>
+<a class="hover:text-primary transition-colors" href="#">Contacto</a>
+</div>
+<p class="text-xs text-slate-400">© 2024 Sabor Global. Recetas con alma.</p>
+</div>
+</footer>
+</div>
+</body></html>

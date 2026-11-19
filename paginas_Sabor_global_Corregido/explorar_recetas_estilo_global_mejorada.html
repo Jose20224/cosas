@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es" class="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explora recetas de Sabor Global por ingredientes, origen, tipo de plato y preferencias alimenticias." />
+  <title>Sabor Global · Explorar recetas</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fff7f1', 100: '#ffeadb', 200: '#ffd0b1', 300: '#ffb184',
+              400: '#ff8f52', 500: '#f47b25', 600: '#dc5e0d', 700: '#b6480a', 800: '#923e0d', 900: '#77350e'
+            }
+          },
+          boxShadow: {
+            soft: '0 12px 30px rgba(52, 35, 27, .08)',
+            card: '0 8px 24px rgba(36, 25, 19, .07)'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --brand: #f47b25;
+      --brand-dark: #b6480a;
+      --ink: #241913;
+      --muted: #6f625b;
+      --cream: #fffaf7;
+      --line: #eaded7;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8f7f5; color: var(--ink); }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .filled { font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24; }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .recipe-card.is-hidden { display: none; }
+    .filter-chip.active { background: #fff0e6; border-color: var(--brand); color: #b6480a; }
+    .filter-chip.active .chip-check { display: inline-flex; }
+    .chip-check { display: none; }
+    .favorite-button.active { background: #fff0e6; color: #d95f16; }
+    .favorite-button.active .heart-icon { font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24; }
+  </style>
+</head>
+<body class="min-h-screen bg-[#f8f7f5] text-[#241913]">
+
+  <!-- Desktop header -->
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-[#eaded7]/80 bg-white/90 backdrop-blur-xl">
+    <div class="mx-auto flex h-[76px] max-w-7xl items-center gap-6 px-5 md:px-8 xl:px-10">
+      <a href="landing_page_sabor_global_redise_o.html" class="shrink-0 text-xl font-extrabold tracking-[-0.03em] text-brand-600 md:text-2xl">Sabor Global</a>
+
+      <nav class="hidden items-center gap-1 md:flex" aria-label="Navegación principal">
+        <a href="landing_page_sabor_global_redise_o.html" class="rounded-full px-4 py-2.5 text-sm font-semibold text-[#6f625b] transition hover:bg-[#fff7f1] hover:text-brand-700">Inicio</a>
+        <a href="explorar_recetas_estilo_global_mejorada.html" class="rounded-full bg-[#fff0e6] px-4 py-2.5 text-sm font-bold text-brand-700" aria-current="page">Recetas</a>
+        <a href="mis_recetas_comunidad_sabor_global.html" class="rounded-full px-4 py-2.5 text-sm font-semibold text-[#6f625b] transition hover:bg-[#fff7f1] hover:text-brand-700">Comunidad</a>
+        <a href="../perfil/perfil_de_usuario_sabor_global.html" class="rounded-full px-4 py-2.5 text-sm font-semibold text-[#6f625b] transition hover:bg-[#fff7f1] hover:text-brand-700">Mi perfil</a>
+      </nav>
+
+      <div class="ml-auto flex items-center gap-2 sm:gap-3">
+        <button type="button" id="topSearchBtn" class="hidden h-11 w-11 items-center justify-center rounded-full border border-[#eaded7] bg-white text-[#6f625b] transition hover:border-brand-300 hover:text-brand-700 sm:flex" aria-label="Enfocar búsqueda">
+          <span class="material-symbols-outlined">search</span>
+        </button>
+        <button type="button" class="relative flex h-11 w-11 items-center justify-center rounded-full border border-[#eaded7] bg-white text-[#6f625b] transition hover:border-brand-300 hover:text-brand-700" aria-label="Notificaciones">
+          <span class="material-symbols-outlined">notifications</span>
+          <span class="absolute right-2 top-2 h-2 w-2 rounded-full bg-brand-500"></span>
+        </button>
+        <a href="../perfil/perfil_de_usuario_sabor_global.html" class="hidden h-11 w-11 overflow-hidden rounded-full ring-2 ring-transparent transition hover:ring-brand-200 sm:block" aria-label="Abrir perfil">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlfT6gRrP6a2G6GhxCrEn74cYOlJcueMkKbqd17FxzBa3uOAXSzzieUtY2CaBXQ54yMBjOGdBjN3HCU6lNW3DGTTvrlpClu-OiqbGXCTosxdNbtOso1484UeGFMS2g_7xtkkE9_4mtcOXFT19H5O5nxbcTeVawKPTm_tlSnpIzFWPEYyolBkuZBHcu5wJtBqovFf69tL5TE-z88rTQ3--0RTI-88vuXntASb_7kpDj8K3LA11dIiqRlQ" alt="Avatar del usuario" class="h-full w-full object-cover" />
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="pb-28 pt-[76px] md:pb-10">
+    <section class="relative overflow-hidden border-b border-[#eaded7] bg-[#fffaf7]">
+      <div class="absolute inset-0 opacity-[0.07]" style="background-image: radial-gradient(circle at 20% 30%, #f47b25 0 2px, transparent 2px), radial-gradient(circle at 80% 70%, #241913 0 1px, transparent 1px); background-size: 28px 28px, 35px 35px;"></div>
+      <div class="relative mx-auto max-w-7xl px-5 py-12 md:px-8 md:py-16 xl:px-10">
+        <div class="max-w-3xl">
+          <span class="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-3.5 py-2 text-xs font-bold uppercase tracking-[0.12em] text-brand-700 shadow-sm">
+            <span class="material-symbols-outlined text-[16px]">public</span>
+            Gastronomía sin fronteras
+          </span>
+          <h1 class="max-w-2xl text-4xl font-extrabold leading-[1.05] tracking-[-0.04em] md:text-6xl">Encuentra algo que realmente quieras cocinar.</h1>
+          <p class="mt-5 max-w-2xl text-base leading-7 text-[#6f625b] md:text-lg">Busca por ingredientes, descubre cocinas del mundo y filtra las recetas según tus preferencias alimenticias.</p>
+        </div>
+
+        <div class="mt-8 rounded-[24px] border border-[#eaded7] bg-white p-3 shadow-soft">
+          <div class="flex flex-col gap-3 lg:flex-row">
+            <label class="flex min-h-14 flex-1 items-center gap-3 rounded-2xl bg-[#f8f7f5] px-4 ring-1 ring-inset ring-transparent focus-within:ring-brand-300">
+              <span class="material-symbols-outlined text-[#8a7b72]">search</span>
+              <input id="recipeSearch" type="search" placeholder="Busca por receta o ingrediente…" class="w-full border-0 bg-transparent p-0 text-sm font-medium outline-none placeholder:text-[#988b83] focus:ring-0 md:text-base" />
+              <span class="hidden rounded-lg bg-white px-2 py-1 text-[11px] font-bold text-[#8a7b72] ring-1 ring-[#eaded7] sm:block">⌘ K</span>
+            </label>
+            <button id="applySearch" type="button" class="rounded-2xl bg-brand-500 px-6 py-4 text-sm font-extrabold text-white transition hover:bg-brand-600 active:scale-[0.99]">Buscar recetas</button>
+          </div>
+        </div>
+
+        <div class="mt-5 flex items-center gap-2 overflow-x-auto pb-1 hide-scrollbar">
+          <span class="shrink-0 text-xs font-bold uppercase tracking-[0.1em] text-[#8a7b72]">Popular:</span>
+          <button type="button" class="quick-search shrink-0 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#5f5149] ring-1 ring-[#eaded7] transition hover:ring-brand-300 hover:text-brand-700" data-search="pollo">Pollo</button>
+          <button type="button" class="quick-search shrink-0 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#5f5149] ring-1 ring-[#eaded7] transition hover:ring-brand-300 hover:text-brand-700" data-search="pasta">Pasta</button>
+          <button type="button" class="quick-search shrink-0 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#5f5149] ring-1 ring-[#eaded7] transition hover:ring-brand-300 hover:text-brand-700" data-search="vegano">Vegano</button>
+          <button type="button" class="quick-search shrink-0 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#5f5149] ring-1 ring-[#eaded7] transition hover:ring-brand-300 hover:text-brand-700" data-search="postre">Postres</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-5 py-8 md:px-8 md:py-10 xl:px-10">
+      <div class="mb-7 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <div class="flex flex-wrap items-center gap-3">
+            <h2 class="text-2xl font-extrabold tracking-[-0.025em] md:text-3xl">Explora recetas</h2>
+            <span id="resultsBadge" class="rounded-full bg-[#eee7e2] px-3 py-1 text-xs font-bold text-[#6f625b]">6 resultados</span>
+          </div>
+          <p class="mt-2 text-sm text-[#7b6e66]">Una colección pensada para que encuentres tu próximo plato sin perder tiempo.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="mobileFiltersBtn" type="button" class="flex flex-1 items-center justify-center gap-2 rounded-xl border border-[#eaded7] bg-white px-4 py-3 text-sm font-bold text-[#51433b] shadow-sm md:hidden">
+            <span class="material-symbols-outlined text-[19px]">tune</span> Filtros
+          </button>
+          <label class="flex items-center gap-2 rounded-xl border border-[#eaded7] bg-white px-3.5 py-2.5 shadow-sm">
+            <span class="text-xs font-bold text-[#8a7b72]">Ordenar</span>
+            <select id="sortSelect" class="border-0 bg-transparent py-0 pl-1 pr-8 text-sm font-bold text-[#3f332d] focus:ring-0">
+              <option value="relevance">Más relevantes</option>
+              <option value="rating">Mejor valoradas</option>
+              <option value="time">Más rápidas</option>
+              <option value="newest">Más recientes</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div id="filtersPanel" class="hidden mb-8 rounded-[24px] md:block border border-[#eaded7] bg-white p-5 shadow-card md:p-6">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <h3 class="text-base font-extrabold">Ajusta tu búsqueda</h3>
+            <p class="mt-1 text-sm text-[#7b6e66]">Combina filtros para encontrar recetas más afines a ti.</p>
+          </div>
+          <button id="clearFilters" type="button" class="shrink-0 rounded-full px-3 py-2 text-xs font-bold text-brand-700 transition hover:bg-[#fff7f1]">Limpiar</button>
+        </div>
+
+        <div class="mt-6 grid gap-6 lg:grid-cols-[1.15fr_1fr_1fr]">
+          <div>
+            <p class="mb-3 text-xs font-extrabold uppercase tracking-[0.1em] text-[#8a7b72]">Preferencias</p>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" class="filter-chip inline-flex items-center gap-1.5 rounded-full border border-[#eaded7] bg-white px-3.5 py-2 text-xs font-bold text-[#5b4d45] transition hover:border-brand-300" data-filter-group="diet" data-filter="Vegano"><span>Vegano</span><span class="chip-check material-symbols-outlined text-[15px]">check</span></button>
+              <button type="button" class="filter-chip inline-flex items-center gap-1.5 rounded-full border border-[#eaded7] bg-white px-3.5 py-2 text-xs font-bold text-[#5b4d45] transition hover:border-brand-300" data-filter-group="diet" data-filter="Sin gluten"><span>Sin gluten</span><span class="chip-check material-symbols-outlined text-[15px]">check</span></button>
+              <button type="button" class="filter-chip inline-flex items-center gap-1.5 rounded-full border border-[#eaded7] bg-white px-3.5 py-2 text-xs font-bold text-[#5b4d45] transition hover:border-brand-300" data-filter-group="diet" data-filter="Sin lácteos"><span>Sin lácteos</span><span class="chip-check material-symbols-outlined text-[15px]">check</span></button>
+              <button type="button" class="filter-chip inline-flex items-center gap-1.5 rounded-full border border-[#eaded7] bg-white px-3.5 py-2 text-xs font-bold text-[#5b4d45] transition hover:border-brand-300" data-filter-group="diet" data-filter="Sin nueces"><span>Sin nueces</span><span class="chip-check material-symbols-outlined text-[15px]">check</span></button>
+            </div>
+          </div>
+
+          <div>
+            <label for="originFilter" class="mb-3 block text-xs font-extrabold uppercase tracking-[0.1em] text-[#8a7b72]">Cocina / origen</label>
+            <div class="relative">
+              <select id="originFilter" class="w-full appearance-none rounded-xl border border-[#eaded7] bg-[#f8f7f5] px-4 py-3 pr-10 text-sm font-semibold text-[#40342d] focus:border-brand-400 focus:ring-brand-200">
+                <option value="">Todas las cocinas</option>
+                <option value="Italiana">Italiana</option>
+                <option value="Mexicana">Mexicana</option>
+                <option value="Francesa">Francesa</option>
+                <option value="Japonesa">Japonesa</option>
+                <option value="India">India</option>
+                <option value="Peruana">Peruana</option>
+              </select>
+              <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-[#8a7b72]">expand_more</span>
+            </div>
+          </div>
+
+          <div>
+            <label for="typeFilter" class="mb-3 block text-xs font-extrabold uppercase tracking-[0.1em] text-[#8a7b72]">Tipo de plato</label>
+            <div class="relative">
+              <select id="typeFilter" class="w-full appearance-none rounded-xl border border-[#eaded7] bg-[#f8f7f5] px-4 py-3 pr-10 text-sm font-semibold text-[#40342d] focus:border-brand-400 focus:ring-brand-200">
+                <option value="">Todos los platos</option>
+                <option value="Plato principal">Plato principal</option>
+                <option value="Entrada">Entrada</option>
+                <option value="Postre">Postre</option>
+                <option value="Desayuno">Desayuno</option>
+              </select>
+              <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-[#8a7b72]">expand_more</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-wrap items-center gap-3 border-t border-[#f0e8e4] pt-5">
+          <label class="flex cursor-pointer items-center gap-2 text-sm font-semibold text-[#5f5149]">
+            <input id="nutritionToggle" type="checkbox" class="rounded border-[#cab9af] text-brand-500 focus:ring-brand-300" />
+            Mostrar información nutricional
+          </label>
+          <span class="h-4 w-px bg-[#eaded7]"></span>
+          <label class="flex cursor-pointer items-center gap-2 text-sm font-semibold text-[#5f5149]">
+            <input id="quickToggle" type="checkbox" class="rounded border-[#cab9af] text-brand-500 focus:ring-brand-300" />
+            Menos de 30 min
+          </label>
+        </div>
+      </div>
+
+      <div id="emptyState" class="hidden rounded-[24px] border border-dashed border-[#d9c8bf] bg-white px-6 py-12 text-center shadow-sm">
+        <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#fff0e6] text-brand-700"><span class="material-symbols-outlined text-3xl">restaurant</span></div>
+        <h3 class="mt-5 text-lg font-extrabold">No encontramos recetas con esos filtros</h3>
+        <p class="mx-auto mt-2 max-w-md text-sm leading-6 text-[#7b6e66]">Prueba quitando un filtro, cambiando el origen o buscando otro ingrediente.</p>
+        <button id="emptyReset" type="button" class="mt-5 rounded-full bg-brand-500 px-5 py-3 text-sm font-extrabold text-white hover:bg-brand-600">Restablecer búsqueda</button>
+      </div>
+
+      <div id="recipeGrid" class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+
+        <!-- Card 1 -->
+        <article class="recipe-card group flex h-full flex-col overflow-hidden rounded-[24px] border border-[#eaded7] bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft" data-search="pizza margherita tomate albahaca queso italiana vegano" data-origin="Italiana" data-type="Plato principal" data-diet="Sin nueces" data-time="90" data-rating="4.9" data-date="6">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6LCg7eYivSVTVA6XjGIq2_r1gsadWEzcvSmUnVSb8YU_c1KOsybJa2k5aLJZ0aihSwOJtdlNchhMlSEvQkijJCjdh3Pr01GWBnNKFvcFFK56YTiDbLdO1-QdVcJ8A7RlFD4PvQo0KatMuhbGNC8V-zuGsXkcXtFyUq6eKMiDltYbyyAA9xT1hOVLUG4Uv3GLYv88Atd1j2VOVZXE1P8jeIN_PHUWYWhajayUQIrxHI4r_LxboJUOKbA" alt="Pizza Margherita con tomate, mozzarella y albahaca" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+            <div class="absolute inset-x-0 top-0 flex items-start justify-between p-4">
+              <span class="rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-extrabold text-[#4c3f38] backdrop-blur">Italia · Clásica</span>
+              <button type="button" class="favorite-button flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#5f5149] backdrop-blur transition hover:text-brand-700" aria-label="Guardar Pizza Margherita">
+                <span class="heart-icon material-symbols-outlined">favorite</span>
+              </button>
+            </div>
+            <div class="absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-[#241913]/80 px-3 py-1.5 text-xs font-bold text-white backdrop-blur"><span class="material-symbols-outlined filled text-[15px]">star</span> 4.9</div>
+          </div>
+          <div class="flex flex-1 flex-col p-5">
+            <div class="flex flex-wrap gap-2 text-[10px] font-extrabold uppercase tracking-[0.08em]">
+              <span class="rounded-full bg-[#fff0e6] px-2.5 py-1 text-brand-700">Plato principal</span>
+              <span class="rounded-full bg-[#f4f4f2] px-2.5 py-1 text-[#6f625b]">Favorita</span>
+            </div>
+            <h3 class="mt-4 text-lg font-extrabold tracking-[-0.02em]">Pizza Margherita Auténtica</h3>
+            <p class="mt-2 line-clamp-2 text-sm leading-6 text-[#74675f]">Masa fermentada lentamente, tomates San Marzano, mozzarella fresca y albahaca.</p>
+            <div class="mt-auto flex items-center gap-4 border-t border-[#f0e8e4] pt-4 mt-5 text-xs font-bold text-[#73665e]">
+              <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[17px]">schedule</span>1 h 30 min</span>
+              <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[17px]">signal_cellular_alt</span>Media</span>
+            </div>
+            <a href="detalle_de_receta_sabor_global.html" class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-[#f4f1ef] px-4 py-3 text-sm font-extrabold text-[#3e332d] transition hover:bg-brand-500 hover:text-white">Ver receta <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="recipe-card group flex h-full flex-col overflow-hidden rounded-[24px] border border-[#eaded7] bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft" data-search="ceviche pescado lima cilantro cebolla mexicana fresco" data-origin="Mexicana" data-type="Entrada" data-diet="Sin gluten Sin lácteos Sin nueces" data-time="25" data-rating="4.8" data-date="5">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw_Oowc5oMbVvL3wpLNC66yfIYNITTVVuOUQC6dCyKNFEUFBJaZ-q9VkcwBenuT1F0GkA2f6cjrhdCNFQtWoM7FJl5jJFzz3pl4vZNbN99MmY7vjmnSXJNGtac6AcQcTjEdwQBlHNzPQ3M-wgqre-EEY4Y4CSS3vkve0dxRXlwvVfk79eW1WpVrYReC8WUjvYHKaMtnH6ogyUif5MMutPW4R20kBGprmQoOuz69EIRiOdrZJmBWOg76A" alt="Ceviche de pescado con lima, aguacate y cilantro" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+            <div class="absolute inset-x-0 top-0 flex items-start justify-between p-4">
+              <span class="rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-extrabold text-[#4c3f38] backdrop-blur">México · Fresco</span>
+              <button type="button" class="favorite-button flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#5f5149] backdrop-blur transition hover:text-brand-700" aria-label="Guardar Ceviche de Pescado">
+                <span class="heart-icon material-symbols-outlined">favorite</span>
+              </button>
+            </div>
+            <div class="absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-[#241913]/80 px-3 py-1.5 text-xs font-bold text-white backdrop-blur"><span class="material-symbols-outlined filled text-[15px]">star</span> 4.8</div>
+          </div>
+          <div class="flex flex-1 flex-col p-5">
+            <div class="flex flex-wrap gap-2 text-[10px] font-extrabold uppercase tracking-[0.08em]"><span class="rounded-full bg-[#eef8ff] px-2.5 py-1 text-[#176a92]">Entrada</span><span class="rounded-full bg-[#f4f4f2] px-2.5 py-1 text-[#6f625b]">25 min</span></div>
+            <h3 class="mt-4 text-lg font-extrabold tracking-[-0.02em]">Ceviche de Pescado Fresco</h3>
+            <p class="mt-2 line-clamp-2 text-sm leading-6 text-[#74675f]">Pescado marinado en cítricos, con chile, cebolla morada, aguacate y cilantro fresco.</p>
+            <div class="mt-auto flex items-center gap-4 border-t border-[#f0e8e4] pt-4 mt-5 text-xs font-bold text-[#73665e]"><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[17px]">schedule</span>25 min</span><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[17px]">signal_cellular_alt</span>Fácil</span></div>
+            <a href="detalle_de_receta_sabor_global.html" class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-[#f4f1ef] px-4 py-3 text-sm font-extrabold text-[#3e332d] transition hover:bg-brand-500 hover:text-white">Ver receta <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="recipe-card group flex h-full flex-col overflow-hidden rounded-[24px] border border-[#eaded7] bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft" data-search="tarta tatin manzana caramelo postre francesa dulce" data-origin="Francesa" data-type="Postre" data-diet="Sin nueces" data-time="75" data-rating="4.7" data-date="4">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPk8Xx4yM-0b4qiN-UrvlCm1nvyecoFX8kHSJcrcH4T7KdvXxrfbtOpchhvHrR0YUCe2_whkKOLRJXFlHnW3YTkENfiLwOFyQM-b9koAuQgGEzL66k3Pb2k5frcZbgvkgIR8S_I-mJyNRd40_O2t3Unc89iyIdNbrzjWUQzGIIFz2sQw4kxxlVCI2nGpdUWNDmPNrLzpq5ugve5D_cmFFBiAirIbtbEA8ScxY6qx7fjrtcDkSmUAW5AQ" alt="Tarta Tatin de manzana caramelizada" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+            <div class="absolute inset-x-0 top-0 flex items-start justify-between p-4"><span class="rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-extrabold text-[#4c3f38] backdrop-blur">Francia · Postre</span><button type="button" class="favorite-button flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#5f5149] backdrop-blur transition hover:text-brand-700" aria-label="Guardar Tarta Tatin"><span class="heart-icon material-symbols-outlined">favorite</span></button></div>
+            <div class="absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-[#241913]/80 px-3 py-1.5 text-xs font-bold text-white backdrop-blur"><span class="material-symbols-outlined filled text-[15px]">star</span> 4.7</div>
+          </div>
+          <div class="flex flex-1 flex-col p-5"><div class="flex flex-wrap gap-2 text-[10px] font-extrabold uppercase tracking-[0.08em]"><span class="rounded-full bg-[#fff3de] px-2.5 py-1 text-[#a35d07]">Postre</span></div><h3 class="mt-4 text-lg font-extrabold tracking-[-0.02em]">Tarta Tatin Clásica</h3><p class="mt-2 line-clamp-2 text-sm leading-6 text-[#74675f]">Manzanas caramelizadas al revés sobre un hojaldre crujiente y mantecoso.</p><div class="mt-auto flex items-center gap-4 border-t border-[#f0e8e4] pt-4 mt-5 text-xs font-bold text-[#73665e]"><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[17px]">schedule</span>1 h 15 min</span><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[17px]">signal_cellular_alt</span>Difícil</span></div><a href="detalle_de_receta_sabor_global.html" class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-[#f4f1ef] px-4 py-3 text-sm font-extrabold text-[#3e332d] transition hover:bg-brand-500 hover:text-white">Ver receta <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a></div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="recipe-card group flex h-full flex-col overflow-hidden rounded-[24px] border border-[#eaded7] bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft" data-search="pollo teriyaki arroz japon japonesa soja sésamo" data-origin="Japonesa" data-type="Plato principal" data-diet="Sin lácteos Sin nueces" data-time="30" data-rating="4.8" data-date="3">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85" alt="Pollo teriyaki servido con arroz" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-x-0 top-0 flex items-start justify-between p-4"><span class="rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-extrabold text-[#4c3f38] backdrop-blur">Japón · 30 min</span><button type="button" class="favorite-button flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#5f5149] backdrop-blur transition hover:text-brand-700" aria-label="Guardar Pollo Teriyaki"><span class="heart-icon material-symbols-outlined">favorite</span></button></div>
+            <div class="absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-[#241913]/80 px-3 py-1.5 text-xs font-bold text-white backdrop-blur"><span class="material-symbols-outlined filled text-[15px]">star</span> 4.8</div>
+          </div>
+          <div class="flex flex-1 flex-col p-5"><div class="flex flex-wrap gap-2 text-[10px] font-extrabold uppercase tracking-[0.08em]"><span class="rounded-full bg-[#fff0e6] px-2.5 py-1 text-brand-700">Plato principal</span><span class="rounded-full bg-[#eaf8f0] px-2.5 py-1 text-[#22724a]">Rápida</span></div><h3 class="mt-4 text-lg font-extrabold tracking-[-0.02em]">Pollo Teriyaki Casero</h3><p class="mt-2 line-clamp-2 text-sm leading-6 text-[#74675f]">Tiras de pollo glaseadas en una salsa dulce-salada con arroz y sésamo.</p><div class="mt-auto flex items-center gap-4 border-t border-[#f0e8e4] pt-4 mt-5 text-xs font-bold text-[#73665e]"><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[17px]">schedule</span>30 min</span><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[17px]">signal_cellular_alt</span>Fácil</span></div><a href="detalle_de_receta_sabor_global.html" class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-[#f4f1ef] px-4 py-3 text-sm font-extrabold text-[#3e332d] transition hover:bg-brand-500 hover:text-white">Ver receta <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a></div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="recipe-card group flex h-full flex-col overflow-hidden rounded-[24px] border border-[#eaded7] bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft" data-search="curry lentejas indio india vegano especias coco" data-origin="India" data-type="Plato principal" data-diet="Vegano Sin gluten Sin lácteos Sin nueces" data-time="35" data-rating="4.9" data-date="2">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=85" alt="Curry de lentejas con especias y verduras" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-x-0 top-0 flex items-start justify-between p-4"><span class="rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-extrabold text-[#4c3f38] backdrop-blur">India · Aromática</span><button type="button" class="favorite-button flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#5f5149] backdrop-blur transition hover:text-brand-700" aria-label="Guardar Curry de Lentejas"><span class="heart-icon material-symbols-outlined">favorite</span></button></div>
+            <div class="absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-[#241913]/80 px-3 py-1.5 text-xs font-bold text-white backdrop-blur"><span class="material-symbols-outlined filled text-[15px]">star</span> 4.9</div>
+          </div>
+          <div class="flex flex-1 flex-col p-5"><div class="flex flex-wrap gap-2 text-[10px] font-extrabold uppercase tracking-[0.08em]"><span class="rounded-full bg-[#eaf8f0] px-2.5 py-1 text-[#22724a]">Vegano</span><span class="rounded-full bg-[#fff0e6] px-2.5 py-1 text-brand-700">Nutritiva</span></div><h3 class="mt-4 text-lg font-extrabold tracking-[-0.02em]">Curry Cremoso de Lentejas</h3><p class="mt-2 line-clamp-2 text-sm leading-6 text-[#74675f]">Lentejas cocidas con tomate, especias y leche de coco para una comida reconfortante.</p><div class="mt-auto flex items-center gap-4 border-t border-[#f0e8e4] pt-4 mt-5 text-xs font-bold text-[#73665e]"><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[17px]">schedule</span>35 min</span><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[17px]">signal_cellular_alt</span>Fácil</span></div><a href="detalle_de_receta_sabor_global.html" class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-[#f4f1ef] px-4 py-3 text-sm font-extrabold text-[#3e332d] transition hover:bg-brand-500 hover:text-white">Ver receta <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a></div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="recipe-card group flex h-full flex-col overflow-hidden rounded-[24px] border border-[#eaded7] bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-soft" data-search="lomo saltado carne papa cebolla peru peruano" data-origin="Peruana" data-type="Plato principal" data-diet="Sin lácteos Sin nueces" data-time="28" data-rating="4.6" data-date="1">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=900&q=85" alt="Lomo saltado peruano con carne, papas y cebolla" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-x-0 top-0 flex items-start justify-between p-4"><span class="rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-extrabold text-[#4c3f38] backdrop-blur">Perú · Potente</span><button type="button" class="favorite-button flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#5f5149] backdrop-blur transition hover:text-brand-700" aria-label="Guardar Lomo Saltado"><span class="heart-icon material-symbols-outlined">favorite</span></button></div>
+            <div class="absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-[#241913]/80 px-3 py-1.5 text-xs font-bold text-white backdrop-blur"><span class="material-symbols-outlined filled text-[15px]">star</span> 4.6</div>
+          </div>
+          <div class="flex flex-1 flex-col p-5"><div class="flex flex-wrap gap-2 text-[10px] font-extrabold uppercase tracking-[0.08em]"><span class="rounded-full bg-[#fff0e6] px-2.5 py-1 text-brand-700">Plato principal</span><span class="rounded-full bg-[#eaf8f0] px-2.5 py-1 text-[#22724a]">28 min</span></div><h3 class="mt-4 text-lg font-extrabold tracking-[-0.02em]">Lomo Saltado Peruano</h3><p class="mt-2 line-clamp-2 text-sm leading-6 text-[#74675f]">Carne salteada con cebolla, tomate y papas fritas, terminada con salsa de soja.</p><div class="mt-auto flex items-center gap-4 border-t border-[#f0e8e4] pt-4 mt-5 text-xs font-bold text-[#73665e]"><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[17px]">schedule</span>28 min</span><span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[17px]">signal_cellular_alt</span>Media</span></div><a href="detalle_de_receta_sabor_global.html" class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-[#f4f1ef] px-4 py-3 text-sm font-extrabold text-[#3e332d] transition hover:bg-brand-500 hover:text-white">Ver receta <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a></div>
+        </article>
+      </div>
+
+      <div id="nutritionNotice" class="mt-8 hidden rounded-2xl border border-[#cce7d7] bg-[#f2fbf5] p-4 text-sm text-[#276346]">
+        <div class="flex items-start gap-3"><span class="material-symbols-outlined">nutrition</span><div><p class="font-extrabold">Vista nutricional activada</p><p class="mt-1">En la implementación final, cada receta podrá mostrar calorías y macronutrientes según los datos disponibles.</p></div></div>
+      </div>
+
+      <div class="mt-10 flex flex-col gap-4 border-t border-[#eaded7] pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <p class="text-sm text-[#7b6e66]">Mostrando <span id="resultCountBottom" class="font-extrabold text-[#40342d]">6</span> recetas de tu selección</p>
+        <button type="button" class="inline-flex items-center justify-center gap-2 rounded-full border border-[#eaded7] bg-white px-5 py-3 text-sm font-extrabold text-[#4c4038] shadow-sm transition hover:border-brand-300 hover:text-brand-700"><span class="material-symbols-outlined text-[18px]">expand_more</span>Cargar más</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Mobile bottom navigation -->
+  <nav class="fixed inset-x-0 bottom-0 z-50 border-t border-[#eaded7] bg-white/95 px-3 py-2 backdrop-blur-xl md:hidden" aria-label="Navegación móvil">
+    <div class="mx-auto grid max-w-md grid-cols-4">
+      <a href="landing_page_sabor_global_redise_o.html" class="flex flex-col items-center gap-1 rounded-xl py-2 text-[#7b6e66]"><span class="material-symbols-outlined">home</span><span class="text-[10px] font-bold">Inicio</span></a>
+      <a href="explorar_recetas_estilo_global_mejorada.html" class="flex flex-col items-center gap-1 rounded-xl bg-[#fff0e6] py-2 text-brand-700" aria-current="page"><span class="material-symbols-outlined filled">explore</span><span class="text-[10px] font-extrabold">Explorar</span></a>
+      <a href="mis_recetas_comunidad_sabor_global.html" class="flex flex-col items-center gap-1 rounded-xl py-2 text-[#7b6e66]"><span class="material-symbols-outlined">groups</span><span class="text-[10px] font-bold">Comunidad</span></a>
+      <a href="../perfil/perfil_de_usuario_sabor_global.html" class="flex flex-col items-center gap-1 rounded-xl py-2 text-[#7b6e66]"><span class="material-symbols-outlined">account_circle</span><span class="text-[10px] font-bold">Perfil</span></a>
+    </div>
+  </nav>
+
+  <footer class="border-t border-[#eaded7] bg-white">
+    <div class="mx-auto grid max-w-7xl gap-8 px-5 py-10 md:grid-cols-[1.3fr_1fr_1fr_1fr] md:px-8 xl:px-10">
+      <div>
+        <a href="landing_page_sabor_global_redise_o.html" class="text-xl font-extrabold tracking-[-0.03em] text-brand-600">Sabor Global</a>
+        <p class="mt-3 max-w-sm text-sm leading-6 text-[#7b6e66]">Tu espacio para descubrir, adaptar, guardar y compartir recetas que encajen contigo.</p>
+      </div>
+      <div><h3 class="text-sm font-extrabold">Explorar</h3><div class="mt-3 space-y-2 text-sm text-[#76685f]"><a href="explorar_recetas_estilo_global_mejorada.html" class="block hover:text-brand-700">Recetas</a><a href="mis_recetas_comunidad_sabor_global.html" class="block hover:text-brand-700">Comunidad</a></div></div>
+      <div><h3 class="text-sm font-extrabold">Mi espacio</h3><div class="mt-3 space-y-2 text-sm text-[#76685f]"><a href="../perfil/perfil_de_usuario_sabor_global.html" class="block hover:text-brand-700">Perfil</a><a href="../perfil/mis_recetas_actualizada_sabor_global.html" class="block hover:text-brand-700">Mis recetas</a><a href="../perfil/planificador_de_comidas_sabor_global.html" class="block hover:text-brand-700">Planificador</a></div></div>
+      <div><h3 class="text-sm font-extrabold">Información</h3><div class="mt-3 space-y-2 text-sm text-[#76685f]"><a href="#" class="block hover:text-brand-700">Privacidad</a><a href="#" class="block hover:text-brand-700">Términos</a><a href="#" class="block hover:text-brand-700">Contacto</a></div></div>
+    </div>
+    <div class="border-t border-[#f0e8e4] px-5 py-4 text-center text-xs text-[#8a7b72]">© 2026 Sabor Global · Descubre sabores, crea momentos.</div>
+  </footer>
+
+  <script>
+    const state = { search: '', origin: '', type: '', diets: new Set(), maxTime: false };
+    const cards = [...document.querySelectorAll('.recipe-card')];
+    const resultsBadge = document.getElementById('resultsBadge');
+    const resultCountBottom = document.getElementById('resultCountBottom');
+    const emptyState = document.getElementById('emptyState');
+    const grid = document.getElementById('recipeGrid');
+    const searchInput = document.getElementById('recipeSearch');
+    const originFilter = document.getElementById('originFilter');
+    const typeFilter = document.getElementById('typeFilter');
+    const quickToggle = document.getElementById('quickToggle');
+    const sortSelect = document.getElementById('sortSelect');
+    const nutritionToggle = document.getElementById('nutritionToggle');
+    const nutritionNotice = document.getElementById('nutritionNotice');
+    const filtersPanel = document.getElementById('filtersPanel');
+
+    function applyFilters() {
+      state.search = searchInput.value.trim().toLowerCase();
+      state.origin = originFilter.value;
+      state.type = typeFilter.value;
+      state.maxTime = quickToggle.checked;
+
+      let visible = cards.filter(card => {
+        const matchesSearch = !state.search || card.dataset.search.includes(state.search);
+        const matchesOrigin = !state.origin || card.dataset.origin === state.origin;
+        const matchesType = !state.type || card.dataset.type === state.type;
+        const matchesDiet = [...state.diets].every(d => card.dataset.diet.includes(d));
+        const matchesTime = !state.maxTime || Number(card.dataset.time) <= 30;
+        const matches = matchesSearch && matchesOrigin && matchesType && matchesDiet && matchesTime;
+        card.classList.toggle('is-hidden', !matches);
+        return matches;
+      });
+
+      const sortBy = sortSelect.value;
+      visible = [...visible].sort((a, b) => {
+        if (sortBy === 'rating') return Number(b.dataset.rating) - Number(a.dataset.rating);
+        if (sortBy === 'time') return Number(a.dataset.time) - Number(b.dataset.time);
+        if (sortBy === 'newest') return Number(b.dataset.date) - Number(a.dataset.date);
+        return Number(b.dataset.rating) - Number(a.dataset.rating) + Number(a.dataset.date) * 0.01;
+      });
+      visible.forEach(card => grid.appendChild(card));
+
+      const count = visible.length;
+      resultsBadge.textContent = `${count} ${count === 1 ? 'resultado' : 'resultados'}`;
+      resultCountBottom.textContent = count;
+      emptyState.classList.toggle('hidden', count !== 0);
+      grid.classList.toggle('hidden', count === 0);
+    }
+
+    document.querySelectorAll('.filter-chip').forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        if (state.diets.has(filter)) state.diets.delete(filter); else state.diets.add(filter);
+        button.classList.toggle('active', state.diets.has(filter));
+        applyFilters();
+      });
+    });
+
+    [originFilter, typeFilter, quickToggle, sortSelect].forEach(control => control.addEventListener('change', applyFilters));
+    searchInput.addEventListener('input', applyFilters);
+    document.getElementById('applySearch').addEventListener('click', applyFilters);
+
+    document.querySelectorAll('.quick-search').forEach(button => {
+      button.addEventListener('click', () => {
+        searchInput.value = button.dataset.search;
+        applyFilters();
+        searchInput.focus();
+      });
+    });
+
+    function resetAll() {
+      state.diets.clear();
+      document.querySelectorAll('.filter-chip').forEach(button => button.classList.remove('active'));
+      searchInput.value = '';
+      originFilter.value = '';
+      typeFilter.value = '';
+      quickToggle.checked = false;
+      sortSelect.value = 'relevance';
+      nutritionToggle.checked = false;
+      nutritionNotice.classList.add('hidden');
+      applyFilters();
+    }
+
+    document.getElementById('clearFilters').addEventListener('click', resetAll);
+    document.getElementById('emptyReset').addEventListener('click', resetAll);
+    nutritionToggle.addEventListener('change', () => nutritionNotice.classList.toggle('hidden', !nutritionToggle.checked));
+
+    document.querySelectorAll('.favorite-button').forEach(button => {
+      button.addEventListener('click', () => {
+        button.classList.toggle('active');
+        button.setAttribute('aria-pressed', button.classList.contains('active'));
+      });
+    });
+
+    document.getElementById('topSearchBtn')?.addEventListener('click', () => searchInput.focus());
+    document.getElementById('mobileFiltersBtn')?.addEventListener('click', () => {
+      filtersPanel.classList.toggle('hidden');
+    });
+
+    // Ctrl/Cmd + K enfoca el buscador.
+    document.addEventListener('keydown', (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        searchInput.focus();
+      }
+    });
+
+    applyFilters();
+  </script>
+</body>
+</html>

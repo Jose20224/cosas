@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sabor Global: recetas personalizadas según tus gustos, restricciones alimenticias y necesidades nutricionales.">
+  <title>Sabor Global — Tu pasaporte culinario</title>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1&amp;family=Material+Symbols+Outlined:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#f47b25",
+            "primary-dark": "#c8570e",
+            "primary-soft": "#fff0e7",
+            background: "#fff8f6",
+            "background-dark": "#221710",
+            surface: "#ffffff",
+            "surface-soft": "#fff1eb",
+            "surface-alt": "#f8f7f5",
+            ink: "#241913",
+            muted: "#6b5b52",
+            line: "#ead8cf",
+            success: "#16a34a",
+            tertiary: "#00658f"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"]
+          },
+          boxShadow: {
+            soft: "0 12px 30px rgba(36, 25, 19, 0.08)",
+            lift: "0 20px 50px rgba(36, 25, 19, 0.12)"
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 24px;
+    }
+    .material-symbols-outlined.filled {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { scrollbar-width: none; }
+  </style>
+</head>
+
+<body class="bg-background text-ink font-sans antialiased selection:bg-primary/20 selection:text-ink">
+  <!-- Header -->
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-background/90 backdrop-blur-xl">
+    <nav class="mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-4 px-5 sm:px-6 lg:px-10" aria-label="Navegación principal">
+      <a href="#inicio" class="shrink-0 text-xl font-extrabold tracking-tight text-primary sm:text-2xl" aria-label="Sabor Global, inicio">
+        Sabor <span class="text-ink">Global</span>
+      </a>
+
+      <div class="hidden items-center gap-7 lg:flex">
+        <a href="#inicio" class="border-b-2 border-primary py-2 text-sm font-bold text-ink">Inicio</a>
+        <a href="./explorar_recetas_estilo_global.html" class="py-2 text-sm font-semibold text-muted transition hover:text-primary">Recetas</a>
+        <a href="./mis_recetas_comunidad_sabor_global.html" class="py-2 text-sm font-semibold text-muted transition hover:text-primary">Comunidad</a>
+        <a href="#personaliza" class="py-2 text-sm font-semibold text-muted transition hover:text-primary">Cómo funciona</a>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div class="relative hidden xl:block">
+          <span class="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted" aria-hidden="true">search</span>
+          <label for="global-search" class="sr-only">Buscar recetas</label>
+          <input id="global-search" type="search" placeholder="Buscar recetas..." class="w-52 rounded-full border border-line bg-white py-2.5 pl-10 pr-4 text-sm outline-none transition placeholder:text-muted/70 focus:border-primary focus:ring-4 focus:ring-primary/10">
+        </div>
+        <a href="#favoritos" class="hidden h-10 w-10 items-center justify-center rounded-full text-primary transition hover:bg-primary-soft sm:flex" aria-label="Favoritos">
+          <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+        </a>
+        <a href="#notificaciones" class="hidden h-10 w-10 items-center justify-center rounded-full text-primary transition hover:bg-primary-soft sm:flex" aria-label="Notificaciones">
+          <span class="material-symbols-outlined" aria-hidden="true">notifications</span>
+        </a>
+        <a href="../Inicio_session_recuperacion/registro_sabor_global.html" class="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-md md:inline-flex">Crear cuenta</a>
+
+        <details class="relative lg:hidden">
+          <summary class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-full border border-line bg-white text-ink transition hover:border-primary hover:text-primary" aria-label="Abrir menú">
+            <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+          </summary>
+          <div class="absolute right-0 mt-3 w-64 rounded-2xl border border-line bg-white p-3 shadow-lift">
+            <a href="#inicio" class="block rounded-xl bg-primary-soft px-4 py-3 text-sm font-bold text-primary">Inicio</a>
+            <a href="./explorar_recetas_estilo_global.html" class="mt-1 block rounded-xl px-4 py-3 text-sm font-semibold text-ink hover:bg-surface-soft">Recetas</a>
+            <a href="./mis_recetas_comunidad_sabor_global.html" class="mt-1 block rounded-xl px-4 py-3 text-sm font-semibold text-ink hover:bg-surface-soft">Comunidad</a>
+            <a href="#personaliza" class="mt-1 block rounded-xl px-4 py-3 text-sm font-semibold text-ink hover:bg-surface-soft">Cómo funciona</a>
+            <div class="my-2 h-px bg-line"></div>
+            <a href="../Inicio_session_recuperacion/registro_sabor_global.html" class="block rounded-xl bg-primary px-4 py-3 text-center text-sm font-bold text-white">Crear cuenta gratis</a>
+          </div>
+        </details>
+      </div>
+    </nav>
+  </header>
+
+  <main id="inicio" class="pt-[72px]">
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(244,123,37,0.13),transparent_34%),linear-gradient(180deg,#fff8f6_0%,#fff8f6_100%)]"></div>
+      <div class="relative mx-auto grid min-h-[680px] max-w-7xl items-center gap-12 px-5 py-16 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-10 lg:py-20">
+        <div class="max-w-2xl">
+          <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary-soft px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary">
+            <span class="material-symbols-outlined text-base" aria-hidden="true">public</span>
+            Tu pasaporte culinario
+          </span>
+
+          <h1 class="mt-6 text-4xl font-extrabold leading-[1.08] tracking-[-0.04em] sm:text-5xl lg:text-6xl">
+            Descubre recetas que se sienten <span class="text-primary">hechas para ti.</span>
+          </h1>
+          <p class="mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg">
+            Explora sabores de todo el mundo y encuentra recetas adaptadas a tus gustos, alergias, intolerancias y necesidades nutricionales.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="./explorar_recetas_estilo_global.html" class="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-primary/20 transition hover:-translate-y-0.5 hover:bg-primary-dark hover:shadow-xl">
+              Explorar recetas
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">arrow_forward</span>
+            </a>
+            <a href="#personaliza" class="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white px-7 py-3.5 text-sm font-bold text-ink transition hover:border-primary hover:text-primary">
+              Cómo funciona
+            </a>
+          </div>
+
+          <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted">
+            <span class="inline-flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[20px]" aria-hidden="true">check_circle</span>Preferencias personales</span>
+            <span class="inline-flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[20px]" aria-hidden="true">check_circle</span>Filtros por restricciones</span>
+            <span class="inline-flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[20px]" aria-hidden="true">check_circle</span>Nutrición opcional</span>
+          </div>
+        </div>
+
+        <div class="relative mx-auto w-full max-w-2xl">
+          <div class="absolute -left-6 top-12 h-24 w-24 rounded-full bg-primary/10 blur-2xl"></div>
+          <div class="absolute -right-6 bottom-4 h-32 w-32 rounded-full bg-tertiary/10 blur-3xl"></div>
+
+          <div class="relative overflow-hidden rounded-[2rem] border border-white/70 bg-white p-2 shadow-lift">
+            <div class="aspect-[4/3] overflow-hidden rounded-[1.6rem] bg-surface-soft">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr1wCsBskYXG2W8MFrnnl-lC6R8I0eXQ6UqYazaDr8RFQZZ8tNhc84y9zcnDfd1AF5R-1YS1kunPStC_33HwQD09ifEN_wmXzPXFYX8YTD-VML0K4E2t2hu7VcBQ8ajaG7THpzQX_xWrdboLVS8-zroOI86oywui37q0-2fc8hjXFkfbz312CfMgbwDs2rx42dtlNVwl7kLmNIuavVWykpOde_6YKphq5wqLUi1MiwD4bNjtcMALD9Qg" alt="Mesa con ingredientes frescos y diferentes platos de cocina internacional" class="h-full w-full object-cover">
+            </div>
+          </div>
+
+          <div class="absolute -bottom-5 left-4 max-w-[230px] rounded-2xl border border-white/80 bg-white/95 p-4 shadow-soft backdrop-blur sm:left-8 sm:max-w-[260px]">
+            <div class="flex items-start gap-3">
+              <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-primary">
+                <span class="material-symbols-outlined" aria-hidden="true">tune</span>
+              </div>
+              <div>
+                <p class="text-sm font-extrabold text-ink">Tu perfil, tus recetas</p>
+                <p class="mt-1 text-xs leading-5 text-muted">Guarda preferencias para descubrir opciones más relevantes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Personalización -->
+    <section id="personaliza" class="border-y border-line/70 bg-white py-20">
+      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
+        <div class="max-w-2xl">
+          <span class="text-xs font-extrabold uppercase tracking-[0.16em] text-primary">Una experiencia más personal</span>
+          <h2 class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Cocina a tu manera</h2>
+          <p class="mt-4 text-base leading-7 text-muted sm:text-lg">Sabor Global no solo te muestra recetas: te ayuda a organizar una experiencia culinaria acorde con tu forma de comer.</p>
+        </div>
+
+        <div class="mt-10 grid gap-5 md:grid-cols-3">
+          <article class="rounded-3xl border border-line bg-background p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-soft text-primary">
+              <span class="material-symbols-outlined" aria-hidden="true">favorite</span>
+            </div>
+            <h3 class="mt-5 text-xl font-bold">Tus preferencias</h3>
+            <p class="mt-2 text-sm leading-6 text-muted">Indica los sabores, estilos de cocina y tipos de recetas que más disfrutas.</p>
+          </article>
+          <article class="rounded-3xl border border-line bg-background p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-green-50 text-success">
+              <span class="material-symbols-outlined" aria-hidden="true">health_and_safety</span>
+            </div>
+            <h3 class="mt-5 text-xl font-bold">Restricciones claras</h3>
+            <p class="mt-2 text-sm leading-6 text-muted">Registra alergias, intolerancias y dietas especiales para filtrar mejor tus opciones.</p>
+          </article>
+          <article class="rounded-3xl border border-line bg-background p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-50 text-tertiary">
+              <span class="material-symbols-outlined" aria-hidden="true">monitoring</span>
+            </div>
+            <h3 class="mt-5 text-xl font-bold">Nutrición a tu alcance</h3>
+            <p class="mt-2 text-sm leading-6 text-muted">Consulta información nutricional cuando quieras y decide cómo prefieres ver tus recetas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experiencias -->
+    <section class="py-20">
+      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
+        <div class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-[0.16em] text-primary">Más que una receta</span>
+            <h2 class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Inspírate, aprende y organiza</h2>
+          </div>
+          <a href="./explorar_recetas_estilo_global.html" class="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-dark">Ver recetas <span class="material-symbols-outlined text-[20px]" aria-hidden="true">arrow_forward</span></a>
+        </div>
+
+        <div class="mt-10 grid gap-5 lg:grid-cols-3">
+          <article class="group relative min-h-[330px] overflow-hidden rounded-3xl bg-surface">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWSqO5LalISTzh11evTpjjmi1WNytFZfJtkv4yqKaQIYLw5k247IP3vvhlpjfVssfcYRiEIASe9oOhLWDQENiFA0MD5iGI6WVShGNtO0GFcOCjD1ZwGmmWaSp1WcM465LuAo48IwYS0Kt76Lc_ApgjdCPpa19YxvmimIK9P6-YPZ01CvxJybmBSQvBY0GHhH0a6sESB4A85IrFh5iZizkDfbFUoQE0Q94J9DKwkiaa080mPpRMhkHtJg" alt="Chef preparando un plato en un wok" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+            <div class="relative flex min-h-[330px] items-end p-7">
+              <div>
+                <span class="rounded-full bg-white/15 px-3 py-1.5 text-xs font-bold text-white backdrop-blur">Masterclass</span>
+                <h3 class="mt-3 text-2xl font-extrabold text-white">Técnicas avanzadas</h3>
+                <p class="mt-2 max-w-md text-sm leading-6 text-white/80">Perfecciona cortes, fuego y presentación con contenido pensado para subir de nivel.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="group relative min-h-[330px] overflow-hidden rounded-3xl bg-surface">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmFEUlOVDpvNyUomurH4mVHDENLzjHFJdaKJouVEwSoh6toxqJdpBj71lazFKadtV48-Rn90mTRHRiWi4ia4Cukz2si9SKuLIINdGyATs54tJk94R27OpopkHujDhHUFMuswvzoF3QX0Y9lBtgTKAvMFb-kFrzsw6IhYWclW8jYH7BM11A9Ffnwvpx-MwDMZah1k36I7OunM0_gec4ndArYRyqi4vvJcdh0uffnCKOhrpZ3YkGL3b8Wg" alt="Preparaciones organizadas para meal prep semanal" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+            <div class="relative flex min-h-[330px] items-end p-7">
+              <div>
+                <span class="rounded-full bg-white/15 px-3 py-1.5 text-xs font-bold text-white backdrop-blur">Organización</span>
+                <h3 class="mt-3 text-2xl font-extrabold text-white">Meal prep semanal</h3>
+                <p class="mt-2 max-w-md text-sm leading-6 text-white/80">Convierte tus recetas favoritas en una semana más ordenada y fácil de planificar.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="group relative min-h-[330px] overflow-hidden rounded-3xl bg-surface">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7O4jHIhbLbtfhYDm7fC0wT6kSQhnLopgSodPUPgd-LOdgOCOMrycRY4RjqSt_qrp_ZVcEir8Rz9m-wf3ym025MX7A6pYL0t4AUrjk-asASO6JkHE4AOvyde2vol9f8-fps_oWvh3ZnGhbr3k5B41lnIGMDnTVKnLu7MdByoaXJrs664PIju8dS436ZykRiwE-MSIlvlJF1wogo9lLQQP7EnSzdcPeeQ0O6vR98sAThYBO-DVbMdyFuQ" alt="Pan de masa madre recién horneado" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+            <div class="relative flex min-h-[330px] items-end p-7">
+              <div>
+                <span class="rounded-full bg-white/15 px-3 py-1.5 text-xs font-bold text-white backdrop-blur">Aprende</span>
+                <h3 class="mt-3 text-2xl font-extrabold text-white">Masa madre fácil</h3>
+                <p class="mt-2 max-w-md text-sm leading-6 text-white/80">Descubre procesos paso a paso para animarte a preparar clásicos desde cero.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Recipes -->
+    <section class="border-y border-line/70 bg-white py-20" aria-labelledby="destacadas-title">
+      <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <span class="text-xs font-extrabold uppercase tracking-[0.16em] text-primary">Para empezar hoy</span>
+            <h2 id="destacadas-title" class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Recetas destacadas</h2>
+            <p class="mt-3 max-w-2xl text-sm leading-6 text-muted">Una selección de favoritos para explorar nuevos sabores, técnicas y culturas.</p>
+          </div>
+          <div class="hide-scrollbar flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label="Categorías de recetas">
+            <button type="button" class="shrink-0 rounded-full bg-primary px-4 py-2 text-xs font-bold text-white">Todas</button>
+            <button type="button" class="shrink-0 rounded-full bg-surface-alt px-4 py-2 text-xs font-bold text-muted transition hover:bg-primary-soft hover:text-primary">Italiana</button>
+            <button type="button" class="shrink-0 rounded-full bg-surface-alt px-4 py-2 text-xs font-bold text-muted transition hover:bg-primary-soft hover:text-primary">Asiática</button>
+            <button type="button" class="shrink-0 rounded-full bg-surface-alt px-4 py-2 text-xs font-bold text-muted transition hover:bg-primary-soft hover:text-primary">Vegetariana</button>
+            <button type="button" class="shrink-0 rounded-full bg-surface-alt px-4 py-2 text-xs font-bold text-muted transition hover:bg-primary-soft hover:text-primary">Postres</button>
+          </div>
+        </div>
+
+        <div class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <a href="./detalle_de_receta_sabor_global.html" class="group flex h-full flex-col overflow-hidden rounded-3xl border border-line/80 bg-background transition hover:-translate-y-1 hover:shadow-lift">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3UkIT9-VyVG9rwKV_mA_gJx7NBxdh0D2mmvQ2KJH7MjZdhvZEvN6c6uVubTXWBX1v6tgnePLwKKQbAAL5vve7DHYcFZE0b5iGKlA-AnYJAIlj1W70nexqSdjJB27kWNJ4Jc88GuKGItPm4HwMss-TMDj0Qu5VrdajONyGT_EMj_jDIG0Q8TJe12Xmo_kM5QPVpnGCEI0CRj0-jp5NvOfh6It2TVoFRlBzOJEa5-C_DgYAbuCkUa0zFQ" alt="Ramen Tonkotsu" class="h-full w-full object-cover transition duration-700 group-hover:scale-105">
+              <span class="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1.5 text-xs font-extrabold text-ink shadow-sm">4.9 ★</span>
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <div class="flex flex-wrap gap-2">
+                <span class="rounded-full bg-sky-50 px-2.5 py-1 text-[11px] font-bold text-tertiary">Asiática</span>
+                <span class="rounded-full bg-primary-soft px-2.5 py-1 text-[11px] font-bold text-primary">Sopa</span>
+              </div>
+              <h3 class="mt-4 text-lg font-bold">Ramen Tonkotsu Auténtico</h3>
+              <p class="mt-2 line-clamp-2 text-sm leading-6 text-muted">Caldo profundo, fideos frescos y chashu tierno para una experiencia japonesa reconfortante.</p>
+              <div class="mt-5 flex items-center justify-between border-t border-line/70 pt-4 text-xs font-semibold text-muted">
+                <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px]">schedule</span>12 hrs</span>
+                <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px]">signal_cellular_alt</span>Difícil</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="./detalle_de_receta_sabor_global.html" class="group flex h-full flex-col overflow-hidden rounded-3xl border border-line/80 bg-background transition hover:-translate-y-1 hover:shadow-lift">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0CYnVnaUJALYzUwx1tnZDauOhzCJfB6SyEfG_t4Pg0y5UJFiscV-q9rvKcH2p3GvAi-ctbEtydelIeVgnRGzpIg_sjxc3UMnQ8VMalGo1-IV3UqWwM4BESm1NqudTICtB93VuSLyLIf0o0BpsFjeBU_X1nAVAyRTZd_O_BB5AxXubZGFXWKbk80nlMH6uc036s5YbtwVo8BbnJy4O8gm99aR6PkvrE4GCzmozVWOGsQr_JClIBF1OdQ" alt="Pizza Margherita" class="h-full w-full object-cover transition duration-700 group-hover:scale-105">
+              <span class="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1.5 text-xs font-extrabold text-ink shadow-sm">4.8 ★</span>
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <div class="flex flex-wrap gap-2">
+                <span class="rounded-full bg-primary-soft px-2.5 py-1 text-[11px] font-bold text-primary">Italiana</span>
+                <span class="rounded-full bg-amber-50 px-2.5 py-1 text-[11px] font-bold text-amber-700">Clásica</span>
+              </div>
+              <h3 class="mt-4 text-lg font-bold">Pizza Margherita Clásica</h3>
+              <p class="mt-2 line-clamp-2 text-sm leading-6 text-muted">Masa fermentada lentamente, tomate, mozzarella y albahaca para un clásico lleno de sabor.</p>
+              <div class="mt-5 flex items-center justify-between border-t border-line/70 pt-4 text-xs font-semibold text-muted">
+                <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px]">schedule</span>2 hrs</span>
+                <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px]">signal_cellular_alt</span>Media</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="./detalle_de_receta_sabor_global.html" class="group flex h-full flex-col overflow-hidden rounded-3xl border border-line/80 bg-background transition hover:-translate-y-1 hover:shadow-lift">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHpqb8uTtqHSr5yAl-P0lRnA83wVhMdRImSVmV8T7cNfZAuQK9wHW1PhwSx4vDDRZvwnHNuno5gcvCNDG_Vp2ZbslG2Xsc3BmRhIvfRyvJtAdcsXXJ10zOJG7jtDrMjIwFKhAFvOOyBh5q9mS1cGjA1qzKgd-qi8souiENxYOJvc7-g93PjPH3AieV9ENDtxhpfmhMP-AaNh_rpYNjwgAYF9UjjmK_qSVsHTdXHct3GILPJDx_Vczcq3dqACIEXrGVKjMNiuomkmDZ" alt="Bowl de quinoa y aguacate" class="h-full w-full object-cover transition duration-700 group-hover:scale-105">
+              <span class="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1.5 text-xs font-extrabold text-ink shadow-sm">4.7 ★</span>
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <div class="flex flex-wrap gap-2">
+                <span class="rounded-full bg-green-50 px-2.5 py-1 text-[11px] font-bold text-success">Vegetariana</span>
+                <span class="rounded-full bg-sky-50 px-2.5 py-1 text-[11px] font-bold text-tertiary">Saludable</span>
+              </div>
+              <h3 class="mt-4 text-lg font-bold">Bowl de Quinoa y Aguacate</h3>
+              <p class="mt-2 line-clamp-2 text-sm leading-6 text-muted">Quinoa, vegetales frescos y un aderezo cremoso de tahini y limón.</p>
+              <div class="mt-5 flex items-center justify-between border-t border-line/70 pt-4 text-xs font-semibold text-muted">
+                <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px]">schedule</span>25 min</span>
+                <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px]">signal_cellular_alt</span>Fácil</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="./detalle_de_receta_sabor_global.html" class="group flex h-full flex-col overflow-hidden rounded-3xl border border-line/80 bg-background transition hover:-translate-y-1 hover:shadow-lift">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr1wCsBskYXG2W8MFrnnl-lC6R8I0eXQ6UqYazaDr8RFQZZ8tNhc84y9zcnDfd1AF5R-1YS1kunPStC_33HwQD09ifEN_wmXzPXFYX8YTD-VML0K4E2t2hu7VcBQ8ajaG7THpzQX_xWrdboLVS8-zroOI86oywui37q0-2fc8hjXFkfbz312CfMgbwDs2rx42dtlNVwl7kLmNIuavVWykpOde_6YKphq5wqLUi1MiwD4bNjtcMALD9Qg" alt="Fondant de chocolate" class="h-full w-full object-cover transition duration-700 group-hover:scale-105">
+              <span class="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1.5 text-xs font-extrabold text-ink shadow-sm">5.0 ★</span>
+            </div>
+            <div class="flex flex-1 flex-col p-5">
+              <div class="flex flex-wrap gap-2">
+                <span class="rounded-full bg-pink-50 px-2.5 py-1 text-[11px] font-bold text-pink-700">Postre</span>
+                <span class="rounded-full bg-primary-soft px-2.5 py-1 text-[11px] font-bold text-primary">Horneado</span>
+              </div>
+              <h3 class="mt-4 text-lg font-bold">Fondant de Chocolate Oscuro</h3>
+              <p class="mt-2 line-clamp-2 text-sm leading-6 text-muted">Centro líquido, chocolate intenso y una presentación pensada para sorprender.</p>
+              <div class="mt-5 flex items-center justify-between border-t border-line/70 pt-4 text-xs font-semibold text-muted">
+                <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px]">schedule</span>40 min</span>
+                <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px]">signal_cellular_alt</span>Media</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="mt-8 text-center">
+          <a href="./explorar_recetas_estilo_global.html" class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-6 py-3 text-sm font-bold text-ink transition hover:border-primary hover:text-primary">Ver todas las recetas <span class="material-symbols-outlined text-[20px]" aria-hidden="true">arrow_forward</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community CTA -->
+    <section class="px-5 py-20 sm:px-6 lg:px-10">
+      <div class="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-ink px-6 py-12 text-white sm:px-10 lg:px-14">
+        <div class="grid items-center gap-8 lg:grid-cols-[1fr_auto]">
+          <div>
+            <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-white/80">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">restaurant_menu</span>
+              Comunidad Sabor Global
+            </span>
+            <h2 class="mt-4 max-w-3xl text-3xl font-extrabold tracking-tight sm:text-4xl">Guarda tus favoritas y comparte tus propias creaciones.</h2>
+            <p class="mt-4 max-w-2xl text-sm leading-6 text-white/70 sm:text-base">Crea tu cuenta gratis para organizar recetas, participar en la comunidad y construir un perfil culinario que te represente.</p>
+          </div>
+          <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <a href="../Inicio_session_recuperacion/registro_sabor_global.html" class="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-bold text-white transition hover:bg-primary-dark">Crear cuenta gratis <span class="material-symbols-outlined text-[20px]">arrow_forward</span></a>
+            <a href="./mis_recetas_comunidad_sabor_global.html" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-bold text-white transition hover:bg-white/10">Explorar comunidad</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-line bg-white">
+    <div class="mx-auto max-w-7xl px-5 py-12 sm:px-6 lg:px-10">
+      <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div>
+          <a href="#inicio" class="text-2xl font-extrabold tracking-tight text-primary">Sabor <span class="text-ink">Global</span></a>
+          <p class="mt-4 max-w-sm text-sm leading-6 text-muted">Tu pasaporte culinario para descubrir, personalizar, guardar y compartir recetas de todo el mundo.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-extrabold uppercase tracking-wider text-ink">Explora</h3>
+          <div class="mt-4 space-y-3 text-sm text-muted">
+            <a class="block hover:text-primary" href="./explorar_recetas_estilo_global.html">Recetas</a>
+            <a class="block hover:text-primary" href="../mis_recetas_comunidad_sabor_global.html">Comunidad</a>
+            <a class="block hover:text-primary" href="#personaliza">Cómo funciona</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-sm font-extrabold uppercase tracking-wider text-ink">Cuenta</h3>
+          <div class="mt-4 space-y-3 text-sm text-muted">
+            <a class="block hover:text-primary" href="../Inicio_session_recuperacion/registro_sabor_global.html">Crear cuenta</a>
+            <a class="block hover:text-primary" href="#favoritos">Favoritos</a>
+            <a class="block hover:text-primary" href="#notificaciones">Notificaciones</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-sm font-extrabold uppercase tracking-wider text-ink">Información</h3>
+          <div class="mt-4 space-y-3 text-sm text-muted">
+            <a class="block hover:text-primary" href="#sobre-nosotros">Sobre nosotros</a>
+            <a class="block hover:text-primary" href="#privacidad">Privacidad</a>
+            <a class="block hover:text-primary" href="#terminos">Términos</a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-10 flex flex-col gap-3 border-t border-line pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+        <p>© 2026 Sabor Global. Recetas con alma.</p>
+        <p>Hecho para amantes de la cocina.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

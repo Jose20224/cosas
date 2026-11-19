@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f47b25",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#221710",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 md:px-20 py-4 bg-background-light dark:bg-background-dark">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-[-0.015em] font-display">Sabor Global</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Recetas</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Categorías</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Favoritos</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="hidden sm:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden border border-primary/20">
+<div class="text-primary flex bg-white dark:bg-slate-800 items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-0 h-full placeholder:text-slate-400 px-4 pl-2 text-sm font-normal" placeholder="Buscar recetas..." value="">
+</div>
+</label>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary" data-alt="User profile picture of a chef" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAR8-BSjY8jJGSkCyrXYyFCOWFJHugtML9QevXI8v7qEK3QDCz_lUBZJdR4h7pTdwXEGR-O045UVqQRDZsDY5M8m7tZj4L_I_uQkaZibnV43NiSY6nHQTMNiJNuzj5tR5I-wLEVD-AIBw3-1EgvhdwSP05_oq-296Q3AbdiQ1f-nqEkV0a-nih54EpbtHDUs-1M_8NC4mIkxNy3WpPGhpBaooGxl89HyS7DFk3x6cTEpMUNMn5lef4eUF8Q4VnCaVoFdv2ENwFswL_B&quot;);"></div>
+</div>
+</header>
+<!-- Main Content (404 Error) -->
+<main class="flex-1 flex flex-col items-center justify-center px-6 py-12 md:py-24">
+<div class="max-w-2xl w-full text-center flex flex-col items-center gap-8">
+<!-- Illustration Area -->
+<div class="relative w-full max-w-md aspect-video rounded-xl overflow-hidden bg-primary/5 flex items-center justify-center border-2 border-dashed border-primary/20">
+<div class="flex flex-col items-center gap-4 text-primary/40">
+<span class="material-symbols-outlined text-8xl">restaurant_menu</span>
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent"></div>
+<img alt="Broken white ceramic plate on a wooden floor" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay" data-alt="Broken white ceramic plate on a kitchen floor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYKIK74pKjNUgCFezBcQ6-gd3yPyIanPtDygxj1Wby5xWMV9kliMNFRUeMDhXnwz0Kx9668w_x4OXLayP37HffSZR4MwLrrvRIyc4A82-bbUrLDBraqugY3YpuTPMdso4WNeat6BuVanRLKvjWpVbhaoPRlbCMycIMDzD07c6Vi2QUPDyt4eM2TtToTgFYnL0gTv4zGejoQhqqy4zvjPu4PFJCmEj7v2u66_GDOg4_Si4C5TTT5m-HuVljCC4eMmVnWSILvxMbwuYg">
+</div>
+<div class="absolute top-4 right-4 bg-primary text-white font-bold px-4 py-2 rounded-lg shadow-lg rotate-12 text-2xl font-display">
+                        404
+                    </div>
+</div>
+<!-- Text Content -->
+<div class="space-y-4">
+<h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-100 font-display tracking-tight">
+                        ¡Ups! Plato no encontrado
+                    </h1>
+<p class="text-lg text-slate-600 dark:text-slate-400 max-w-lg mx-auto leading-relaxed">
+                        Parece que la página que buscas se ha esfumado de la cocina. No te preocupes, siempre podemos empezar una receta nueva.
+                    </p>
+</div>
+<!-- CTA Buttons -->
+<div class="flex flex-col sm:flex-row items-center gap-4 w-full justify-center mt-4">
+<a class="flex min-w-[200px] items-center justify-center gap-2 rounded-xl h-14 px-8 bg-primary text-white text-lg font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20" href="#">
+<span class="material-symbols-outlined">home</span>
+<span>Volver al Inicio</span>
+</a>
+<a class="flex min-w-[200px] items-center justify-center gap-2 rounded-xl h-14 px-8 bg-primary/10 text-primary text-lg font-bold hover:bg-primary/20 transition-all" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span>Explorar Recetas</span>
+</a>
+</div>
+<!-- Suggestion section -->
+<div class="mt-12 pt-12 border-t border-slate-200 dark:border-slate-800 w-full">
+<p class="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-6">Tal vez te interese:</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="p-4 rounded-lg bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary/50 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">local_fire_department</span>
+<p class="text-sm font-bold">Populares</p>
+</div>
+<div class="p-4 rounded-lg bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary/50 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">timer</span>
+<p class="text-sm font-bold">Rápidas</p>
+</div>
+<div class="p-4 rounded-lg bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary/50 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">eco</span>
+<p class="text-sm font-bold">Veganas</p>
+</div>
+<div class="p-4 rounded-lg bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-primary/50 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary mb-2 group-hover:scale-110 transition-transform">cake</span>
+<p class="text-sm font-bold">Postres</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="flex flex-col gap-8 px-6 md:px-20 py-12 text-center bg-white dark:bg-slate-900/50 border-t border-primary/5 mt-auto">
+<div class="flex flex-wrap items-center justify-center gap-8 md:gap-16">
+<a class="text-slate-500 dark:text-slate-400 text-base font-medium hover:text-primary transition-colors" href="#">Privacidad</a>
+<a class="text-slate-500 dark:text-slate-400 text-base font-medium hover:text-primary transition-colors" href="#">Términos</a>
+<a class="text-slate-500 dark:text-slate-400 text-base font-medium hover:text-primary transition-colors" href="#">Contacto</a>
+<a class="text-slate-500 dark:text-slate-400 text-base font-medium hover:text-primary transition-colors" href="#">Sobre Nosotros</a>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex justify-center gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">language</span></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+</div>
+<p class="text-slate-400 dark:text-slate-500 text-sm font-medium">© 2024 Sabor Global. Todos los derechos reservados de la cocina.</p>
+</div>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis Recetas · Sabor Global</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{colors:{primary:"#f47b25","background-light":"#f8f7f5","background-dark":"#221710"}}}}
+if(localStorage.getItem('sg-theme')==='dark')document.documentElement.classList.add('dark');
+</script>
+<style>
+body{font-family:'Plus Jakarta Sans',sans-serif}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.filled-icon{font-variation-settings:'FILL' 1}
+.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{scrollbar-width:none}
+:focus-visible{outline:2px solid #f47b25;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body class="bg-background-light text-slate-900 dark:bg-background-dark dark:text-slate-100">
+<div id="toast" class="fixed left-1/2 top-5 z-[100] hidden -translate-x-1/2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-xl dark:bg-white dark:text-slate-900" role="status"></div>
+
+<header class="sticky top-0 z-50 border-b border-primary/10 bg-white/90 backdrop-blur dark:bg-background-dark/90">
+<div class="mx-auto flex max-w-[1600px] items-center justify-between gap-4 px-4 py-3 md:px-10">
+<a href="landing_page_sabor_global_redise_o.html" class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white"><span class="material-symbols-outlined">restaurant_menu</span></span><span class="text-lg font-extrabold tracking-tight">Sabor Global</span></a>
+<nav class="hidden items-center gap-6 md:flex" aria-label="Principal">
+<a href="landing_page_sabor_global_redise_o.html" class="text-sm font-semibold text-slate-500 hover:text-primary dark:text-slate-400">Inicio</a>
+<a href="explorar_recetas_estilo_global.html" class="text-sm font-semibold text-slate-500 hover:text-primary dark:text-slate-400">Explorar</a>
+<a href="mis_recetas_comunidad_sabor_global.html" class="text-sm font-semibold text-slate-500 hover:text-primary dark:text-slate-400">Comunidad</a>
+</nav>
+<div class="flex items-center gap-1">
+<button id="themeBtn" type="button" aria-label="Cambiar tema" class="rounded-full p-2 text-slate-600 hover:bg-primary/10 dark:text-slate-300"><span class="material-symbols-outlined">dark_mode</span></button>
+<button type="button" aria-label="Notificaciones" class="rounded-full p-2 text-slate-600 hover:bg-primary/10 dark:text-slate-300"><span class="material-symbols-outlined">notifications</span></button>
+<div class="ml-1 flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary bg-primary/10 text-sm font-extrabold text-primary">ER</div>
+</div></div></header>
+
+
+<div class="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-6 md:flex-row md:gap-8 md:px-10 md:py-8">
+ <aside class="hidden w-64 shrink-0 md:block">
+      <div class="sticky top-24 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <div class="mb-5 px-2">
+          <h1 class="text-lg font-extrabold">Ajustes</h1>
+          <p class="mt-1 text-sm leading-5 text-slate-500 dark:text-slate-400">Gestiona tu experiencia culinaria.</p>
+        </div>
+        <nav class="space-y-1" aria-label="Ajustes de cuenta">
+          <a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-700 transition hover:bg-primary/10 hover:text-primary dark:text-slate-300"" href="./perfil_de_usuario_sabor_global_mejorada.html">
+            <span class="material-symbols-outlined">person</span><span class="text-sm">Mi Perfil</span>
+          </a>
+          <a class="nav-active flex items-center gap-3 rounded-xl bg-primary px-4 py-3 font-bold text-white" href="./mis_recetas_sabor_global_mejorada.html">
+            <span class="material-symbols-outlined">restaurant_menu</span><span class="text-sm">Mis Recetas</span>
+          </a>
+          <a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-700 transition hover:bg-primary/10 hover:text-primary dark:text-slate-300" href="./planificador_de_comidas_sabor_global_mejorado.html">
+            <span class="material-symbols-outlined">calendar_month</span><span class="text-sm">Planificador</span>
+          </a>
+          <a class="flex items-center gap-3 rounded-xl px-4 py-3 text-slate-700 transition hover:bg-primary/10 hover:text-primary dark:text-slate-300" href="./seguridad_sabor_global_mejorada.html">
+            <span class="material-symbols-outlined">shield_lock</span><span class="text-sm">Seguridad</span>
+          </a>
+          <div class="my-4 border-t border-slate-200 dark:border-slate-800"></div>
+          <button id="logoutBtn" type="button" class="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-red-500 transition hover:bg-red-50 dark:hover:bg-red-950/30">
+            <span class="material-symbols-outlined">logout</span><span class="text-sm font-semibold">Cerrar sesión</span>
+          </button>
+        </nav>
+      </div>
+    </aside>
+
+<main class="min-w-0 flex-1">
+<div class="flex flex-col justify-between gap-4 md:flex-row md:items-center">
+<div><h2 class="text-3xl font-black tracking-tight">Mis Recetas</h2><p class="mt-1 text-slate-500 dark:text-slate-400">Explora las creaciones culinarias de la comunidad.</p></div>
+<button id="shareBtn" type="button" class="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white shadow-lg shadow-primary/20 transition hover:brightness-95"><span class="material-symbols-outlined">add_circle</span>Compartir mi Receta</button>
+</div>
+
+<div class="mt-6 flex flex-col gap-3 sm:flex-row">
+<label class="relative flex-1"><span class="sr-only">Buscar recetas</span>
+<span class="material-symbols-outlined pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input id="search" type="search" placeholder="Buscar por receta o autor..." class="w-full rounded-2xl border-2 border-primary/10 bg-white py-3.5 pl-12 pr-4 text-base shadow-sm focus:border-primary/40 focus:ring-0 dark:bg-slate-800"></label>
+<label class="sr-only" for="sort">Ordenar</label>
+<select id="sort" class="rounded-2xl border-2 border-primary/10 bg-white py-3.5 pl-4 pr-10 text-sm font-semibold shadow-sm focus:border-primary/40 focus:ring-0 dark:bg-slate-800">
+<option value="pop">Más populares</option><option value="rate">Mejor valoradas</option><option value="time">Más rápidas</option><option value="kcal">Menos calorías</option>
+</select>
+</div>
+
+<div id="chips" class="no-scrollbar mt-4 flex gap-2 overflow-x-auto pb-2"></div>
+<div class="mt-2 flex items-center justify-between text-sm text-slate-500 dark:text-slate-400">
+<p id="count" aria-live="polite"></p>
+<button id="favOnly" type="button" aria-pressed="false" class="inline-flex items-center gap-1 rounded-full px-3 py-1 font-semibold hover:bg-primary/10"><span class="material-symbols-outlined text-lg">favorite</span>Solo favoritas</button>
+</div>
+
+<div id="grid" class="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
+<div id="empty" class="hidden rounded-2xl border-2 border-dashed border-slate-200 p-12 text-center dark:border-slate-700">
+<span class="material-symbols-outlined text-5xl text-slate-300">search_off</span>
+<p class="mt-3 font-extrabold">No encontramos recetas con esos filtros</p>
+<button id="reset" type="button" class="mt-4 rounded-xl bg-primary px-5 py-2.5 text-sm font-bold text-white">Limpiar filtros</button>
+</div>
+<div class="mt-8 flex justify-center"><button id="more" type="button" class="rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-bold hover:border-primary hover:text-primary dark:border-slate-700 dark:bg-slate-800">Cargar más recetas</button></div>
+</main>
+</div>
+<footer class="border-t border-slate-200 py-8 text-center text-sm text-slate-400 dark:border-slate-800">© 2026 Sabor Global. Cocina inteligente para un mundo mejor.</footer>
+
+<script>
+const IMG=["https://lh3.googleusercontent.com/aida-public/AB6AXuB0iIGkUfZDAtVWc42EzvPidLTjivBwdAqn4G_3DNJj8gJNJTcFhRUoJ0Wp-lSpBX0xDXt9Nk0tVhfjMELKkf-Au7NNmCMseZkC0wBRcwIaibmWr49Ae1k2BYgM25AIesT4RqWzGj1L9RIFnnTMnVMQkHT5kzjA7vcHSWCZcEeOj_6C2_HRIRtyXja9diJ7mDeRLS1B56mFxskFBueFHd5oWtSZod1FVh7MByib1ozCDeq9SkZmnb_1oQ0qzkRAhQrBliTdR6NpO2Z0", "https://lh3.googleusercontent.com/aida-public/AB6AXuDMHcURSjo-WswRJlsH58K0lqbo1ErUzwGbjqt3ZIsmFUhjPoiyR7GElETJR2pi_C2X3ff67JTJQ-T6phZcDHhh1YaxRWz93DWOWK3YR2eqq_dwDXV-n0GLY2-wW7epYRsN8ROuAUAXIJYNgKXSlOKj-8vpew31v0GRqaJRib19MYFM_R5-H8x2Gy_v2M5VmiuTtNCEWrVsenZ8scXwCXuIHUqIV8Iaieci2N2_jqOP7gmHTZwDh6RoUNvS8pcr9DT0XUl3x5bgEypQ", "https://lh3.googleusercontent.com/aida-public/AB6AXuCkmtLocZnm7GYiokWSEwXDSfilg1WMgdlDWW4d7fRbyswxg87c3gLRWbH4Q0ZOogfdgWWfmOGQT3Wrqn-nRhMSkjP8cVWdtZPIlcOMOGqP5ynF4mtfbG0o8uqFKmRVqS-UbKDOvQNK9-bzDq6jlrvSGjE4J5F6O7kACh384YpJ7hKnam2IE50aEckztpMh7TLkxkP9NDYJQ1q8xCCG1xa4LFrwquyHuVpx8WzDZ5MvQDQaBCmUjjIdlh-evcN9absW9Pf8-id3wfJu", "https://lh3.googleusercontent.com/aida-public/AB6AXuAHpqb8uTtqHSr5yAl-P0lRnA83wVhMdRImSVmV8T7cNfZAuQK9wHW1PhwSx4vDDRZvwnHNuno5gcvCNDG_Vp2ZbslG2Xsc3BmRhIvfRyvJtAdcsXXJ10zOJG7jtDrMjIwFKhAFvOOyBh5q9mS1cGjA1qzKgd-qi8souiENxYOJvc7-g93PjPH3AieV9ENDtxhpfmhMP-AaNh_rpYNjwgAYF9UjjmK_qSVsHTdXHct3GILPJDx_Vczcq3dqACIEXrGVKjMNiuomkmDZ", "https://lh3.googleusercontent.com/aida-public/AB6AXuBNAxrlxiYg4f97p5I3Vcvcs1b1YHhob9HVPIoe-cDMegmiyfJEAQ0uTLFX0JH5tjP-JROreSq3kO86ZRH2RBx41z44Kq7dbDXUzW8JLISrccZxw0AIAwA2tmNcZWUS4dRV4eI-8LJKWo5kwq9sEiusdCzYdKTt1ksdf-JNR5dI4sHCXmapUIHNdHTN328tk1D2NwhgxKoY-Vokqb5IpeJbKuZwkDNWtNsB4MyJ9pSUAEgjQI1YjkD3kQaiLTRKAMlOXPDpvW2LMRYw", "https://lh3.googleusercontent.com/aida-public/AB6AXuD54OtBAhSSexWyxPjKrctk8sgVSAMOqUik7LdOzaB-sMpGmPoiubQ4rkHVCaJ1ONcSEjWKnlhBVFnXsBx1yYwlCxnW1je88HQx6Q8D9kbLpXPc_SRXUUFx9EJDgMwKYH3JZXTfaGdfeRVr2IbvFXszlHbC9E3LDIIvr7-Vp_H5KjkQGmnl_2Uxe-ypmLyKQbsD-rZQe2zuzC2kBTASMLPoHomI3n8a5y005Um9YBwC9mKVhiPe0Wb9rnsv-wobbm9067_6XpNPNVGi"];
+const R=[
+["Bowl de Quinoa y Aguacate Mediterráneo","Elena Rodríguez","Vegano",4.5,128,20,340],
+["Ensalada de Salmón y Espinacas","Marc Soler","Keto",5,85,15,410],
+["Brownie sin Gluten de Chocolate Intenso","Sofía Luna","Sin Gluten",4,210,45,280],
+["Pasta Carbonara Tradicional","David Gil","Rápido",4,345,15,520],
+["Wok de Fideos con Tofu Ahumado","Marta Ruíz","Vegano",4,56,25,310],
+["Poke Bowl de Atún y Sésamo","Alex Torres","Keto",5,92,10,380]
+].map((r,i)=>({id:i,title:r[0],by:r[1],tag:r[2],rate:r[3],rev:r[4],min:r[5],kcal:r[6],img:IMG[i],fav:i===1}));
+const TAGS=[["Todos","apps"],["Vegano","eco","text-green-500"],["Keto","fitness_center","text-orange-400"],["Rápido","timer","text-blue-400"],["Postres","cake","text-pink-400"],["Sin Gluten","no_accounts","text-yellow-500"]];
+const $=id=>document.getElementById(id);
+let tag="Todos",q="",favOnly=false,sort="pop",shown=6;
+const toast=m=>{const t=$('toast');t.textContent=m;t.classList.remove('hidden');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.add('hidden'),2200)};
+const stars=n=>[1,2,3,4,5].map(i=>`<span class="material-symbols-outlined text-lg ${n>=i?'filled-icon':''}">${n>=i?'star':n>=i-.5?'star_half':'star'}</span>`).join('');
+function chips(){$('chips').innerHTML=TAGS.map(([n,ic,c])=>{const on=n===tag;return `<button type="button" data-tag="${n}" aria-pressed="${on}" class="flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition ${on?'bg-primary text-white':'border border-slate-200 bg-white font-medium hover:border-primary dark:border-slate-700 dark:bg-slate-800'}"><span class="material-symbols-outlined text-lg ${on?'':c||''}">${ic}</span>${n}</button>`}).join('')}
+function render(){
+ let l=R.filter(r=>(tag==="Todos"||r.tag===tag)&&(!favOnly||r.fav)&&(r.title+r.by).toLowerCase().includes(q));
+ const s={pop:(a,b)=>b.rev-a.rev,rate:(a,b)=>b.rate-a.rate,time:(a,b)=>a.min-b.min,kcal:(a,b)=>a.kcal-b.kcal}[sort];l.sort(s);
+ $('count').textContent=l.length+(l.length===1?' receta':' recetas');
+ $('empty').classList.toggle('hidden',l.length>0);$('more').parentElement.classList.toggle('hidden',l.length<=shown);
+ $('grid').innerHTML=l.slice(0,shown).map(r=>`<article class="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:shadow-xl dark:border-slate-700 dark:bg-slate-800">
+<div class="relative h-48 overflow-hidden"><a href="detalle_de_receta_sabor_global_mejorada.html" aria-label="Ver ${r.title}"><img src="${r.img}" alt="${r.title}" loading="lazy" class="h-full w-full object-cover transition duration-500 group-hover:scale-105"></a>
+<button type="button" data-fav="${r.id}" aria-pressed="${r.fav}" aria-label="Guardar en favoritas" class="absolute right-3 top-3 rounded-full bg-white/90 p-2 shadow-sm dark:bg-slate-800/90 ${r.fav?'text-red-500':'text-slate-400 hover:text-red-500'}"><span class="material-symbols-outlined text-xl ${r.fav?'filled-icon':''}">favorite</span></button>
+<span class="absolute bottom-3 left-3 rounded-full bg-white/90 px-2.5 py-1 text-xs font-bold text-primary dark:bg-slate-800/90">${r.tag}</span></div>
+<div class="p-4"><h3 class="mb-2 line-clamp-2 text-lg font-bold leading-snug"><a href="detalle_de_receta_sabor_global_mejorada.html" class="hover:text-primary">${r.title}</a></h3>
+<div class="mb-3 flex items-center gap-2"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-[10px] font-extrabold text-primary">${r.by.split(' ').map(w=>w[0]).join('')}</span><span class="text-xs font-medium text-slate-500 dark:text-slate-400">Por ${r.by}</span></div>
+<div class="mb-4 flex items-center gap-1 text-yellow-500">${stars(r.rate)}<span class="ml-1 text-xs font-medium text-slate-400">(${r.rev} reseñas)</span></div>
+<div class="flex items-center justify-between border-t border-slate-100 pt-3 text-slate-500 dark:border-slate-700 dark:text-slate-400"><span class="flex items-center gap-1 text-xs font-semibold"><span class="material-symbols-outlined text-lg">schedule</span>${r.min} min</span><span class="flex items-center gap-1 text-xs font-semibold"><span class="material-symbols-outlined text-lg">local_fire_department</span>${r.kcal} kcal</span></div></div></article>`).join('');
+}
+$('chips').onclick=e=>{const b=e.target.closest('[data-tag]');if(b){tag=b.dataset.tag;chips();render()}};
+$('grid').onclick=e=>{const b=e.target.closest('[data-fav]');if(!b)return;const r=R[b.dataset.fav];r.fav=!r.fav;toast(r.fav?'Añadida a favoritas':'Quitada de favoritas');render()};
+$('search').oninput=e=>{q=e.target.value.trim().toLowerCase();render()};
+$('sort').onchange=e=>{sort=e.target.value;render()};
+$('favOnly').onclick=e=>{favOnly=!favOnly;e.currentTarget.setAttribute('aria-pressed',favOnly);e.currentTarget.classList.toggle('text-red-500',favOnly);render()};
+$('reset').onclick=()=>{tag="Todos";q="";favOnly=false;$('search').value="";$('favOnly').classList.remove('text-red-500');chips();render()};
+$('more').onclick=()=>toast('Ya estás viendo todas las recetas disponibles');
+$('shareBtn').onclick=()=>toast('Pronto podrás compartir tu receta');
+$('themeBtn').onclick=()=>{const d=document.documentElement.classList.toggle('dark');localStorage.setItem('sg-theme',d?'dark':'light');$('themeBtn').firstElementChild.textContent=d?'light_mode':'dark_mode'};
+if(document.documentElement.classList.contains('dark'))$('themeBtn').firstElementChild.textContent='light_mode';
+chips();render();
+</script>
+</body>
+</html>
